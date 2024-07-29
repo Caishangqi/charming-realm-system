@@ -1,0 +1,1610 @@
+#主界面Title
+MainTitle: '§b>>> §dA Lengendary Home'
+CheckTitle: '§b>>> §dReturn To Your Friends'
+CreateTitle: '§b>>> §dCreate Your Fancy Home'
+ManageTitle: '§b>>> §dManager Extra Function 1'
+Manage2Title: '§b>>> §dManage Extra Function 2'
+Manage3Title: '§b>>> §dManage Extra Function 3'
+Manage4Title: '§b>>> §dManage Extra Function 4'
+Manage5Title: '§b>>> §dManage Extra Function 5'
+VisitTitle: '§b>>> §dSelect To Teleport'
+InviteTitle: '§b>>> §dInvite SomeOne Join You'
+TrustTitle: '§b>>> §dTrust SomeOne Help You'
+DenyTitle: '§b>>> §dDeny SomeOne Touch You'
+NextCustomModelData: 123456
+PrevCustomModelData: 123456
+NextButton:
+  CustomName: '§a>>> Next'
+  Material: 'PAPER'
+  CustomModelData: 10025
+  NoFetchCustomModelData: 10025
+PrevButton:
+  CustomName: '§a<<< Prev'
+  Material: 'PAPER'
+  CustomModelData: 10025
+  NoFetchCustomModelData: 10025
+#是否启用默认玻璃板的模板
+EnableCheckGuiNormalPane: true
+EnableCreateGuiNormalPane: true
+EnableDenyGuiNormalPane: true
+EnableInviteGuiNormalPane: true
+EnableMainGuiNormalPane: true
+EnableManageGuiNormalPane: true
+EnableManageGui2NormalPane: true
+EnableManageGui3NormalPane: true
+EnableManageGui4NormalPane: true
+EnableManageGui5NormalPane: true
+EnableTrustGuiNormalPane: true
+EnableInviteGuiNormalPane: true
+EnableVisitGuiNormalPane: true
+#玻璃板的材质,不同版本的材质名不同.
+PaneMaterial: 'STAINED_GLASS_PANE'
+#头颅是否显示皮肤:
+EnableSkullSkin: true
+#头颅的材质名,不同版本的材质名不同.
+HeadMaterial: 'SKULL_ITEM'
+#玻璃板的颜色ID
+GlassSubID: 15
+
+#VISITGUI统一的LORE标签:
+#不设置Lore的话请更改为:
+#VisitGuiLores: []
+VisitGuiLores:
+  - '§d§l§m---------------%SelfHome_World_Name_<Name>%§d§l§m---------------'
+  - '§8家园鲜花数: §6%SelfHome_World_Flower_<Name>%'
+  - '§8家园人气数: §6%SelfHome_World_Popularity_<Name>%'
+  - '§8家园热度指数: §6%SelfHome_World_Calc_<Name>%'
+  - ''
+  - '§8家园管理员: §6%SelfHome_World_ManageList_<Name>%'
+  - '§8家园信任者: §6%SelfHome_World_TrustList_<Name>%'
+  - '§8家园黑名单: §6%SelfHome_World_BlackList_<Name>%'
+  - ''
+  - '§8家园等级: §6%SelfHome_World_Level_<Name>%'
+  - '§8家园类型: §6%SelfHome_World_Type_<Name>%'
+  - ''
+  - '§d§l§m---------------%SelfHome_World_Name_<Name>%§d§l§m---------------'
+#是否开启玩家自定义的标语/sh info 内容[逗号为分隔符]
+VisitSlogan: true
+
+'Button1':
+  InMenu: 'Main'
+  CustomName: '§8[§a庄园系统§8]'
+  Material: 'COMPASS'
+  SubID: 0
+  Index: 5
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§e总家园数量:§a%SelfHome_WorldAmount%个'
+    - '§d左键 -> §6返回到家园或您已加入的家园'
+    - '§d右键 -> §6查询在全服内拥有权限的家园'
+  LeftInTo: 'sh home'
+  RightInTo: 'sh open check'
+  KeepOpen: true
+  CustomModelData: 123456
+'Button2':
+  InMenu: 'Main'
+  CustomName: '§8[§a创建家园§8]'
+  Material: 'NETHER_STAR'
+  SubID: 0
+  Index: 21
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§d左键 -> §6创建独属于你自己的家园'
+  LeftInTo: 'sh open create'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button3':
+  InMenu: 'Main'
+  CustomName: '§8[§a管理家园§8]'
+  Material: 'BOOK'
+  SubID: 0
+  Index: 23
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§d当前所在世界的状态列表:'
+    - '§a主 人:§e         %SelfHome_World_OwnerName%'
+    - '§e家园管理员:§e   %SelfHome_World_ManagerList%'
+    - '§6家园信任者:§e   %SelfHome_World_TrustList%'
+    - '§c家园黑名单:§e   %SelfHome_World_BlackList%'
+    - '§b家园器械数:§e   %SelfHome_World_Tile%'
+    - '§b家园实体数:§e   %SelfHome_World_Entity%'
+    - '§b家园掉落物:§e   %SelfHome_World_DropItem%'
+    - '§b家园等级数:§e   %SelfHome_World_Level%'
+    - '§b家园PVP状态:§e  %SelfHome_World_PVP%'
+    - '§b家园丢弃状态:§e %SelfHome_World_Drop%'
+    - '§b家园拾取状态:§e %SelfHome_World_Pickup%'
+    - '§b家园边界大小:§e %SelfHome_World_Radius%'
+    - '§b家园访问状态:§e %SelfHome_World_Public%'
+  LeftInTo: 'sh open manage'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button4':
+  InMenu: 'Main'
+  CustomName: '§8[§a访问家园§8]'
+  Material: 'BEACON'
+  SubID: 0
+  Index: 25
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§e加载的家园数量:§a%SelfHome_LoadWorlds%个'
+  LeftInTo: 'sh open visit'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button5':
+  InMenu: 'Main'
+  CustomName: '§8[§a关闭§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 45
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh close'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button6':
+  InMenu: 'Check'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button7':
+  InMenu: 'Create'
+  CustomName: '§8[§a默认生存地形§8]'
+  Material: 'GRASS'
+  SubID: 0
+  Index: 21
+  Enchants: []
+  Lores:
+  - '§c温馨提示 -> 创建家园后地形无法更改'
+  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'sh create 1'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button8':
+  InMenu: 'Create'
+  CustomName: '§8[§a超平坦地形§8]'
+  Material: 'GRASS'
+  SubID: 0
+  Index: 23
+  Enchants: []
+  Lores:
+  - '§c温馨提示 -> 创建家园后地形无法更改'
+  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'sh create 2'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button9':
+  InMenu: 'Create'
+  CustomName: '§8[§a空岛§8]'
+  Material: 'GRASS'
+  SubID: 0
+  Index: 25
+  Enchants: []
+  Lores:
+  - '§c温馨提示 -> 创建家园后地形无法更改'
+  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'sh create airland'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button10':
+  InMenu: 'Create'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button11':
+  InMenu: 'Manage'
+  CustomName: '§8[§a邀请玩家§8]'
+  Material: 'DIAMOND_HELMET'
+  SubID: 0
+  Index: 12
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d家园管理员: %SelfHome_ManagerList%'
+  LeftInTo: 'sh open invite'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button12':
+  InMenu: 'Manage'
+  CustomName: '§8[§a信任玩家§8]'
+  Material: 'IRON_HELMET'
+  SubID: 0
+  Index: 14
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d家园信任列表: %SelfHome_TrustList%'
+  LeftInTo: 'sh open trust'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button13':
+  InMenu: 'Manage'
+  CustomName: '§8[§a拉黑玩家§8]'
+  Material: 'LEATHER_HELMET'
+  SubID: 0
+  Index: 16
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d家园拉黑名单: %SelfHome_BlockList%'
+  LeftInTo: 'sh open Deny'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button14':
+  InMenu: 'Manage'
+  CustomName: '§8[§a设置传送点§8]'
+  Material: 'BEACON'
+  SubID: 0
+  Index: 21
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d传送点: %SelfHome_World_TeleportLocation%'
+  LeftInTo: 'sh tpset'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button15':
+  InMenu: 'Manage'
+  CustomName: '§8[§a切换访问§8]'
+  Material: 'NETHER_STAR'
+  SubID: 0
+  Index: 23
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d传送点: %SelfHome_Public%'
+  LeftInTo: 'sh public'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button16':
+  InMenu: 'Manage'
+  CustomName: '§8[§a切磋权限§8]'
+  Material: 'DIAMOND_SWORD'
+  SubID: 0
+  Index: 25
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d切换状态: §a%SelfHome_pvp%'
+  LeftInTo: 'sh pvp'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button17':
+  InMenu: 'Manage'
+  CustomName: '§8[§a切换丢弃权限§8]'
+  Material: 'GLOWSTONE_DUST'
+  SubID: 0
+  Index: 30
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d切换状态: §a%SelfHome_Drop%'
+  LeftInTo: 'sh Drop'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button18':
+  InMenu: 'Manage'
+  CustomName: '§8[§a切换拾取权限§8]'
+  Material: 'EXP_BOTTLE'
+  SubID: 0
+  Index: 32
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d切换状态: §a%SelfHome_Pickup%'
+  LeftInTo: 'sh Pickup'
+  KeepOpen: false
+  RightInTo: ''
+  CustomModelData: 123456
+'Button19':
+  InMenu: 'Manage'
+  CustomName: '§8[§a升级家园§8]'
+  Material: 'SUGAR'
+  SubID: 0
+  Index: 34
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d当前等级: §a%SelfHome_Level%/%SelfHome_MaxLevel%'
+  - '§d升级所需金币: %SelfHome_UpdateMoney%'
+  - '§d升级所需点券: %SelfHome_UpdatePoints%'
+  - '§d升级所需物品: %SelfHome_UpdateItems%'
+  - '§d升级所需中文: %SelfHome_UpdateItemsChineseName%'
+  - '§d升级所需数量: %SelfHome_UpdateItemsAmount%'
+  LeftInTo: 'sh update'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button20':
+  InMenu: 'Manage'
+  CustomName: '§8[§a下一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 45
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage2'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button21':
+  InMenu: 'Manage'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button22':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a锁定天气§8]'
+  Material: 'INK_SACK'
+  SubID: 1
+  Index: 12
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d切换状态: §a%SelfHome_LockWeather%'
+  - '§c所需特殊权限:§d<SefHome.LockWeather>'
+  LeftInTo: 'sh lockweather'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button23':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a锁定时间§8]'
+  Material: 'INK_SACK'
+  SubID: 2
+  Index: 14
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+  - '§d切换状态: §a%SelfHome_locktime%'
+  - '§c所需特殊权限:§d<SefHome.LockTime>'
+  LeftInTo: 'sh locktime'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button24':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a切换为白天§8]'
+  Material: 'INK_SACK'
+  SubID: 3
+  Index: 16
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c所需特殊权限:§d<SefHome.Day>'
+  LeftInTo: 'sh Day'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button25':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a切换为黑夜§8]'
+  Material: 'INK_SACK'
+  SubID: 4
+  Index: 21
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c所需特殊权限:§d<SefHome.Night>'
+  LeftInTo: 'sh Night'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button26':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a切换为雨天§8]'
+  Material: 'INK_SACK'
+  SubID: 5
+  Index: 23
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c所需特殊权限:§d<SefHome.Rain>'
+  LeftInTo: 'sh Rain'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button27':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a切换为晴天§8]'
+  Material: 'INK_SACK'
+  SubID: 6
+  Index: 25
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c所需特殊权限:§d<SefHome.Sun>'
+  LeftInTo: 'sh Sun'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button28':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a设置边界的中心§8]'
+  Material: 'INK_SACK'
+  SubID: 9
+  Index: 30
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c将家园的中心设置为您当前的坐标[边界移动]'
+    - '§c所需特殊权限:§d<SefHome.SetSpawn>'
+  LeftInTo: 'sh SetSpawn'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button29':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a退出加入的家园§8]'
+  Material: 'INK_SACK'
+  SubID: 7
+  Index: 32
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c你真的要离开家园吗(哭唧唧>_<)'
+  LeftInTo: 'sh Quit'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button30':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a删除家园§8]'
+  Material: 'INK_SACK'
+  SubID: 8
+  Index: 34
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores:
+    - '§c你真的要删除家园吗(哭唧唧>_<)'
+    - '§c温馨提示 -> 创建家园后地形无法更改'
+    - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'sh WholeDelete'
+  RightInTo: ''
+  KeepOpen: false
+  CustomModelData: 123456
+'Button31':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button32':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a上一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 37
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button33':
+  InMenu: 'Visit'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 50
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button34':
+  InMenu: 'Invite'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 50
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button35':
+  InMenu: 'Trust'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 50
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button36':
+  InMenu: 'Deny'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 50
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button37':
+  InMenu: 'Visit'
+  CustomName: '§8[§c公共地狱§8]'
+  Material: 'NETHERRACK'
+  SubID: 0
+  Index: 11
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh nether'
+  RightInTo: ''
+  CustomModelData: 123456
+'Button38':
+  InMenu: 'Visit'
+  CustomName: '§8[§c公共末地§8]'
+  Material: 'ENDER_STONE'
+  SubID: 0
+  Index: 12
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh end'
+  RightInTo: ''
+  CustomModelData: 123456
+'Button39':
+  InMenu: 'Manage2'
+  CustomName: '§8[§a下一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 45
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage3'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button40':
+  InMenu: 'Manage3'
+  CustomName: '§8[§a上一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 37
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage2'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button41':
+  InMenu: 'Manage3'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button42':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6恶地§7(§aBADLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 11
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome BADLANDS'
+  RightInTo: 'sh setWorldBiome BADLANDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button43':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6竹林§7(§dBAMBOO_JUNGLE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 12
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome BAMBOO_JUNGLE'
+  RightInTo: 'sh setWorldBiome BAMBOO_JUNGLE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button44':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6玄武岩三角洲§7(§dBASALT_DELTAS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 13
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome BASALT_DELTAS'
+  RightInTo: 'sh setWorldBiome BASALT_DELTAS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button45':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6沙滩§7(§dBEACH§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 14
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome BEACH'
+  RightInTo: 'sh setWorldBiome BEACH'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button46':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6桦木森林§7(§dBIRCH_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 15
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome BIRCH_FOREST'
+  RightInTo: 'sh setWorldBiome BIRCH_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button47':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6樱花树林§7(§dCHERRY_GROVE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 16
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome CHERRY_GROVE'
+  RightInTo: 'sh setWorldBiome CHERRY_GROVE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button48':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6冷水海洋§7(§dCOLD_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 17
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome COLD_OCEAN'
+  RightInTo: 'sh setWorldBiome COLD_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button49':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6绯红森林§7(§dCRIMSON_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 20
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome CRIMSON_FOREST'
+  RightInTo: 'sh setWorldBiome CRIMSON_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button50':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6黑森林§7(§dDARK_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 21
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DARK_FOREST'
+  RightInTo: 'sh setWorldBiome DARK_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button51':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6冷水深海§7(§dDEEP_COLD_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 22
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DEEP_COLD_OCEAN'
+  RightInTo: 'sh setWorldBiome DEEP_COLD_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button52':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6深暗之域§7(§dDEEP_DARK§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 23
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DEEP_DARK'
+  RightInTo: 'sh setWorldBiome DEEP_DARK'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button53':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6冰冻深海§7(§dDEEP_FROZEN_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 24
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DEEP_FROZEN_OCEAN'
+  RightInTo: 'sh setWorldBiome DEEP_FROZEN_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button54':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6温水深海§7(§dDEEP_LUKEWARM_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 25
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DEEP_LUKEWARM_OCEAN'
+  RightInTo: 'sh setWorldBiome DEEP_LUKEWARM_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button55':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6深海§7(§dDEEP_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 26
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DEEP_OCEAN'
+  RightInTo: 'sh setWorldBiome DEEP_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button56':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6沙漠§7(§dDESERT§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 29
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DESERT'
+  RightInTo: 'sh setWorldBiome DESERT'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button57':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6溶洞§7(§dDRIPSTONE_CAVES§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 30
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome DRIPSTONE_CAVES'
+  RightInTo: 'sh setWorldBiome DRIPSTONE_CAVES'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button58':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6末地荒地§7(§dEND_BARRENS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 31
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome END_BARRENS'
+  RightInTo: 'sh setWorldBiome END_BARRENS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button59':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6末地高地§7(§dEND_HIGHLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 32
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome END_HIGHLANDS'
+  RightInTo: 'sh setWorldBiome END_HIGHLANDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button60':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6末地内陆§7(§dEND_MIDLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 33
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome END_MIDLANDS'
+  RightInTo: 'sh setWorldBiome END_MIDLANDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button61':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6风蚀恶地§7(§dERODED_BADLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 34
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome ERODED_BADLANDS'
+  RightInTo: 'sh setWorldBiome ERODED_BADLANDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button62':
+  InMenu: 'Manage3'
+  CustomName: '§8[§6繁花森林§7(§dFLOWER_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 35
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome FLOWER_FOREST'
+  RightInTo: 'sh setWorldBiome FLOWER_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button63':
+  InMenu: 'Manage3'
+  CustomName: '§8[§a下一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 45
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage4'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button64':
+  InMenu: 'Manage4'
+  CustomName: '§8[§a上一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 37
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage3'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button65':
+  InMenu: 'Manage4'
+  CustomName: '§8[§a返回§8]'
+  Material: 'FEATHER'
+  SubID: 0
+  Index: 41
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open main'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button66':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6森林§7(§dFOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 11
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome FOREST'
+  RightInTo: 'sh setWorldBiome FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button67':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6冻洋§7(§dFROZEN_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 12
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome FROZEN_OCEAN'
+  RightInTo: 'sh setWorldBiome FROZEN_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button68':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6冰封山峰§7(§dFROZEN_PEAKS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 13
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome FROZEN_PEAKS'
+  RightInTo: 'sh setWorldBiome FROZEN_PEAKS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button69':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6冻河§7(§dFROZEN_RIVER§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 14
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome FROZEN_RIVER'
+  RightInTo: 'sh setWorldBiome FROZEN_RIVER'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button70':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6雪林§7(§dGROVE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 15
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome GROVE'
+  RightInTo: 'sh setWorldBiome GROVE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button71':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6冰刺之地§7(§dICE_SPIKES§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 16
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome ICE_SPIKES'
+  RightInTo: 'sh setWorldBiome ICE_SPIKES'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button72':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6尖峭山峰§7(§dJAGGED_PEAKS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 17
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome JAGGED_PEAKS'
+  RightInTo: 'sh setWorldBiome JAGGED_PEAKS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button73':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6丛林§7(§dJUNGLE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 20
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome JUNGLE'
+  RightInTo: 'sh setWorldBiome JUNGLE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button74':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6温水海洋§7(§dLUKEWARM_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 21
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome LUKEWARM_OCEAN'
+  RightInTo: 'sh setWorldBiome LUKEWARM_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button75':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6繁茂洞穴§7(§dLUSH_CAVES§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 22
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome LUSH_CAVES'
+  RightInTo: 'sh setWorldBiome LUSH_CAVES'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button76':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6红树林沼泽§7(§dMANGROVE_SWAMP§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 23
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome MANGROVE_SWAMP'
+  RightInTo: 'sh setWorldBiome MANGROVE_SWAMP'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button77':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6草甸§7(§dMEADOW§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 24
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome MEADOW'
+  RightInTo: 'sh setWorldBiome MEADOW'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button78':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6蘑菇岛§7(§dMUSHROOM_FIELDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 25
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome MUSHROOM_FIELDS'
+  RightInTo: 'sh setWorldBiome MUSHROOM_FIELDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button79':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6下界荒地§7(§dNETHER_WASTES§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 26
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome NETHER_WASTES'
+  RightInTo: 'sh setWorldBiome NETHER_WASTES'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button80':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6海洋§7(§dOCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 29
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome OCEAN'
+  RightInTo: 'sh setWorldBiome OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button81':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6原始桦木森林§7(§dOLD_GROWTH_BIRCH_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 30
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome OLD_GROWTH_BIRCH_FOREST'
+  RightInTo: 'sh setWorldBiome OLD_GROWTH_BIRCH_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button82':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6原始松木针叶林§7(§dOLD_GROWTH_PINE_TAIGA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 31
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome OLD_GROWTH_PINE_TAIGA'
+  RightInTo: 'sh setWorldBiome OLD_GROWTH_PINE_TAIGA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button83':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6原始云杉针叶林§7(§dOLD_GROWTH_SPRUCE_TAIGA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 32
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome OLD_GROWTH_SPRUCE_TAIGA'
+  RightInTo: 'sh setWorldBiome OLD_GROWTH_SPRUCE_TAIGA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button84':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6平原§7(§dPLAINS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 33
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome PLAINS'
+  RightInTo: 'sh setWorldBiome PLAINS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button85':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6河流§7(§dRIVER§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 34
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome RIVER'
+  RightInTo: 'sh setWorldBiome RIVER'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button86':
+  InMenu: 'Manage4'
+  CustomName: '§8[§6热带草原§7(§dSAVANNA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 35
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SAVANNA'
+  RightInTo: 'sh setWorldBiome SAVANNA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button87':
+  InMenu: 'Manage4'
+  CustomName: '§8[§a下一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 45
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage5'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button88':
+  InMenu: 'Manage5'
+  CustomName: '§8[§a上一页§8]'
+  Material: 'STRING'
+  SubID: 0
+  Index: 37
+  Enchants:
+    - 'ARROW_DAMAGE,1'
+  Lores: []
+  LeftInTo: 'sh open manage4'
+  RightInTo: ''
+  KeepOpen: true
+  CustomModelData: 123456
+'Button90':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6热带高原§7(§dSAVANNA_PLATEAU§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 11
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SAVANNA_PLATEAU'
+  RightInTo: 'sh setWorldBiome SAVANNA_PLATEAU'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button91':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6末地小型岛屿§7(§dSMALL_END_ISLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 12
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SMALL_END_ISLANDS'
+  RightInTo: 'sh setWorldBiome SMALL_END_ISLANDS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button92':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6积雪沙滩§7(§dSNOWY_BEACH§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 13
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SNOWY_BEACH'
+  RightInTo: 'sh setWorldBiome SNOWY_BEACH'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button93':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6雪原§7(§dSNOWY_PLAINS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 14
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SNOWY_PLAINS'
+  RightInTo: 'sh setWorldBiome SNOWY_PLAINS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button94':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6积雪山坡§7(§dSNOWY_SLOPES§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 15
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SNOWY_SLOPES'
+  RightInTo: 'sh setWorldBiome SNOWY_SLOPES'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button95':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6积雪针叶林§7(§dSNOWY_TAIGA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 16
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SNOWY_TAIGA'
+  RightInTo: 'sh setWorldBiome SNOWY_TAIGA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button96':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6灵魂沙峡谷§7(§dSOUL_SAND_VALLEY§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 17
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SOUL_SAND_VALLEY'
+  RightInTo: 'sh setWorldBiome SOUL_SAND_VALLEY'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button97':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6稀疏丛林§7(§dSPARSE_JUNGLE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 20
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SPARSE_JUNGLE'
+  RightInTo: 'sh setWorldBiome SPARSE_JUNGLE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button98':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6裸岩山峰§7(§dSTONY_PEAKS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 21
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome STONY_PEAKS'
+  RightInTo: 'sh setWorldBiome STONY_PEAKS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button99':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6石岸§7(§dSTONY_SHORE§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 22
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome STONY_SHORE'
+  RightInTo: 'sh setWorldBiome STONY_SHORE'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button100':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6向日葵平原§7(§dSUNFLOWER_PLAINS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 23
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SUNFLOWER_PLAINS'
+  RightInTo: 'sh setWorldBiome SUNFLOWER_PLAINS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button101':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6沼泽§7(§dSWAMP§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 24
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome SWAMP'
+  RightInTo: 'sh setWorldBiome SWAMP'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button102':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6针叶林§7(§dTAIGA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 25
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome TAIGA'
+  RightInTo: 'sh setWorldBiome TAIGA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button103':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6末地§7(§dTHE_END§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 26
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome THE_END'
+  RightInTo: 'sh setWorldBiome THE_END'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button104':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6虚空§7(§dTHE_VOID§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 29
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome THE_VOID'
+  RightInTo: 'sh setWorldBiome THE_VOID'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button105':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6暖水海洋§7(§dWARM_OCEAN§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 30
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WARM_OCEAN'
+  RightInTo: 'sh setWorldBiome WARM_OCEAN'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button106':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6诡异森林§7(§dWARPED_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 31
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WARPED_FOREST'
+  RightInTo: 'sh setWorldBiome WARPED_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button107':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6风袭森林§7(§dWINDSWEPT_FOREST§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 32
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WINDSWEPT_FOREST'
+  RightInTo: 'sh setWorldBiome WINDSWEPT_FOREST'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button108':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6风袭沙砾丘陵§7(§dWINDSWEPT_GRAVELLY_HILLS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 33
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WINDSWEPT_GRAVELLY_HILLS'
+  RightInTo: 'sh setWorldBiome WINDSWEPT_GRAVELLY_HILLS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button109':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6风袭丘陵§7(§dWINDSWEPT_HILLS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 34
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WINDSWEPT_HILLS'
+  RightInTo: 'sh setWorldBiome WINDSWEPT_HILLS'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button110':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6风袭热带草原§7(§dWINDSWEPT_SAVANNA§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 35
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WINDSWEPT_SAVANNA'
+  RightInTo: 'sh setWorldBiome WINDSWEPT_SAVANNA'
+  KeepOpen: false
+  CustomModelData: 123456
+'Button89':
+  InMenu: 'Manage5'
+  CustomName: '§8[§6疏林恶地§7(§dWOODED_BADLANDS§7)§8]'
+  Material: 'INK_SACK'
+  SubID: 0
+  Index: 41
+  Lores:
+    - '§c当前群系: §f%player_biome_capitalized%'
+    - '§e左键更改单个群系'
+    - '§6右键更改全部群系'
+  LeftInTo: 'sh setBiome WOODED_BADLANDS'
+  RightInTo: 'sh setWorldBiome WOODED_BADLANDS'
+  KeepOpen: false
+  CustomModelData: 123456

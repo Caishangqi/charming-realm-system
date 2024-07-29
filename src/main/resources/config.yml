@@ -1,0 +1,370 @@
+#配置文件版本:
+Version: 2.0296
+
+#汉化语言文本:
+#Chinese、Chinese_TW、English
+Language: 'Chinese'
+
+
+#是否开启BungeeCord数据库同步模式:
+BungeeCord: false
+#Database setting.
+Type: 'MySQL'
+Host: 'localhost'
+Port: 3306
+Database: root
+Username: root
+Password: root
+
+HikariCP:
+  connectionTimeout: 30000
+  #连接超时时间 默认值：30000（30秒）
+  minimumIdle: 50
+  #最小空闲连接数
+  maximumPoolSize: 30
+  #池允许达到的最大大小，包括空闲和正在使用的连接
+
+#地图文件夹前缀.
+WorldPrefix: "SH_"
+
+
+#在不需要该家园功能的子服,但是需要快捷传送的子服内将其改为true
+DisableFunctionButTeleport: false
+
+#是否开启均衡负载,在人数少的服务器创建家园?
+AutoReCreateInLowerLagHome: true
+#均衡负载根据什么？Player还是TPS,Player即指玩家少的服务器,TPS则指三次tps均值最高的那个服务器，如果是TPS需要提前安装Server的papi拓展,/papi ecloud download Server.
+DecideBy: Player
+#是否开启加载家园存档根据DecideBy进行转移加载?.
+AutoMoveWorldFilesToOther: false
+#是否只有地图被卸载关闭了才能进行存档转移操作?(此功能看需特殊开启,大部分人不需要用到,改为false即可)
+MoveWorldAfterUnLoad: false
+
+#是否启用异步家园形状创建?:
+FaweSwitch: false
+#边界形状材质,默认基岩.
+BorderMaterial: 'BEDROCK'
+#边界形状,Square代表矩形,Circle代表球体.
+BorderShape: 'Square'
+#升级边界的时候是否清空老的边界.
+UpdateClearOld: false
+
+#耕地材质选择,1.16.5-Cat填写FARMLAND
+SoilType: "SOIL"
+
+#是否开启高度限制
+EnableHeightLimit: true
+#最高
+MaxHeight: 255
+
+#服务器名字,不同子服要求设置的不一样才可以.
+Server: 家园一区
+#插件前缀:
+Prefix: '§b[§d家园系统§b]'
+#右键打开菜单的物品材质:
+Material: "COMPASS"
+
+#是否开启家园聊天前缀自动在玩家聊天时显示（聊天不支持papi时开启本功能,如ESS)(若您有MiaoChat等聊天插件,可以用Papi变量)(兼容多世界变量)
+EnableChatPrefix: true
+
+#违法名字禁止使用本插件,如多世界的名字.
+IlleagalName:
+  - 'zc'
+  - 'world'
+
+#创建家园前是否清空背包.
+ClearInventoryBeforeCreate: false
+#创建家园后执行的指令[后台执行]:
+#DispathCommand:
+#  - '[console]kit xinshou give <Name>'
+#  - '[player]kit xinshou'
+DispathCommand: []
+
+#是否设置在家园内死亡自动复活在当前死亡的家园传送点.
+EnableAutoRespawnInHome: true
+
+#默认创建的家园世界/SH create 2 [设置为0则禁用]
+NormalType: 2
+#是否自定义种子,为0则不启用自定义种子.
+Seed: 0
+
+#是否开启家园出生点检测,如果为虚空则为玩家搭一个草方块防止掉进虚空[可选开启,空岛推荐]
+EnableSpawnProtection: true
+
+#是否开启高版本的原版边界,低版本关闭就行,因为低版本无原版边界.
+BorderSwitch: true
+#是否自定义边界插件,指令为:(留空即不开启)<Radius> <Player> <X> <Y> <Z><不推荐><建议用插件自带的>
+#CustomBorder: 'wb <Player> set <Radius> <X> <Z>'
+CustomBorder: ''
+#家园的初始边界范围
+WorldBoard: 64
+#升级一次的半径大小
+UpdateRadius: 50
+#是否开启边界显示全息提示.
+HDSwitch: true
+#是否监听玩家移动走出边界后给予缓慢100,失明100的BUFF,走回恢复.
+EnableMoveListener: false
+#超出一定的边界后执行什么指令,留空为''则不执行:
+BorderCommand: ''
+#超出边界是否开启该人冒险家模式.
+EnableAdventureMode: true
+#移动到边界时是否击退玩家.
+PlayerMoveOverBorderHit: false
+#移动到边界时是否给予缓慢BUFF
+PlayerMoveOverBorderBuff: true
+
+#最大家园管理员数
+MaxOP: 2
+#最大成员数
+MaxJoin: 6
+#最大家园可升级的等级
+MaxLevel: 10
+#升级家园所需金币
+MoneyNeed:
+  #第一次升级,从1级到二级所需金币
+  - 5000
+  - 10000
+  - 15000
+  - 20000
+  - 20000
+  - 20000
+  - 0
+  - 0
+  - 0
+#升级家园所需点券
+PointsNeed:
+  #第一次升级,从1级到二级所需点券
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 10
+  - 20
+  - 30
+#升级家园所需材料,数量.
+ItemsNeed:
+  - 'DIAMOND,16'
+  - 'DIAMOND,32'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+  - 'DIAMOND,64'
+#升级家园所需物品中文名字,显示在papi变量上.
+ItemsChineseName:
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+  - '钻石'
+#最大可以删除家园的次数
+MaxDelete: 3
+
+#家园警告的Tile数量
+MaxTiles: 5000
+#家园封锁的Tile数量
+UnLoadTiles: 8500
+#家园最大物品掉落物数量
+DeleteItems: 500
+#家园最大实体总数.
+DeleteEntities: 2000
+#家园检查的频率:[秒][0为禁用]
+CheckTime: 600
+WhiteEntities:
+  - 'VILLAGE'
+  - 'PLAYER'
+  - 'ICEANDFIRE'
+  - 'ASTRALSORCERY'
+#盔甲架实体限制,防止过多卡服[-1不启用]
+ArmorStand: -1
+
+#家园自动保存地图时间（秒)[0为禁用]
+SaveTime: 300
+#是否跳过一些世界不进行保存[在开启Windows存档映射时,或者其他特殊需求可以设置一下]
+UnAutoSaveWorlds:
+  - DIM34676
+
+
+
+#家园自动备份地图时间（秒)[默认36000秒][0为禁用][建议5分钟以上,否则报错勿扰]
+AutoBackup: 0
+#多少天家园未被访问取消自动备份(天)[BC模式下同样有效]
+NoBackup: 3
+#是否开启自定义备份路径？,若开启,则填写路径,例如:E:\,如果不想自定义,填写为''空.
+#CustomBackupLocation: 'E:\'
+CustomBackupLocation: ''
+
+
+#若出现生成大量DIM文件或玩家家园维度id变更，请关闭此优化项以及停用其他类似功能的插件
+#是本插件导致的,模组服不建议世界卸载或者区块卸载进行优化的效果.
+
+#优化类型[1为卸载世界,2为卸载区块]
+OptimizeType: 0
+#优化时间[秒][0为禁用]
+OptimizeTime: 0
+#优化白名单.
+UnOptimizeWorlds:
+  - 'ZC'
+
+#是否开启背包不掉落:
+KeepInventory: true
+#是否开启不刷怪,false不刷怪,true刷怪
+doMobSpawning: false
+#是否开启防爆功能,false为开启,true为关闭.
+mobGriefing: false
+#是否关闭火势蔓延功能,false为开启,true为关闭
+doFireTick: false
+#创建家园时的默认设置
+NormalPublic: false
+NormalPVP: false
+NormalPickup: true
+NormalDrop: true
+#被踢出时后台执行的指令:
+BeKickedCommand: 'spawn <Name>'
+
+#是否开启CustomTileMax
+CustomTileMax: false
+TileList:
+- chunk|TORCHERINO_TILE|1
+- world|ASTRALSORCERY:TILERITUALLINK|8
+- world|METS:GEOMAGNETIC_GENERATOR|8
+- world|BOTANIA_STARFIELD|0
+#是否在检测到放置上限后清空掉已放置的多余的方块?
+EnableClearExtraBlocks: false
+
+
+#是否开启CustomEntityMax,动物统一为Animals
+CustomEntityMax: false
+#限制列表.
+EntityList:
+  - 'ZOMBIE|8'
+#检测实体秒数.
+CheckEntityInterval: 60
+
+#是否开启生物黑名单功能
+EnableBlackEntities: false
+#防止村民养殖和出现逆天村民,列入黑名单.
+BlackEntitiesList:
+  - 'VILLAGER'
+
+#是否禁止指定物品在无权限的家园中使用:
+EnableBlackItemsUseInNoPermission: false
+#黑名单物品列表
+BlackItems:
+  - 'DIAMOND_SWORD'
+
+
+
+#默认的世界模式选择,(设置为''则禁用)
+Difficulty: 'Easy'
+#是否生成家园里的自然建筑:
+generateStructures: false
+#世界最大生成怪物数量:(-1为禁用)
+MaxSpawnMonstersAmount: 100
+#世界最大生成动物数量:(-1为禁用)
+MaxSpawnAnimalsAmount: 100
+#是否开启公共下界地狱的传送:/SH Nether,需自行开启服务端的地狱生成功能.
+EnableNetherTeleport: false
+#指定一个您服务器的地狱世界名字:
+NetherWorldName: 'DIM-1'
+#开启哪些规则:
+NeitherGameRules:
+  - 'keepInventory,true'
+  - 'doMobSpawning,true'
+  - 'mobGriefing,false'
+  - 'doFireTick,false'
+#是否开启公共末地的传送:/SH End,需自行开启服务端的末地生成功能.
+EnableEndTeleport: false
+#指定一个您服务器的末地世界名字:
+EndWorldName: 'DIM1'
+#开启哪些规则:
+EndGameRules:
+  - 'keepInventory,true'
+  - 'doMobSpawning,true'
+  - 'mobGriefing,false'
+  - 'doFireTick,false'
+#是否开启在线世界延迟统计前N名
+EnableTilesAndChunksAndDropItemsStatisticsTop: true
+#显示的排名个数,5->代表前五
+ShowAmount: 5
+#每多少秒提示一次
+ShowTimes: 1800
+#权重
+OneTileTick: 0.005
+OneEntityTick: 0.005
+OneChunkTick: 0
+OneDropTick: 0.0001
+#显示的小数位,默认2位小数
+FormatInfo: '%.2f'
+#置顶
+StatisticsTop:
+  - '§7当前服务器玩家世界占用情况：'
+  - '§8§m————————————————————————————————————————————————————————'
+#格式
+ShowFormat: '§6§l#<index> §a<world> §e的世界 §7<tile> §eTiles §7<chunk> §e区块 §7<entity> §e实体 §7<drop> §e掉落物 §e每Tick耗时 §7<tps> §eMs'
+#置底
+StatisticsEnd:
+  - '§8§m————————————————————————————————————————————————————————'
+  - '§a上方世界仅供参考，如果存在你的家园请及时清理掉落物和生物！'
+#默认权限开关
+Permission:
+  CommandUser: true
+  Visit: true
+  SetSpawn: false
+  Nether: false
+  End: false
+  Rain: false
+  Sun: false
+  Night: false
+  Day: false
+  Create-1: true
+  Create-2: true
+  Create-airland: true
+  LockTime: false
+  LockWeather: false
+
+
+#一天最大的投递鲜花的数量<额外权限:SelfHome.Flowers.数字>:
+MaxFlowers: 5
+#综合权重
+PopularityAdd: 0.1
+FlowerAdd: 0.3
+#默认上线地点世界（需自行设置世界出生点）'留空为不设置',该设置可以解决个别客户端进服提示维度崩客户端的BUG
+NormalJoinWorld: ''
+
+#是否开启时间同步
+EnableAsnycTime: false
+#根据哪个世界进行同步
+AsyncTimeWorld: 'world'
+#是否开启季节插件兼容同步:
+RealisticSeasons: false
+
+#是否在GUI页面显示所有玩家,还是非公开的进行隐藏,ALL->显示公开,支持跨服/Public->显示公开,支持跨服/Load->显示加载,仅支持单服显示 三种选择.
+VisitGuiShowAll: 'Load'
+
+#是否开启玩家死亡后自动在家园复活
+EnableAutoRespawnInHome: false
+
+#是否开启家园实体交互保护功能,盔甲架等物品无权限禁止交互,该功能对拔刀剑相关实体无效.
+EnableEntityInteract: true
+
+#是否禁用家园传送门的创建
+DisablePortalCreate: true
+
+#是否开启多世界兼容模式
+MultiverseCoreCompability: true
+
+#是否开启版本检测
+CheckUpdate: true
+
+#是否关闭世界出生点区块加载,纯净建议改成false关闭出生区块常加载,节约内存
+#模组服如果工业2玻璃纤维线缆短线的话建议为true,不然为反向优化!.
+KeepSpawnInMemory: false
