@@ -20,6 +20,8 @@
 使服务器达到每个玩家一个单独的世界的功能，减少区块占用卡顿，区块保存困难炸档等问题,玩家可以自己管理世界或邀请其他玩家加入世界一起建造. 玩家可以通过菜单来管理领域的合作建设者也可以选择是否将领域展示到公共菜单中以便其他玩家访问.
 
 
+
+
 <p align="center">
 <img alt="GitHub code size in bytes" src="https://github.com/user-attachments/assets/60d24316-0728-4d62-aec3-5552a66607f3">
 </p>
@@ -28,7 +30,8 @@
 </p>
 
 ## 特性
-**加粗**内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件UI的可读性和外观
+
+> **加粗**内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件UI的可读性和外观, 随着版本更新该插件会逐步修改其他可以改善的地方
 - 创建玩家独立世界 （支持超平坦 / 默认生存 / 及其他设定的模板地图）
 - 设置或更改独立世界出生点,信任名单
 - 独立世界世界边界,并且可以使用货币升级范围大小
@@ -38,6 +41,8 @@
 - **在指定菜单区域内展示玩家领域头像而非直接填充**
 - **给予按钮不同的样式基于当前页数**
   ...
+
+
 
 ## 待更新
 
@@ -59,12 +64,12 @@
 ## 特别说明 
 这是一个专门给服务器使用的插件，主要需求会依照服务器需求进行配置，您的需求可能会被延后，感谢谅解。
 
-_This is a plugin specially used for the server. The main requirements will be configured according to the server requirements. Your requirements may be delayed. Thank you for your understanding._
+> This is a plugin specially used for the server. The main requirements will be configured according to the server requirements. Your requirements may be delayed. Thank you for your understanding.
 
-你也许发现了,该插件使用了很多"其他"服务器的游戏资源和设计.你或许会感到很气愤,"天呐!你这是抄袭".然而使用其他服务器的资源只是用来确保GUI设计,你也不能从该项目中得到这些资源(就意味着这些资源不会被传播)
+您可能会注意到，本插件使用了一些其他服务器的游戏资源和设计。对此，您可能会感到疑惑甚至愤怒：“这难道不是抄袭吗？” 事实上，这些资源仅用于确保GUI设计的一致性和美观性。而且，这些资源并不会通过本项目传播或被获取，因此不会涉及版权或其他法律问题。
 
-_You might notice that this plugin uses some game resources and designs from other servers. This may raise concerns or even anger, as you might think, "Isn't this plagiarism?" However, these resources are only used to ensure consistency and aesthetics in the GUI design. Moreover, these resources will not be distributed or obtained through this project, thus avoiding any copyright or legal issues._
+> You might notice that this plugin uses some game resources and designs from other servers. This may raise concerns or even anger, as you might think, "Isn't this plagiarism?" However, these resources are only used to ensure consistency and aesthetics in the GUI design. Moreover, these resources will not be distributed or obtained through this project, thus avoiding any copyright or legal issues.
 
 部分材质来自 Minecraft服务器 Origin Realm 以及插件 ItemsAdder, 你不可以以任何方式散布其资源
 
-_Some materials are sourced from the Minecraft server Origin Realm and the plugin ItemsAdder. Please note that you are not permitted to distribute these resources in any way._
+>Some materials are sourced from the Minecraft server Origin Realm and the plugin ItemsAdder. Please note that you are not permitted to distribute these resources in any way.
