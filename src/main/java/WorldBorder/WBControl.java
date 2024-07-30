@@ -20,11 +20,11 @@ public class WBControl {
     v = v.substring(v.lastIndexOf('.') + 1);
     try {
       if (v.contains("v1_12_R1")) {
-        R_12_1.hide(p, p.getWorld());
+        //R_12_1.hide(p, p.getWorld());
       } else if (v.contains("v1_16_R1")) {
-        R_16_1.hide(p, p.getWorld());
+        //R_16_1.hide(p, p.getWorld());
       } else if (v.contains("v1_16_R2")) {
-        R_16_2.hide(p, p.getWorld());
+        //R_16_2.hide(p, p.getWorld());
       } else if (v.contains("v1_16_R3")) {
         R_16_3.hide(p, p.getWorld());
       } else if (v.contains("arclight")) {
@@ -44,13 +44,7 @@ public class WBControl {
     v = v.substring(v.lastIndexOf('.') + 1);
     Home home = HomeAPI.getHome(p.getWorld().getName());
     try {
-      if (v.contains("v1_12_R1")) {
-        R_12_1.show(p, p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getSpawnLocation().getZ(), (Main.JavaPlugin.getConfig().getInt("WorldBoard") + (home.getLevel() - 1) * Main.JavaPlugin.getConfig().getInt("UpdateRadius")));
-      } else if (v.contains("v1_16_R1")) {
-        R_16_1.show(p, p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getSpawnLocation().getZ(), (Main.JavaPlugin.getConfig().getInt("WorldBoard") + (home.getLevel() - 1) * Main.JavaPlugin.getConfig().getInt("UpdateRadius")));
-      } else if (v.contains("v1_16_R2")) {
-        R_16_2.show(p, p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getSpawnLocation().getZ(), (Main.JavaPlugin.getConfig().getInt("WorldBoard") + (home.getLevel() - 1) * Main.JavaPlugin.getConfig().getInt("UpdateRadius")));
-      } else if (v.contains("v1_16_R3")) {
+      if (v.contains("v1_16_R3")) {
         R_16_3.show(p, p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getSpawnLocation().getZ(), (Main.JavaPlugin.getConfig().getInt("WorldBoard") + (home.getLevel() - 1) * Main.JavaPlugin.getConfig().getInt("UpdateRadius")));
       } else if (v.contains("arclight")) {
         showArclightBorder(p, p.getWorld(), p.getWorld().getSpawnLocation().getX(), p.getWorld().getSpawnLocation().getZ(), (Main.JavaPlugin.getConfig().getInt("WorldBoard") + (home.getLevel() - 1) * Main.JavaPlugin.getConfig().getInt("UpdateRadius")));

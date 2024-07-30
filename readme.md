@@ -40,6 +40,7 @@
 
 - **在指定菜单区域内展示玩家领域头像而非直接填充**
 - **给予按钮不同的样式基于当前页数**
+- **支持HexColor,使用 `#83c22d` 充当颜色代码**
   ...
 
 
@@ -70,6 +71,6 @@
 
 > You might notice that this plugin uses some game resources and designs from other servers. This may raise concerns or even anger, as you might think, "Isn't this plagiarism?" However, these resources are only used to ensure consistency and aesthetics in the GUI design. Moreover, these resources will not be distributed or obtained through this project, thus avoiding any copyright or legal issues.
 
-部分材质来自 Minecraft服务器 Origin Realm 以及插件 ItemsAdder, 你不可以以任何方式散布其资源
+部分材质来源于Minecraft服务器Origin Realm以及插件ItemsAdder。请注意，您不能以任何方式传播这些资源。
 
 >Some materials are sourced from the Minecraft server Origin Realm and the plugin ItemsAdder. Please note that you are not permitted to distribute these resources in any way.

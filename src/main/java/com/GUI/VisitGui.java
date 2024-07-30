@@ -3,6 +3,7 @@ package com.GUI;
 import com.Hookers.VisitGUIHook;
 import com.SelfHome.Main;
 import com.SelfHome.Variable;
+import com.Util.Color;
 import com.Util.*;
 import de.tr7zw.nbtapi.NBTItem;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -265,17 +266,17 @@ public class VisitGui implements InventoryHolder {
                     player_SKULL.setOwningPlayer((OfflinePlayer) temp_p);
                 } catch (Exception exception) {
                 }
-            player_SKULL.setDisplayName(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix"));
+            player_SKULL.setDisplayName(Color.parseColor(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
             List<String> lores = new ArrayList<>();
             for (int i = 0; i < Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1; i++) {
-                String str = ((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, ""));
+                String str = Color.parseColor(((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
                 str = PlaceholderAPI.setPlaceholders(null, str);
                 lores.add(str);
             }
             if (Variable.GUI_YML.getBoolean("VisitSlogan"))
                 for (String str : home.getAdvertisement())
                     lores.add(str);
-            String temp = ((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1)).replace("<Name>", home.getName().replace(Variable.world_prefix, ""));
+            String temp = Color.parseColor(((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
             temp = PlaceholderAPI.setPlaceholders(null, temp);
             lores.add(temp);
             player_SKULL.setLore(lores);
@@ -291,17 +292,17 @@ public class VisitGui implements InventoryHolder {
         } else {
             ItemStack item = new ItemStack(Material.valueOf(Variable.GUI_YML.getString("HeadMaterial")));
             ItemMeta i_meta = item.getItemMeta();
-            i_meta.setDisplayName(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix"));
+            i_meta.setDisplayName(Color.parseColor(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
             List<String> lores = new ArrayList<>();
             for (int i = 0; i < Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1; i++) {
-                String str = ((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, ""));
+                String str = (Color.parseColor((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
                 str = PlaceholderAPI.setPlaceholders(null, str);
                 lores.add(str);
             }
             if (Variable.GUI_YML.getBoolean("VisitSlogan"))
                 for (String str : home.getAdvertisement())
                     lores.add(str);
-            String temp = ((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1)).replace("<Name>", home.getName().replace(Variable.world_prefix, ""));
+            String temp = Color.parseColor(((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
             temp = PlaceholderAPI.setPlaceholders(null, temp);
             lores.add(temp);
             i_meta.setLore(lores);

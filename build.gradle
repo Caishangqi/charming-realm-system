@@ -74,6 +74,8 @@ repositories {
         url = uri("https://mvnrepository.com/repos/central")
     }
 
+    mavenCentral()
+
 }
 
 dependencies {
@@ -86,6 +88,8 @@ dependencies {
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.0'
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.8.0";
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.1")
+    implementation "net.kyori:adventure-api:4.17.0"
+    implementation "net.kyori:adventure-text-minimessage:4.17.0"
 
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
     // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-healthchecks
@@ -114,7 +118,7 @@ dependencies {
     implementation fileTree(dir: 'libs/implement', include: ['*.jar'])
 }
 
-def targetJavaVersion = 8
+def targetJavaVersion = 16
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
