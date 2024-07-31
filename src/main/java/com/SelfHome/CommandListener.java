@@ -30,10 +30,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class CommandListener implements CommandExecutor, TabExecutor {
     public void invite_guoqi(final Player p) {
@@ -5296,6 +5295,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         e1.printStackTrace();
                     }
                     YamlConfiguration yamlConfiguration1 = YamlConfiguration.loadConfiguration(f2);
+                    // Add playerOwnerUUID section
+                    yamlConfiguration1.createSection("playerOwnerUUID");
+                    yamlConfiguration1.createSection("CreatedDate");
                     yamlConfiguration1.createSection("Members");
                     yamlConfiguration1.createSection("OP");
                     yamlConfiguration1.createSection("Denys");
@@ -5317,6 +5319,15 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     } catch (IOException e2) {
                         e2.printStackTrace();
                     }
+                    // Add playerOwnerUUID section
+                    Player player = (Player)sender;
+                    // Get Current Date
+                    LocalDate currentDate = LocalDate.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月 d号, yyyy年", Locale.CHINESE);
+                    String formattedDate = currentDate.format(formatter);
+
+                    yamlConfiguration1.set("playerOwnerUUID",player.getUniqueId().toString());
+                    yamlConfiguration1.set("CreatedDate",formattedDate);
                     yamlConfiguration1.set("Public", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPublic")));
                     yamlConfiguration1.set("pickup", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPVP")));
                     yamlConfiguration1.set("drop", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPickup")));

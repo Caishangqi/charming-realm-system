@@ -5,6 +5,7 @@ import com.SelfHome.Main;
 import com.SelfHome.Variable;
 import com.Util.Color;
 import com.Util.*;
+import de.tr7zw.nbtapi.NBT;
 import de.tr7zw.nbtapi.NBTItem;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
@@ -266,7 +267,10 @@ public class VisitGui implements InventoryHolder {
                     player_SKULL.setOwningPlayer((OfflinePlayer) temp_p);
                 } catch (Exception exception) {
                 }
-            player_SKULL.setDisplayName(Color.parseColor(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
+            /* 这里必须传入玩家实例让luck-perms区调用,如果你想使用其他插件的 placeholders */
+            String PlaceholderParsed = PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(home.getPlayerOwnerUUID()), (String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
+
+            player_SKULL.setDisplayName(Color.parseColor(PlaceholderParsed));
             List<String> lores = new ArrayList<>();
             for (int i = 0; i < Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1; i++) {
                 String str = Color.parseColor(((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
@@ -287,12 +291,21 @@ public class VisitGui implements InventoryHolder {
                 skull.setDurability(Short.valueOf(item_info[1]).shortValue());
             }
             skull.setAmount(1);
+            NBT.modify(skull, nbt -> {
+                nbt.setString("ButtonClass", "VisitGUI.PlayerHead");
+                nbt.setString("Owner", home.getName());
+            });
             this.MainGui.setItem(slotIndex, skull);
             //this.MainGui.addItem(new ItemStack[]{skull});
         } else {
             ItemStack item = new ItemStack(Material.valueOf(Variable.GUI_YML.getString("HeadMaterial")));
             ItemMeta i_meta = item.getItemMeta();
-            i_meta.setDisplayName(Color.parseColor(String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
+
+
+            /* 这里必须传入玩家实例让luck-perms区调用,如果你想使用其他插件的 placeholders */
+            String PlaceholderParsed = PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(home.getPlayerOwnerUUID()), (String.valueOf(Variable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(Variable.world_prefix, "") + Variable.Lang_YML.getString("VisitGuiHomeSuffix")));
+
+            i_meta.setDisplayName(Color.parseColor(PlaceholderParsed));
             List<String> lores = new ArrayList<>();
             for (int i = 0; i < Variable.GUI_YML.getStringList("VisitGuiLores").size() - 1; i++) {
                 String str = (Color.parseColor((String) Variable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(Variable.world_prefix, "")));
@@ -313,6 +326,11 @@ public class VisitGui implements InventoryHolder {
                 item.setDurability(Short.valueOf(item_info[1]).shortValue());
             }
             item.setAmount(1);
+            NBT.modify(item, nbt -> {
+                nbt.setString("ButtonClass", "VisitGUI.PlayerHead");
+                nbt.setString("Owner", home.getName());
+            });
+
             this.MainGui.setItem(slotIndex, item);
             //this.MainGui.addItem(new ItemStack[]{item});
         }
