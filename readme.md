@@ -24,7 +24,7 @@
 
 
 <p align="center">
-<img alt="GitHub code size in bytes" src="https://github.com/user-attachments/assets/60d24316-0728-4d62-aec3-5552a66607f3">
+<img alt="GitHub code size in bytes" src="https://github.com/user-attachments/assets/2893f69c-6c72-4927-8fa2-d8255635ca25">
 </p>
 <p align="center">
 领域导航菜单和领域选择列表
@@ -32,7 +32,7 @@
 
 ## 特性
 
-> **加粗**内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件UI的可读性和外观, 随着版本更新该插件会逐步修改其他可以改善的地方
+> **加粗**内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件GUI的可读性和外观, 随着版本更新该插件会逐步修改其他可以改善的地方
 
 - 创建玩家独立世界 （支持超平坦 / 默认生存 / 及其他设定的模板地图）
 - 设置或更改独立世界出生点,信任名单
@@ -43,6 +43,7 @@
 - **在指定菜单区域内展示玩家领域头像而非直接填充**
 - **给予按钮不同的样式基于当前页数**
 - **支持HexColor,使用 `#83c22d` 充当颜色代码**
+- **GUI中的物品名称现在也可以使用占位符**
   ...
 
 ## 占位符
@@ -65,6 +66,11 @@
 | 更改配置文件记录创建者和创建时间        | 正常  | ✅  |
 | 领域列表基于页数自动判断按钮样式        | 正常  | ✅  |
 | 领域权限修改,信任GUI重置          | 正常  | 📌 |
+
+## 待修复
+> 项目中关于Placeholder的代码有部分存在着问题,包括不限于在 `setPlaceholders(null, str);` `字符串时没有传入OfflinePlayer`,这样做会导致绝大部分插件的Placeholder调用失败. 后续修复应该重写插件`API.java`中的分支并默认传入OfflinePlayer (无论何时)
+
+- 在GUI菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取玩家实例
 
 ## 协调系列 Homeward Species
 
