@@ -1,0 +1,84 @@
+size: 18
+name: "&7Basics Inventory"
+# This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
+# The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
+matrix:
+  - "AAAAAAAAA"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "AAAAAAAAA"
+
+items:
+  # Here you will specify a name for your button. No matter what you put, the name will only be present in the configuration.
+  # Attention, the name of your button must be unique. We advise you to choose a name that will describe what the button does.
+  manageMember:
+    type: MANAGE_MEMBER
+    # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
+    slot: 10-11
+
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      # Let’s start with a block of grass
+      # To find the list of materials you must go to the spigot documentation: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+      material: SUNFLOWER
+      modelID: 1000
+      # Here we will name this item
+      # Color code, mini message and placeholders are supported
+      name: " "
+
+      # This is the lore.
+      # You must put several lines to the lore.
+      # Color code, mini message and placeholders are supported
+      lore:
+        - "#a6aab4添加,刪除,管理你的領域人員,"
+        - "#a6aab4最大人數通過會員獲得提升"
+        - ""
+        - "&f領域人員數量: / "
+        - ""
+        - "#80c606 → 點擊打開菜單"
+
+
+  resetRealm:
+    type: RESET_REALM
+    slot: 13
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "&c重置領域"
+      lore: []
+  visitState:
+    type: VISIT_STATE
+    slot: 15-16
+
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: " "
+      lore:
+        - "#a6aab4隨時控制您領域的可見性"
+        - ""
+        - "#80c606 → 點擊打開菜單"
+  help:
+    type: HELP_STATE
+    slot: 8
+
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "&l#3b8bc1幫助"
+      lore:
+        - "#3b8bc1點擊這裏瞭解你更多關於領域"
+        - "#3b8bc1的内容和事項"

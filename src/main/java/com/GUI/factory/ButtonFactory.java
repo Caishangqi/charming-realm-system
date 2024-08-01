@@ -1,8 +1,10 @@
 package com.GUI.factory;
 
-import com.GUI.components.CustomGUI;
+import com.GUI.components.CharmGUIBase;
 import com.GUI.components.GUIButton;
 
+import java.util.List;
+
 public interface ButtonFactory {
-    GUIButton createButton(CustomGUI parentGUI);
+    List<GUIButton> createButton(CharmGUIBase parentGUI);
 }

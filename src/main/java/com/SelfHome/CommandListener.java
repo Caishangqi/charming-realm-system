@@ -2,7 +2,7 @@ package com.SelfHome;
 
 import WorldBorder.WBControl;
 import com.GUI.*;
-import com.GUI.realms.RealmManageGUI;
+import com.GUI.realms.RealmGUISetting;
 import com.Util.*;
 import com.comphenix.protocol.utility.StreamSerializer;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
@@ -63,7 +63,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
     public boolean onCommand(final CommandSender sender, Command cmd, String Label, final String[] args) {
         if (sender instanceof Player) {
             if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
-                Main.guiManager.openGUI((Player) sender, new RealmManageGUI("Realm Manage GUI", 54));
+                Main.charmGuiHandler.openGUI(new RealmGUISetting((Player) sender));
                 return false;
             }
         }
@@ -188,6 +188,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 }
                 if (args.length == 1 &&
                         args[0].equalsIgnoreCase("reload")) {
+                    Main.charmGuiHandler.closeAllGUI();
                     if (sender instanceof Player) {
                         Player temp = (Player) sender;
                         if (!temp.isOp()) {
@@ -5447,6 +5448,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         if (args.length == 1) {
             List<String> list = new ArrayList<>();
             list.add("open");
+            list.add("setting");
             list.add("create");
             list.add("look");
             list.add("tpSet");

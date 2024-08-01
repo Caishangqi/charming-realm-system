@@ -1,6 +1,6 @@
 package com.SelfHome;
 
-import com.GUI.handler.GUIManager;
+import com.GUI.handler.CharmGUIHandler;
 import com.Listeners.*;
 import com.PlaceHolder.API;
 import com.PlaceHolder.RealmExpansion;
@@ -33,7 +33,7 @@ import java.util.Properties;
 public class Main extends JavaPlugin implements PluginMessageListener {
 
     public static JavaPlugin JavaPlugin;
-    public static GUIManager guiManager;
+    public static CharmGUIHandler charmGuiHandler;
 
     public static boolean isOSLinux() {
         Properties prop = System.getProperties();
@@ -103,7 +103,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
     public void onEnable() {
         JavaPlugin = this;
 
-        guiManager = new GUIManager();
+        charmGuiHandler = new CharmGUIHandler();
 
         int pluginId = 19436;
         Metrics ms = new Metrics(JavaPlugin, pluginId);
@@ -113,7 +113,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getConsoleSender().sendMessage("检测到 Arclight 服务器,启用适用于Arclight的方式");
         if (!JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport")) {
             Bukkit.getPluginManager().registerEvents((Listener) new CreatureSpawnListener(), (Plugin) this);
-            Bukkit.getPluginManager().registerEvents((Listener) guiManager, (Plugin) this);
+            Bukkit.getPluginManager().registerEvents((Listener) charmGuiHandler, (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new InteractBlackListener(), (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new BlockBreakListener(), (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new BlockPlaceListener(), (Plugin) this);
@@ -272,6 +272,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Variable.world_prefix = "SelfHomeWorld/";
         JavaPlugin.saveDefaultConfig();
         JavaPlugin.reloadConfig();
+        if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_setting.yml")).exists())
+            JavaPlugin.saveResource("guis" + Variable.file_loc_prefix + "gui_setting.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI.yml")).exists())
             JavaPlugin.saveResource("GUI.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI_en.yml")).exists())
@@ -365,6 +367,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Variable.getName_yml = (FileConfiguration) YamlConfiguration.loadConfiguration(f2);
         Variable.GUI_YML =
                 (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI.yml"));
+        Variable.GUI_SETTING_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_setting.yml"));
         ConfigUpdate.update();
         Variable.Soil = JavaPlugin.getConfig().getString("SoilType");
         initHome.init();

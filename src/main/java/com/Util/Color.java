@@ -1,5 +1,8 @@
 package com.Util;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.OfflinePlayer;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +31,13 @@ public class Color {
 
     // 解析包含HexColor的多行文本
     public static List<String> parseColor(List<String> messages) {
-        return getInstance().color(messages);
+        if (messages != null && messages.size() > 0) {
+            return getInstance().color(messages);
+        } else return null;
+    }
+
+    public static String parseColorAndPlaceholder(OfflinePlayer player, String message) {
+        return PlaceholderAPI.setPlaceholders(player, parseColor(message));
     }
 
     protected String color(String message) {

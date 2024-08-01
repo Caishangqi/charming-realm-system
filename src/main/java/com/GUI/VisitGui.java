@@ -239,7 +239,7 @@ public class VisitGui implements InventoryHolder {
             item.setItemMeta(meta);
             if (Variable.GUI_YML.contains(String.valueOf(temp) + ".CustomModelData")) {
                 NBTItem nbtItem = new NBTItem(item);
-                nbtItem.setInteger("CustomModelData", Integer.valueOf(Variable.GUI_YML.getInt(String.valueOf(temp) + ".CustomModelData")));
+                nbtItem.setInteger("CustomModelData", Variable.GUI_YML.getInt(String.valueOf(temp) + ".CustomModelData"));
                 item = nbtItem.getItem();
             }
             this.MainGui.setItem(Variable.GUI_YML.getInt(String.valueOf(temp) + ".Index") - 1, item);

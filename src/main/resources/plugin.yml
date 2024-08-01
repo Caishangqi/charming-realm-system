@@ -7,6 +7,3 @@ commands:
   SH:
     description: example
     permission-message: You don't have permission use this Commands
-  realm:
-    description: 领域相关指令
-    permission-message: You don't have permission use this Commands

@@ -63,6 +63,8 @@ public class Variable {
   public static String CheckIsHome = null;
   
   public static FileConfiguration getName_yml;
+
+  public static FileConfiguration GUI_SETTING_YML;
   
   public static String custom_playerdata_location = "";
   
