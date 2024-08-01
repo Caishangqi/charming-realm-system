@@ -51,19 +51,19 @@ GlassSubID: 15
 #VisitGuiLores: []
 VisitGuiLores:
   - '§d§l§m---------------%SelfHome_World_Name_<Name>%§d§l§m---------------'
-  - '§8家园鲜花数: §6%SelfHome_World_Flower_<Name>%'
-  - '§8家园人气数: §6%SelfHome_World_Popularity_<Name>%'
-  - '§8家园热度指数: §6%SelfHome_World_Calc_<Name>%'
+  - '§8领域鲜花数: §6%SelfHome_World_Flower_<Name>%'
+  - '§8领域人气数: §6%SelfHome_World_Popularity_<Name>%'
+  - '§8领域热度指数: §6%SelfHome_World_Calc_<Name>%'
   - ''
-  - '§8家园管理员: §6%SelfHome_World_ManageList_<Name>%'
-  - '§8家园信任者: §6%SelfHome_World_TrustList_<Name>%'
-  - '§8家园黑名单: §6%SelfHome_World_BlackList_<Name>%'
+  - '§8领域管理员: §6%SelfHome_World_ManageList_<Name>%'
+  - '§8领域信任者: §6%SelfHome_World_TrustList_<Name>%'
+  - '§8领域黑名单: §6%SelfHome_World_BlackList_<Name>%'
   - ''
-  - '§8家园等级: §6%SelfHome_World_Level_<Name>%'
-  - '§8家园类型: §6%SelfHome_World_Type_<Name>%'
+  - '§8领域等级: §6%SelfHome_World_Level_<Name>%'
+  - '§8领域类型: §6%SelfHome_World_Type_<Name>%'
   - ''
   - '§d§l§m---------------%SelfHome_World_Name_<Name>%§d§l§m---------------'
-#是否开启玩家自定义的标语/sh info 内容[逗号为分隔符]
+#是否开启玩家自定义的标语/realm info 内容[逗号为分隔符]
 VisitSlogan: true
 
 'Button1':
@@ -75,30 +75,30 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§e总家园数量:§a%SelfHome_WorldAmount%个'
-    - '§d左键 -> §6返回到家园或您已加入的家园'
-    - '§d右键 -> §6查询在全服内拥有权限的家园'
-  LeftInTo: 'sh home'
-  RightInTo: 'sh open check'
+    - '§e总领域数量:§a%SelfHome_WorldAmount%个'
+    - '§d左键 -> §6返回到领域或您已加入的领域'
+    - '§d右键 -> §6查询在全服内拥有权限的领域'
+  LeftInTo: 'realm home'
+  RightInTo: 'realm open check'
   KeepOpen: true
   CustomModelData: 123456
 'Button2':
   InMenu: 'Main'
-  CustomName: '§8[§a创建家园§8]'
+  CustomName: '§8[§a创建领域§8]'
   Material: 'NETHER_STAR'
   SubID: 0
   Index: 21
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§d左键 -> §6创建独属于你自己的家园'
-  LeftInTo: 'sh open create'
+    - '§d左键 -> §6创建独属于你自己的领域'
+  LeftInTo: 'realm open create'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
 'Button3':
   InMenu: 'Main'
-  CustomName: '§8[§a管理家园§8]'
+  CustomName: '§8[§a管理领域§8]'
   Material: 'BOOK'
   SubID: 0
   Index: 23
@@ -107,33 +107,33 @@ VisitSlogan: true
   Lores:
     - '§d当前所在世界的状态列表:'
     - '§a主 人:§e         %SelfHome_World_OwnerName%'
-    - '§e家园管理员:§e   %SelfHome_World_ManagerList%'
-    - '§6家园信任者:§e   %SelfHome_World_TrustList%'
-    - '§c家园黑名单:§e   %SelfHome_World_BlackList%'
-    - '§b家园器械数:§e   %SelfHome_World_Tile%'
-    - '§b家园实体数:§e   %SelfHome_World_Entity%'
-    - '§b家园掉落物:§e   %SelfHome_World_DropItem%'
-    - '§b家园等级数:§e   %SelfHome_World_Level%'
-    - '§b家园PVP状态:§e  %SelfHome_World_PVP%'
-    - '§b家园丢弃状态:§e %SelfHome_World_Drop%'
-    - '§b家园拾取状态:§e %SelfHome_World_Pickup%'
-    - '§b家园边界大小:§e %SelfHome_World_Radius%'
-    - '§b家园访问状态:§e %SelfHome_World_Public%'
-  LeftInTo: 'sh open manage'
+    - '§e领域管理员:§e   %SelfHome_World_ManagerList%'
+    - '§6领域信任者:§e   %SelfHome_World_TrustList%'
+    - '§c领域黑名单:§e   %SelfHome_World_BlackList%'
+    - '§b领域器械数:§e   %SelfHome_World_Tile%'
+    - '§b领域实体数:§e   %SelfHome_World_Entity%'
+    - '§b领域掉落物:§e   %SelfHome_World_DropItem%'
+    - '§b领域等级数:§e   %SelfHome_World_Level%'
+    - '§b领域PVP状态:§e  %SelfHome_World_PVP%'
+    - '§b领域丢弃状态:§e %SelfHome_World_Drop%'
+    - '§b领域拾取状态:§e %SelfHome_World_Pickup%'
+    - '§b领域边界大小:§e %SelfHome_World_Radius%'
+    - '§b领域访问状态:§e %SelfHome_World_Public%'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
 'Button4':
   InMenu: 'Main'
-  CustomName: '§8[§a访问家园§8]'
+  CustomName: '§8[§a访问领域§8]'
   Material: 'BEACON'
   SubID: 0
   Index: 25
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§e加载的家园数量:§a%SelfHome_LoadWorlds%个'
-  LeftInTo: 'sh open visit'
+    - '§e加载的领域数量:§a%SelfHome_LoadWorlds%个'
+  LeftInTo: 'realm open visit'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -146,7 +146,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh close'
+  LeftInTo: 'realm close'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -159,7 +159,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -171,9 +171,9 @@ VisitSlogan: true
   Index: 21
   Enchants: []
   Lores:
-  - '§c温馨提示 -> 创建家园后地形无法更改'
-  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create 1'
+  - '§c温馨提示 -> 创建领域后地形无法更改'
+  - '§6您目前的重置领域的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'realm create 1'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -185,9 +185,9 @@ VisitSlogan: true
   Index: 23
   Enchants: []
   Lores:
-  - '§c温馨提示 -> 创建家园后地形无法更改'
-  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create 2'
+  - '§c温馨提示 -> 创建领域后地形无法更改'
+  - '§6您目前的重置领域的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'realm create 2'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -199,9 +199,9 @@ VisitSlogan: true
   Index: 25
   Enchants: []
   Lores:
-  - '§c温馨提示 -> 创建家园后地形无法更改'
-  - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create airland'
+  - '§c温馨提示 -> 创建领域后地形无法更改'
+  - '§6您目前的重置领域的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'realm create airland'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -214,7 +214,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -227,8 +227,8 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-  - '§d家园管理员: %SelfHome_ManagerList%'
-  LeftInTo: 'sh open invite'
+  - '§d领域管理员: %SelfHome_ManagerList%'
+  LeftInTo: 'realm open invite'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -241,8 +241,8 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-  - '§d家园信任列表: %SelfHome_TrustList%'
-  LeftInTo: 'sh open trust'
+  - '§d领域信任列表: %SelfHome_TrustList%'
+  LeftInTo: 'realm open trust'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -255,8 +255,8 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-  - '§d家园拉黑名单: %SelfHome_BlockList%'
-  LeftInTo: 'sh open Deny'
+  - '§d领域拉黑名单: %SelfHome_BlockList%'
+  LeftInTo: 'realm open Deny'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -270,7 +270,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d传送点: %SelfHome_World_TeleportLocation%'
-  LeftInTo: 'sh tpset'
+  LeftInTo: 'realm tpset'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -284,7 +284,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d传送点: %SelfHome_Public%'
-  LeftInTo: 'sh public'
+  LeftInTo: 'realm public'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -298,7 +298,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d切换状态: §a%SelfHome_pvp%'
-  LeftInTo: 'sh pvp'
+  LeftInTo: 'realm pvp'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -312,7 +312,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d切换状态: §a%SelfHome_Drop%'
-  LeftInTo: 'sh Drop'
+  LeftInTo: 'realm Drop'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -326,13 +326,13 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d切换状态: §a%SelfHome_Pickup%'
-  LeftInTo: 'sh Pickup'
+  LeftInTo: 'realm Pickup'
   KeepOpen: false
   RightInTo: ''
   CustomModelData: 123456
 'Button19':
   InMenu: 'Manage'
-  CustomName: '§8[§a升级家园§8]'
+  CustomName: '§8[§a升级领域§8]'
   Material: 'SUGAR'
   SubID: 0
   Index: 34
@@ -345,7 +345,7 @@ VisitSlogan: true
   - '§d升级所需物品: %SelfHome_UpdateItems%'
   - '§d升级所需中文: %SelfHome_UpdateItemsChineseName%'
   - '§d升级所需数量: %SelfHome_UpdateItemsAmount%'
-  LeftInTo: 'sh update'
+  LeftInTo: 'realm update'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -358,7 +358,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage2'
+  LeftInTo: 'realm open manage2'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -371,7 +371,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -386,7 +386,7 @@ VisitSlogan: true
   Lores:
   - '§d切换状态: §a%SelfHome_LockWeather%'
   - '§c所需特殊权限:§d<SefHome.LockWeather>'
-  LeftInTo: 'sh lockweather'
+  LeftInTo: 'realm lockweather'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -401,7 +401,7 @@ VisitSlogan: true
   Lores:
   - '§d切换状态: §a%SelfHome_locktime%'
   - '§c所需特殊权限:§d<SefHome.LockTime>'
-  LeftInTo: 'sh locktime'
+  LeftInTo: 'realm locktime'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -415,7 +415,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c所需特殊权限:§d<SefHome.Day>'
-  LeftInTo: 'sh Day'
+  LeftInTo: 'realm Day'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -429,7 +429,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c所需特殊权限:§d<SefHome.Night>'
-  LeftInTo: 'sh Night'
+  LeftInTo: 'realm Night'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -443,7 +443,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c所需特殊权限:§d<SefHome.Rain>'
-  LeftInTo: 'sh Rain'
+  LeftInTo: 'realm Rain'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -457,7 +457,7 @@ VisitSlogan: true
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c所需特殊权限:§d<SefHome.Sun>'
-  LeftInTo: 'sh Sun'
+  LeftInTo: 'realm Sun'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -470,39 +470,39 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§c将家园的中心设置为您当前的坐标[边界移动]'
+    - '§c将领域的中心设置为您当前的坐标[边界移动]'
     - '§c所需特殊权限:§d<SefHome.SetSpawn>'
-  LeftInTo: 'sh SetSpawn'
+  LeftInTo: 'realm SetSpawn'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
 'Button29':
   InMenu: 'Manage2'
-  CustomName: '§8[§a退出加入的家园§8]'
+  CustomName: '§8[§a退出加入的领域§8]'
   Material: 'INK_SACK'
   SubID: 7
   Index: 32
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§c你真的要离开家园吗(哭唧唧>_<)'
-  LeftInTo: 'sh Quit'
+    - '§c你真的要离开领域吗(哭唧唧>_<)'
+  LeftInTo: 'realm Quit'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
 'Button30':
   InMenu: 'Manage2'
-  CustomName: '§8[§a删除家园§8]'
+  CustomName: '§8[§a删除领域§8]'
   Material: 'INK_SACK'
   SubID: 8
   Index: 34
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores:
-    - '§c你真的要删除家园吗(哭唧唧>_<)'
-    - '§c温馨提示 -> 创建家园后地形无法更改'
-    - '§6您目前的重置家园的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh WholeDelete'
+    - '§c你真的要删除领域吗(哭唧唧>_<)'
+    - '§c温馨提示 -> 创建领域后地形无法更改'
+    - '§6您目前的重置领域的次数为: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
+  LeftInTo: 'realm WholeDelete'
   RightInTo: ''
   KeepOpen: false
   CustomModelData: 123456
@@ -515,7 +515,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -528,7 +528,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -541,7 +541,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -554,7 +554,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -567,7 +567,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -580,7 +580,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -593,7 +593,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh nether'
+  LeftInTo: 'realm nether'
   RightInTo: ''
   CustomModelData: 123456
 'Button38':
@@ -605,7 +605,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh end'
+  LeftInTo: 'realm end'
   RightInTo: ''
   CustomModelData: 123456
 'Button39':
@@ -617,7 +617,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage3'
+  LeftInTo: 'realm open manage3'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -630,7 +630,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage2'
+  LeftInTo: 'realm open manage2'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -643,7 +643,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -657,8 +657,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome BADLANDS'
-  RightInTo: 'sh setWorldBiome BADLANDS'
+  LeftInTo: 'realm setBiome BADLANDS'
+  RightInTo: 'realm setWorldBiome BADLANDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button43':
@@ -671,8 +671,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome BAMBOO_JUNGLE'
-  RightInTo: 'sh setWorldBiome BAMBOO_JUNGLE'
+  LeftInTo: 'realm setBiome BAMBOO_JUNGLE'
+  RightInTo: 'realm setWorldBiome BAMBOO_JUNGLE'
   KeepOpen: false
   CustomModelData: 123456
 'Button44':
@@ -685,8 +685,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome BASALT_DELTAS'
-  RightInTo: 'sh setWorldBiome BASALT_DELTAS'
+  LeftInTo: 'realm setBiome BASALT_DELTAS'
+  RightInTo: 'realm setWorldBiome BASALT_DELTAS'
   KeepOpen: false
   CustomModelData: 123456
 'Button45':
@@ -699,8 +699,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome BEACH'
-  RightInTo: 'sh setWorldBiome BEACH'
+  LeftInTo: 'realm setBiome BEACH'
+  RightInTo: 'realm setWorldBiome BEACH'
   KeepOpen: false
   CustomModelData: 123456
 'Button46':
@@ -713,8 +713,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome BIRCH_FOREST'
-  RightInTo: 'sh setWorldBiome BIRCH_FOREST'
+  LeftInTo: 'realm setBiome BIRCH_FOREST'
+  RightInTo: 'realm setWorldBiome BIRCH_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button47':
@@ -727,8 +727,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome CHERRY_GROVE'
-  RightInTo: 'sh setWorldBiome CHERRY_GROVE'
+  LeftInTo: 'realm setBiome CHERRY_GROVE'
+  RightInTo: 'realm setWorldBiome CHERRY_GROVE'
   KeepOpen: false
   CustomModelData: 123456
 'Button48':
@@ -741,8 +741,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome COLD_OCEAN'
-  RightInTo: 'sh setWorldBiome COLD_OCEAN'
+  LeftInTo: 'realm setBiome COLD_OCEAN'
+  RightInTo: 'realm setWorldBiome COLD_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button49':
@@ -755,8 +755,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome CRIMSON_FOREST'
-  RightInTo: 'sh setWorldBiome CRIMSON_FOREST'
+  LeftInTo: 'realm setBiome CRIMSON_FOREST'
+  RightInTo: 'realm setWorldBiome CRIMSON_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button50':
@@ -769,8 +769,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DARK_FOREST'
-  RightInTo: 'sh setWorldBiome DARK_FOREST'
+  LeftInTo: 'realm setBiome DARK_FOREST'
+  RightInTo: 'realm setWorldBiome DARK_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button51':
@@ -783,8 +783,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DEEP_COLD_OCEAN'
-  RightInTo: 'sh setWorldBiome DEEP_COLD_OCEAN'
+  LeftInTo: 'realm setBiome DEEP_COLD_OCEAN'
+  RightInTo: 'realm setWorldBiome DEEP_COLD_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button52':
@@ -797,8 +797,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DEEP_DARK'
-  RightInTo: 'sh setWorldBiome DEEP_DARK'
+  LeftInTo: 'realm setBiome DEEP_DARK'
+  RightInTo: 'realm setWorldBiome DEEP_DARK'
   KeepOpen: false
   CustomModelData: 123456
 'Button53':
@@ -811,8 +811,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DEEP_FROZEN_OCEAN'
-  RightInTo: 'sh setWorldBiome DEEP_FROZEN_OCEAN'
+  LeftInTo: 'realm setBiome DEEP_FROZEN_OCEAN'
+  RightInTo: 'realm setWorldBiome DEEP_FROZEN_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button54':
@@ -825,8 +825,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DEEP_LUKEWARM_OCEAN'
-  RightInTo: 'sh setWorldBiome DEEP_LUKEWARM_OCEAN'
+  LeftInTo: 'realm setBiome DEEP_LUKEWARM_OCEAN'
+  RightInTo: 'realm setWorldBiome DEEP_LUKEWARM_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button55':
@@ -839,8 +839,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DEEP_OCEAN'
-  RightInTo: 'sh setWorldBiome DEEP_OCEAN'
+  LeftInTo: 'realm setBiome DEEP_OCEAN'
+  RightInTo: 'realm setWorldBiome DEEP_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button56':
@@ -853,8 +853,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DESERT'
-  RightInTo: 'sh setWorldBiome DESERT'
+  LeftInTo: 'realm setBiome DESERT'
+  RightInTo: 'realm setWorldBiome DESERT'
   KeepOpen: false
   CustomModelData: 123456
 'Button57':
@@ -867,8 +867,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome DRIPSTONE_CAVES'
-  RightInTo: 'sh setWorldBiome DRIPSTONE_CAVES'
+  LeftInTo: 'realm setBiome DRIPSTONE_CAVES'
+  RightInTo: 'realm setWorldBiome DRIPSTONE_CAVES'
   KeepOpen: false
   CustomModelData: 123456
 'Button58':
@@ -881,8 +881,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome END_BARRENS'
-  RightInTo: 'sh setWorldBiome END_BARRENS'
+  LeftInTo: 'realm setBiome END_BARRENS'
+  RightInTo: 'realm setWorldBiome END_BARRENS'
   KeepOpen: false
   CustomModelData: 123456
 'Button59':
@@ -895,8 +895,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome END_HIGHLANDS'
-  RightInTo: 'sh setWorldBiome END_HIGHLANDS'
+  LeftInTo: 'realm setBiome END_HIGHLANDS'
+  RightInTo: 'realm setWorldBiome END_HIGHLANDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button60':
@@ -909,8 +909,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome END_MIDLANDS'
-  RightInTo: 'sh setWorldBiome END_MIDLANDS'
+  LeftInTo: 'realm setBiome END_MIDLANDS'
+  RightInTo: 'realm setWorldBiome END_MIDLANDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button61':
@@ -923,8 +923,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome ERODED_BADLANDS'
-  RightInTo: 'sh setWorldBiome ERODED_BADLANDS'
+  LeftInTo: 'realm setBiome ERODED_BADLANDS'
+  RightInTo: 'realm setWorldBiome ERODED_BADLANDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button62':
@@ -937,8 +937,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome FLOWER_FOREST'
-  RightInTo: 'sh setWorldBiome FLOWER_FOREST'
+  LeftInTo: 'realm setBiome FLOWER_FOREST'
+  RightInTo: 'realm setWorldBiome FLOWER_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button63':
@@ -950,7 +950,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage4'
+  LeftInTo: 'realm open manage4'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -963,7 +963,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage3'
+  LeftInTo: 'realm open manage3'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -976,7 +976,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -990,8 +990,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome FOREST'
-  RightInTo: 'sh setWorldBiome FOREST'
+  LeftInTo: 'realm setBiome FOREST'
+  RightInTo: 'realm setWorldBiome FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button67':
@@ -1004,8 +1004,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome FROZEN_OCEAN'
-  RightInTo: 'sh setWorldBiome FROZEN_OCEAN'
+  LeftInTo: 'realm setBiome FROZEN_OCEAN'
+  RightInTo: 'realm setWorldBiome FROZEN_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button68':
@@ -1018,8 +1018,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome FROZEN_PEAKS'
-  RightInTo: 'sh setWorldBiome FROZEN_PEAKS'
+  LeftInTo: 'realm setBiome FROZEN_PEAKS'
+  RightInTo: 'realm setWorldBiome FROZEN_PEAKS'
   KeepOpen: false
   CustomModelData: 123456
 'Button69':
@@ -1032,8 +1032,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome FROZEN_RIVER'
-  RightInTo: 'sh setWorldBiome FROZEN_RIVER'
+  LeftInTo: 'realm setBiome FROZEN_RIVER'
+  RightInTo: 'realm setWorldBiome FROZEN_RIVER'
   KeepOpen: false
   CustomModelData: 123456
 'Button70':
@@ -1046,8 +1046,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome GROVE'
-  RightInTo: 'sh setWorldBiome GROVE'
+  LeftInTo: 'realm setBiome GROVE'
+  RightInTo: 'realm setWorldBiome GROVE'
   KeepOpen: false
   CustomModelData: 123456
 'Button71':
@@ -1060,8 +1060,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome ICE_SPIKES'
-  RightInTo: 'sh setWorldBiome ICE_SPIKES'
+  LeftInTo: 'realm setBiome ICE_SPIKES'
+  RightInTo: 'realm setWorldBiome ICE_SPIKES'
   KeepOpen: false
   CustomModelData: 123456
 'Button72':
@@ -1074,8 +1074,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome JAGGED_PEAKS'
-  RightInTo: 'sh setWorldBiome JAGGED_PEAKS'
+  LeftInTo: 'realm setBiome JAGGED_PEAKS'
+  RightInTo: 'realm setWorldBiome JAGGED_PEAKS'
   KeepOpen: false
   CustomModelData: 123456
 'Button73':
@@ -1088,8 +1088,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome JUNGLE'
-  RightInTo: 'sh setWorldBiome JUNGLE'
+  LeftInTo: 'realm setBiome JUNGLE'
+  RightInTo: 'realm setWorldBiome JUNGLE'
   KeepOpen: false
   CustomModelData: 123456
 'Button74':
@@ -1102,8 +1102,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome LUKEWARM_OCEAN'
-  RightInTo: 'sh setWorldBiome LUKEWARM_OCEAN'
+  LeftInTo: 'realm setBiome LUKEWARM_OCEAN'
+  RightInTo: 'realm setWorldBiome LUKEWARM_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button75':
@@ -1116,8 +1116,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome LUSH_CAVES'
-  RightInTo: 'sh setWorldBiome LUSH_CAVES'
+  LeftInTo: 'realm setBiome LUSH_CAVES'
+  RightInTo: 'realm setWorldBiome LUSH_CAVES'
   KeepOpen: false
   CustomModelData: 123456
 'Button76':
@@ -1130,8 +1130,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome MANGROVE_SWAMP'
-  RightInTo: 'sh setWorldBiome MANGROVE_SWAMP'
+  LeftInTo: 'realm setBiome MANGROVE_SWAMP'
+  RightInTo: 'realm setWorldBiome MANGROVE_SWAMP'
   KeepOpen: false
   CustomModelData: 123456
 'Button77':
@@ -1144,8 +1144,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome MEADOW'
-  RightInTo: 'sh setWorldBiome MEADOW'
+  LeftInTo: 'realm setBiome MEADOW'
+  RightInTo: 'realm setWorldBiome MEADOW'
   KeepOpen: false
   CustomModelData: 123456
 'Button78':
@@ -1158,8 +1158,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome MUSHROOM_FIELDS'
-  RightInTo: 'sh setWorldBiome MUSHROOM_FIELDS'
+  LeftInTo: 'realm setBiome MUSHROOM_FIELDS'
+  RightInTo: 'realm setWorldBiome MUSHROOM_FIELDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button79':
@@ -1172,8 +1172,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome NETHER_WASTES'
-  RightInTo: 'sh setWorldBiome NETHER_WASTES'
+  LeftInTo: 'realm setBiome NETHER_WASTES'
+  RightInTo: 'realm setWorldBiome NETHER_WASTES'
   KeepOpen: false
   CustomModelData: 123456
 'Button80':
@@ -1186,8 +1186,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome OCEAN'
-  RightInTo: 'sh setWorldBiome OCEAN'
+  LeftInTo: 'realm setBiome OCEAN'
+  RightInTo: 'realm setWorldBiome OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button81':
@@ -1200,8 +1200,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome OLD_GROWTH_BIRCH_FOREST'
-  RightInTo: 'sh setWorldBiome OLD_GROWTH_BIRCH_FOREST'
+  LeftInTo: 'realm setBiome OLD_GROWTH_BIRCH_FOREST'
+  RightInTo: 'realm setWorldBiome OLD_GROWTH_BIRCH_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button82':
@@ -1214,8 +1214,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome OLD_GROWTH_PINE_TAIGA'
-  RightInTo: 'sh setWorldBiome OLD_GROWTH_PINE_TAIGA'
+  LeftInTo: 'realm setBiome OLD_GROWTH_PINE_TAIGA'
+  RightInTo: 'realm setWorldBiome OLD_GROWTH_PINE_TAIGA'
   KeepOpen: false
   CustomModelData: 123456
 'Button83':
@@ -1228,8 +1228,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome OLD_GROWTH_SPRUCE_TAIGA'
-  RightInTo: 'sh setWorldBiome OLD_GROWTH_SPRUCE_TAIGA'
+  LeftInTo: 'realm setBiome OLD_GROWTH_SPRUCE_TAIGA'
+  RightInTo: 'realm setWorldBiome OLD_GROWTH_SPRUCE_TAIGA'
   KeepOpen: false
   CustomModelData: 123456
 'Button84':
@@ -1242,8 +1242,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome PLAINS'
-  RightInTo: 'sh setWorldBiome PLAINS'
+  LeftInTo: 'realm setBiome PLAINS'
+  RightInTo: 'realm setWorldBiome PLAINS'
   KeepOpen: false
   CustomModelData: 123456
 'Button85':
@@ -1256,8 +1256,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome RIVER'
-  RightInTo: 'sh setWorldBiome RIVER'
+  LeftInTo: 'realm setBiome RIVER'
+  RightInTo: 'realm setWorldBiome RIVER'
   KeepOpen: false
   CustomModelData: 123456
 'Button86':
@@ -1270,8 +1270,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SAVANNA'
-  RightInTo: 'sh setWorldBiome SAVANNA'
+  LeftInTo: 'realm setBiome SAVANNA'
+  RightInTo: 'realm setWorldBiome SAVANNA'
   KeepOpen: false
   CustomModelData: 123456
 'Button87':
@@ -1283,7 +1283,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage5'
+  LeftInTo: 'realm open manage5'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -1296,7 +1296,7 @@ VisitSlogan: true
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage4'
+  LeftInTo: 'realm open manage4'
   RightInTo: ''
   KeepOpen: true
   CustomModelData: 123456
@@ -1310,8 +1310,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SAVANNA_PLATEAU'
-  RightInTo: 'sh setWorldBiome SAVANNA_PLATEAU'
+  LeftInTo: 'realm setBiome SAVANNA_PLATEAU'
+  RightInTo: 'realm setWorldBiome SAVANNA_PLATEAU'
   KeepOpen: false
   CustomModelData: 123456
 'Button91':
@@ -1324,8 +1324,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SMALL_END_ISLANDS'
-  RightInTo: 'sh setWorldBiome SMALL_END_ISLANDS'
+  LeftInTo: 'realm setBiome SMALL_END_ISLANDS'
+  RightInTo: 'realm setWorldBiome SMALL_END_ISLANDS'
   KeepOpen: false
   CustomModelData: 123456
 'Button92':
@@ -1338,8 +1338,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SNOWY_BEACH'
-  RightInTo: 'sh setWorldBiome SNOWY_BEACH'
+  LeftInTo: 'realm setBiome SNOWY_BEACH'
+  RightInTo: 'realm setWorldBiome SNOWY_BEACH'
   KeepOpen: false
   CustomModelData: 123456
 'Button93':
@@ -1352,8 +1352,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SNOWY_PLAINS'
-  RightInTo: 'sh setWorldBiome SNOWY_PLAINS'
+  LeftInTo: 'realm setBiome SNOWY_PLAINS'
+  RightInTo: 'realm setWorldBiome SNOWY_PLAINS'
   KeepOpen: false
   CustomModelData: 123456
 'Button94':
@@ -1366,8 +1366,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SNOWY_SLOPES'
-  RightInTo: 'sh setWorldBiome SNOWY_SLOPES'
+  LeftInTo: 'realm setBiome SNOWY_SLOPES'
+  RightInTo: 'realm setWorldBiome SNOWY_SLOPES'
   KeepOpen: false
   CustomModelData: 123456
 'Button95':
@@ -1380,8 +1380,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SNOWY_TAIGA'
-  RightInTo: 'sh setWorldBiome SNOWY_TAIGA'
+  LeftInTo: 'realm setBiome SNOWY_TAIGA'
+  RightInTo: 'realm setWorldBiome SNOWY_TAIGA'
   KeepOpen: false
   CustomModelData: 123456
 'Button96':
@@ -1394,8 +1394,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SOUL_SAND_VALLEY'
-  RightInTo: 'sh setWorldBiome SOUL_SAND_VALLEY'
+  LeftInTo: 'realm setBiome SOUL_SAND_VALLEY'
+  RightInTo: 'realm setWorldBiome SOUL_SAND_VALLEY'
   KeepOpen: false
   CustomModelData: 123456
 'Button97':
@@ -1408,8 +1408,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SPARSE_JUNGLE'
-  RightInTo: 'sh setWorldBiome SPARSE_JUNGLE'
+  LeftInTo: 'realm setBiome SPARSE_JUNGLE'
+  RightInTo: 'realm setWorldBiome SPARSE_JUNGLE'
   KeepOpen: false
   CustomModelData: 123456
 'Button98':
@@ -1422,8 +1422,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome STONY_PEAKS'
-  RightInTo: 'sh setWorldBiome STONY_PEAKS'
+  LeftInTo: 'realm setBiome STONY_PEAKS'
+  RightInTo: 'realm setWorldBiome STONY_PEAKS'
   KeepOpen: false
   CustomModelData: 123456
 'Button99':
@@ -1436,8 +1436,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome STONY_SHORE'
-  RightInTo: 'sh setWorldBiome STONY_SHORE'
+  LeftInTo: 'realm setBiome STONY_SHORE'
+  RightInTo: 'realm setWorldBiome STONY_SHORE'
   KeepOpen: false
   CustomModelData: 123456
 'Button100':
@@ -1450,8 +1450,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SUNFLOWER_PLAINS'
-  RightInTo: 'sh setWorldBiome SUNFLOWER_PLAINS'
+  LeftInTo: 'realm setBiome SUNFLOWER_PLAINS'
+  RightInTo: 'realm setWorldBiome SUNFLOWER_PLAINS'
   KeepOpen: false
   CustomModelData: 123456
 'Button101':
@@ -1464,8 +1464,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome SWAMP'
-  RightInTo: 'sh setWorldBiome SWAMP'
+  LeftInTo: 'realm setBiome SWAMP'
+  RightInTo: 'realm setWorldBiome SWAMP'
   KeepOpen: false
   CustomModelData: 123456
 'Button102':
@@ -1478,8 +1478,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome TAIGA'
-  RightInTo: 'sh setWorldBiome TAIGA'
+  LeftInTo: 'realm setBiome TAIGA'
+  RightInTo: 'realm setWorldBiome TAIGA'
   KeepOpen: false
   CustomModelData: 123456
 'Button103':
@@ -1492,8 +1492,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome THE_END'
-  RightInTo: 'sh setWorldBiome THE_END'
+  LeftInTo: 'realm setBiome THE_END'
+  RightInTo: 'realm setWorldBiome THE_END'
   KeepOpen: false
   CustomModelData: 123456
 'Button104':
@@ -1506,8 +1506,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome THE_VOID'
-  RightInTo: 'sh setWorldBiome THE_VOID'
+  LeftInTo: 'realm setBiome THE_VOID'
+  RightInTo: 'realm setWorldBiome THE_VOID'
   KeepOpen: false
   CustomModelData: 123456
 'Button105':
@@ -1520,8 +1520,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WARM_OCEAN'
-  RightInTo: 'sh setWorldBiome WARM_OCEAN'
+  LeftInTo: 'realm setBiome WARM_OCEAN'
+  RightInTo: 'realm setWorldBiome WARM_OCEAN'
   KeepOpen: false
   CustomModelData: 123456
 'Button106':
@@ -1534,8 +1534,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WARPED_FOREST'
-  RightInTo: 'sh setWorldBiome WARPED_FOREST'
+  LeftInTo: 'realm setBiome WARPED_FOREST'
+  RightInTo: 'realm setWorldBiome WARPED_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button107':
@@ -1548,8 +1548,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WINDSWEPT_FOREST'
-  RightInTo: 'sh setWorldBiome WINDSWEPT_FOREST'
+  LeftInTo: 'realm setBiome WINDSWEPT_FOREST'
+  RightInTo: 'realm setWorldBiome WINDSWEPT_FOREST'
   KeepOpen: false
   CustomModelData: 123456
 'Button108':
@@ -1562,8 +1562,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WINDSWEPT_GRAVELLY_HILLS'
-  RightInTo: 'sh setWorldBiome WINDSWEPT_GRAVELLY_HILLS'
+  LeftInTo: 'realm setBiome WINDSWEPT_GRAVELLY_HILLS'
+  RightInTo: 'realm setWorldBiome WINDSWEPT_GRAVELLY_HILLS'
   KeepOpen: false
   CustomModelData: 123456
 'Button109':
@@ -1576,8 +1576,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WINDSWEPT_HILLS'
-  RightInTo: 'sh setWorldBiome WINDSWEPT_HILLS'
+  LeftInTo: 'realm setBiome WINDSWEPT_HILLS'
+  RightInTo: 'realm setWorldBiome WINDSWEPT_HILLS'
   KeepOpen: false
   CustomModelData: 123456
 'Button110':
@@ -1590,8 +1590,8 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WINDSWEPT_SAVANNA'
-  RightInTo: 'sh setWorldBiome WINDSWEPT_SAVANNA'
+  LeftInTo: 'realm setBiome WINDSWEPT_SAVANNA'
+  RightInTo: 'realm setWorldBiome WINDSWEPT_SAVANNA'
   KeepOpen: false
   CustomModelData: 123456
 'Button89':
@@ -1604,7 +1604,7 @@ VisitSlogan: true
     - '§c当前群系: §f%player_biome_capitalized%'
     - '§e左键更改单个群系'
     - '§6右键更改全部群系'
-  LeftInTo: 'sh setBiome WOODED_BADLANDS'
-  RightInTo: 'sh setWorldBiome WOODED_BADLANDS'
+  LeftInTo: 'realm setBiome WOODED_BADLANDS'
+  RightInTo: 'realm setWorldBiome WOODED_BADLANDS'
   KeepOpen: false
   CustomModelData: 123456

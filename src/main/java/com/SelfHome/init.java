@@ -179,12 +179,17 @@ public class init implements Listener {
                 } else {
                     File folder = new File(String.valueOf(String.valueOf(Main.JavaPlugin.getDataFolder().getPath().toString())) + Variable.file_loc_prefix + "playerdata");
                     File[] arrayOfFile;
-                    for (int i = (arrayOfFile = folder.listFiles()).length, b = 0; b < i; ) {
-                        File temp = arrayOfFile[b];
-                        String want_to = temp.getPath().replace(String.valueOf(String.valueOf(Main.JavaPlugin.getDataFolder().getPath().toString())) + Variable.file_loc_prefix + "playerdata", "").replace(Variable.file_loc_prefix, "").replace(".yml", "");
-                        Variable.list_home.add(want_to);
-                        b++;
+                    try {
+                        for (int i = (arrayOfFile = folder.listFiles()).length, b = 0; b < i; ) {
+                            File temp = arrayOfFile[b];
+                            String want_to = temp.getPath().replace(String.valueOf(String.valueOf(Main.JavaPlugin.getDataFolder().getPath().toString())) + Variable.file_loc_prefix + "playerdata", "").replace(Variable.file_loc_prefix, "").replace(".yml", "");
+                            Variable.list_home.add(want_to);
+                            b++;
+                        }
+                    } catch (NullPointerException exception) {
+                        Bukkit.getConsoleSender().sendMessage("或许是第一次初始化,未能找到 playerdata 下的玩家存档");
                     }
+
                 }
             }
         }).runTaskTimer((Plugin) Main.JavaPlugin, 0L, 100L);

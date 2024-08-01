@@ -26,7 +26,7 @@ public class Channel {
     ByteArrayDataOutput out = ByteStreams.newDataOutput();
     out.writeUTF("Forward");
     out.writeUTF(Server);
-    out.writeUTF("SelfHomeMain");
+    out.writeUTF("CharmRealm");
     ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
     DataOutputStream msgout = new DataOutputStream(msgbytes);
     msgout.writeUTF("waitDelayToHome," + p.getName() + "," + command);
@@ -40,7 +40,7 @@ public class Channel {
     ByteArrayDataOutput out = ByteStreams.newDataOutput();
     out.writeUTF("Forward");
     out.writeUTF(Server);
-    out.writeUTF("SelfHomeMain");
+    out.writeUTF("CharmRealm");
     ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
     DataOutputStream msgout = new DataOutputStream(msgbytes);
     msgout.writeUTF("waitToCommand," + p.getName() + "," + command);
@@ -76,7 +76,7 @@ public class Channel {
           ByteArrayDataOutput out = ByteStreams.newDataOutput();
           out.writeUTF("Forward");
           out.writeUTF(Server);
-          out.writeUTF("SelfHomeMain");
+          out.writeUTF("CharmRealm");
           ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
           DataOutputStream msgout = new DataOutputStream(msgbytes);
           try {

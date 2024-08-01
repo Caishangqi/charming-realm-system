@@ -39,7 +39,7 @@ public class EntityInteractByEntityListener implements Listener {
           this.list.remove(event.getPlayer().getName());
           return;
         } 
-        Bukkit.dispatchCommand((CommandSender)event.getPlayer(), "sh gift send " + event.getPlayer().getWorld().getName());
+        Bukkit.dispatchCommand((CommandSender)event.getPlayer(), "realm gift send " + event.getPlayer().getWorld().getName());
         this.list.remove(event.getPlayer().getName());
       } 
     } 

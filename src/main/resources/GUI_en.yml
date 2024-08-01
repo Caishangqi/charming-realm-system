@@ -43,8 +43,8 @@ GlassSubID: 15
     - '§e Total number of homes: §a%SelfHome_WorldAmount%'
     - '§d left button -> § 6 Return to home or home you have joined'
     - '§d right-click -> §6 Search for homes with permissions within the full server'
-  LeftInTo: 'sh home'
-  RightInTo: 'sh open check'
+  LeftInTo: 'realm home'
+  RightInTo: 'realm open check'
   KeepOpen: true
 'Button2':
   InMenu: 'Main'
@@ -56,7 +56,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§d left button -> §6 Create your own home'
-  LeftInTo: 'sh open create'
+  LeftInTo: 'realm open create'
   RightInTo: ''
   KeepOpen: true
 'Button3':
@@ -82,7 +82,7 @@ GlassSubID: 15
     - '§b Home Pickup Status: §e %SelfHome_World_Pickup%'
     - '§b home boundary size: §e %SelfHome_World_Radius%'
     - '§b Home Access Status: §e %SelfHome_World_Public%'
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
 'Button4':
@@ -95,7 +95,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§e Number of homes loaded: §a%SelfHome_LoadWorlds%'
-  LeftInTo: 'sh open visit'
+  LeftInTo: 'realm open visit'
   RightInTo: ''
   KeepOpen: true
 'Button5':
@@ -107,7 +107,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh close'
+  LeftInTo: 'realm close'
   RightInTo: ''
   KeepOpen: false
 'Button6':
@@ -119,7 +119,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
 'Button7':
@@ -132,7 +132,7 @@ GlassSubID: 15
   Lores:
   - '§c Tips -> Terrain cannot be changed after creating a home'
   - '§6 The number of times you have reset your home so far is: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create 1'
+  LeftInTo: 'realm create 1'
   RightInTo: ''
   KeepOpen: false
 'Button8':
@@ -145,7 +145,7 @@ GlassSubID: 15
   Lores:
   - '§c Tips -> Terrain cannot be changed after creating a home'
   - '§6 The number of times you have reset your home so far is: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create 2'
+  LeftInTo: 'realm create 2'
   RightInTo: ''
   KeepOpen: false
 'Button9':
@@ -158,7 +158,7 @@ GlassSubID: 15
   Lores:
   - '§c Tips -> Terrain cannot be changed after creating a home'
   - '§6 The number of times you have reset your home so far is: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh create airland'
+  LeftInTo: 'realm create airland'
   RightInTo: ''
   KeepOpen: false
 'Button10':
@@ -170,7 +170,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
 'Button11':
@@ -183,7 +183,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d Home Manager: %SelfHome_ManagerList%'
-  LeftInTo: 'sh open invite'
+  LeftInTo: 'realm open invite'
   RightInTo: ''
   KeepOpen: true
 'Button12':
@@ -196,7 +196,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d Home Trust List: %SelfHome_TrustList%'
-  LeftInTo: 'sh open trust'
+  LeftInTo: 'realm open trust'
   RightInTo: ''
   KeepOpen: true
 'Button13':
@@ -209,7 +209,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d Home Blacklist: %SelfHome_BlockList%'
-  LeftInTo: 'sh open Deny'
+  LeftInTo: 'realm open Deny'
   RightInTo: ''
   KeepOpen: true
 'Button14':
@@ -222,7 +222,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d transfer point: %SelfHome_World_TeleportLocation%'
-  LeftInTo: 'sh tpset'
+  LeftInTo: 'realm tpset'
   RightInTo: ''
   KeepOpen: false
 'Button15':
@@ -235,7 +235,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d Transfer Point: %SelfHome_Public%'
-  LeftInTo: 'sh public'
+  LeftInTo: 'realm public'
   RightInTo: ''
   KeepOpen: false
 'Button16':
@@ -248,7 +248,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d switching state: §a%SelfHome_pvp%'
-  LeftInTo: 'sh pvp'
+  LeftInTo: 'realm pvp'
   RightInTo: ''
   KeepOpen: false
 'Button17':
@@ -261,7 +261,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d switching state: §a%SelfHome_Drop%'
-  LeftInTo: 'sh Drop'
+  LeftInTo: 'realm Drop'
   RightInTo: ''
   KeepOpen: false
 'Button18':
@@ -274,7 +274,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
   - '§d switching state: §a%SelfHome_Pickup%'
-  LeftInTo: 'sh Pickup'
+  LeftInTo: 'realm Pickup'
   KeepOpen: false
   RightInTo: ''
 'Button19':
@@ -292,7 +292,7 @@ GlassSubID: 15
   - '§d Upgrade Required: %SelfHome_UpdateItems%'
   - '§d Chinese required for upgrade: %SelfHome_UpdateItemsChineseName%'
   - '§d Number of upgrades required: %SelfHome_UpdateItemsAmount%'
-  LeftInTo: 'sh update'
+  LeftInTo: 'realm update'
   RightInTo: ''
   KeepOpen: false
 'Button20':
@@ -304,7 +304,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage2'
+  LeftInTo: 'realm open manage2'
   RightInTo: ''
   KeepOpen: true
 'Button21':
@@ -316,7 +316,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
 'Button22':
@@ -330,7 +330,7 @@ GlassSubID: 15
   Lores:
   - '§d switching status: §a%SelfHome_LockWeather%'
   - '§c Special Permissions Required: §d<SefHome.LockWeather>'
-  LeftInTo: 'sh lockweather'
+  LeftInTo: 'realm lockweather'
   RightInTo: ''
   KeepOpen: false
 'Button23':
@@ -344,7 +344,7 @@ GlassSubID: 15
   Lores:
   - '§d switching state: §a%SelfHome_locktime%'
   - '§c Special permissions required: §d<SefHome.LockTime>'
-  LeftInTo: 'sh locktime'
+  LeftInTo: 'realm locktime'
   RightInTo: ''
   KeepOpen: false
 'Button24':
@@ -357,7 +357,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c Special permissions required: §d<SefHome.Day>'
-  LeftInTo: 'sh Day'
+  LeftInTo: 'realm Day'
   RightInTo: ''
   KeepOpen: false
 'Button25':
@@ -370,7 +370,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c Special Permissions Required: §d<SefHome.Night>'
-  LeftInTo: 'sh Night'
+  LeftInTo: 'realm Night'
   RightInTo: ''
   KeepOpen: false
 'Button26':
@@ -383,7 +383,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c Special permissions required: §d<SefHome.Rain>'
-  LeftInTo: 'sh Rain'
+  LeftInTo: 'realm Rain'
   RightInTo: ''
   KeepOpen: false
 'Button27':
@@ -396,7 +396,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c Special Permissions Required: §d<SefHome.Sun>'
-  LeftInTo: 'sh Sun'
+  LeftInTo: 'realm Sun'
   RightInTo: ''
   KeepOpen: false
 'Button28':
@@ -410,7 +410,7 @@ GlassSubID: 15
   Lores:
     - '§c set the center of the home to your current coordinates [boundary move]'
     - '§c Special permissions required: §d<SefHome.SetSpawn>'
-  LeftInTo: 'sh SetSpawn'
+  LeftInTo: 'realm SetSpawn'
   RightInTo: ''
   KeepOpen: false
 'Button29':
@@ -423,7 +423,7 @@ GlassSubID: 15
     - 'ARROW_DAMAGE,1'
   Lores:
     - '§c Are You Really Going to Leave Your Home (Crying >_<)'
-  LeftInTo: 'sh Quit'
+  LeftInTo: 'realm Quit'
   RightInTo: ''
   KeepOpen: false
 'Button30':
@@ -437,7 +437,7 @@ GlassSubID: 15
   Lores:
     - "§c Do you really want to delete the home (cry chirp>_<)' - '§c tips -> The terrain cannot be changed after the home is created"
     - '§6 The number of times you have reset your home so far is: §c%SelfHome_WholeDelete%§b/§c%SelfHome_WholeMaxDelete%'
-  LeftInTo: 'sh WholeDelete'
+  LeftInTo: 'realm WholeDelete'
   RightInTo: ''
   KeepOpen: false
 'Button31':
@@ -449,7 +449,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
 'Button32':
@@ -461,7 +461,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
 'Button33':
@@ -473,7 +473,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open main'
+  LeftInTo: 'realm open main'
   RightInTo: ''
   KeepOpen: true
 'Button34':
@@ -485,7 +485,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
 'Button35':
@@ -497,7 +497,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
 'Button36':
@@ -509,7 +509,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh open manage'
+  LeftInTo: 'realm open manage'
   RightInTo: ''
   KeepOpen: true
 'Button37':
@@ -521,7 +521,7 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh nether'
+  LeftInTo: 'realm nether'
   RightInTo: ''
 'Button38':
   InMenu: 'Visit'
@@ -532,5 +532,5 @@ GlassSubID: 15
   Enchants:
     - 'ARROW_DAMAGE,1'
   Lores: []
-  LeftInTo: 'sh end'
+  LeftInTo: 'realm end'
   RightInTo: ''

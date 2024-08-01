@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VisitGui implements InventoryHolder {
-    public Inventory MainGui = Bukkit.createInventory(this, 54, Variable.GUI_YML.getString("VisitTitle"));
+    // Variable.GUI_YML.getString("VisitTitle")
+    public Inventory MainGui = Bukkit.createInventory(this, 54, Color.parseColorAndPlaceholder(null, Variable.GUI_YML.getString("VisitTitle")));
 
     public int MaxPage = 0;
 
@@ -229,7 +230,7 @@ public class VisitGui implements InventoryHolder {
                     tempstr = PlaceholderAPI.setPlaceholders(null, tempstr);
                 } catch (Exception exception) {
                 }
-                lores.add(tempstr);
+                lores.add(Color.parseColorAndPlaceholder(null,tempstr));
             }
             for (int c = 0; c < Variable.GUI_YML.getStringList(String.valueOf(temp) + ".Enchants").size(); c++) {
                 String[] tempenc = ((String) Variable.GUI_YML.getStringList(String.valueOf(temp) + ".Enchants").get(c)).split(",");

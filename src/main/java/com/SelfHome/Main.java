@@ -165,8 +165,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getPluginManager().registerEvents((Listener) new PlayerMoveListener(), (Plugin) this);
             Bukkit.getConsoleSender().sendMessage(Variable.Lang_YML.getString("EnableMoveListener"));
         }
-        Bukkit.getPluginCommand("SH").setExecutor(new CommandListener());
-        Bukkit.getPluginCommand("SH").setTabCompleter((TabCompleter) new CommandListener());
+        Bukkit.getPluginCommand("realm").setExecutor(new CommandListener());
+        Bukkit.getPluginCommand("realm").setTabCompleter((TabCompleter) new CommandListener());
         Variable.Prefix = getConfig().getString("Prefix");
         if (!JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport")) {
             if (JavaPlugin.getServer().getPluginManager().getPlugin("Vault") == null) {
@@ -221,11 +221,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         init.init();
         if (JavaPlugin.getConfig().getBoolean("CheckUpdate"))
             CheckUpdate.checkUpdate();
-        Bukkit.getConsoleSender().sendMessage("§7[SelfHomeMain] §aAuthor - Tencent - QQ :  §d1242839141");
-        Bukkit.getConsoleSender().sendMessage("§7[SelfHomeMain] §aTencent - Group : §d777509868");
-        Bukkit.getConsoleSender().sendMessage("§7");
-        Bukkit.getConsoleSender().sendMessage("§7[SelfHomeMain] §a二次维护者 - Tencent - QQ :  §d761070659");
-        Bukkit.getConsoleSender().sendMessage("§7[SelfHomeMain] §a二次维护者 - Tencent - Group :  §d299852340");
+        Bukkit.getConsoleSender().sendMessage("§8[§6SelfHomeMain§8] §aAuthor - Tencent - QQ :  §d1242839141");
+        Bukkit.getConsoleSender().sendMessage("§8[§6CharmRealms§8] §aAuthor - Caizii 菜籽");
     }
 
     public static void init() {
@@ -328,15 +325,15 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getConsoleSender().sendMessage(Variable.Lang_YML.getString("DisableBungeeCord"));
         }
         Variable.custom_playerdata_location = String.valueOf(String.valueOf(Variable.Final)) + Variable.ab[Variable.ab.length - 1] +
-                Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "SelfHomeMain" +
+                Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "CharmRealm" +
                 Variable.file_loc_prefix + "playerdata";
         Variable.custom_autobackup_location = String.valueOf(String.valueOf(Variable.Final)) + Variable.ab[Variable.ab.length - 1] +
-                Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "SelfHomeMain" +
+                Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "CharmRealm" +
                 Variable.file_loc_prefix + "backup";
         Variable.server_file_world = Variable.Final;
-        Variable.worldFinal = String.valueOf(String.valueOf(Tempf0)) + Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "SelfHomeMain" +
+        Variable.worldFinal = String.valueOf(String.valueOf(Tempf0)) + Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "CharmRealm" +
                 Variable.file_loc_prefix;
-        Variable.Log_All = String.valueOf(String.valueOf(Tempf0)) + Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "SelfHomeMain" +
+        Variable.Log_All = String.valueOf(String.valueOf(Tempf0)) + Variable.file_loc_prefix + "plugins" + Variable.file_loc_prefix + "CharmRealm" +
                 Variable.file_loc_prefix;
         Variable.single_server_gen = String.valueOf(String.valueOf(Variable.Final)) + Variable.file_loc_prefix + Variable.ab[Variable.ab.length - 1] +
                 Variable.file_loc_prefix;
@@ -378,7 +375,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             return;
         ByteArrayDataInput in = ByteStreams.newDataInput(message);
         String subchannel = in.readUTF();
-        if (subchannel.equals("SelfHomeMain")) {
+        if (subchannel.equals("CharmRealm")) {
             short len = in.readShort();
             byte[] msgbytes = new byte[len];
             in.readFully(msgbytes);
@@ -408,7 +405,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
                     if (new_f.isDirectory())
                         Util.deleteFile(new_f);
                     Util.copyDir(String.valueOf(String.valueOf(wt.file_loc)) + Variable.file_loc_prefix + wt.home_name, new_f.getAbsolutePath());
-                    Variable.wait_to_command.put(somedata[1], "sh v " + wt.home_name);
+                    Variable.wait_to_command.put(somedata[1], "realm v " + wt.home_name);
                     Variable.has_already_move_world.add(somedata[1]);
                     (new BukkitRunnable() {
                         public void run() {

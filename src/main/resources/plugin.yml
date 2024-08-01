@@ -1,9 +1,9 @@
-name: SelfHomeMain
+name: CharmRealm
 main: com.SelfHome.Main
-author: a1242839141, Caizii
-version: 2.0.2.9
+author: Caizii
+version: 2.1.2.3
 softdepend: [PlaceholderAPI,Vault,Multiverse-Core,FastAsyncWorldEdit,WorldEdit,NBTAPI,PlayerPoints,HolographicDisplays,ProtocolLib,RealisticSeasons]
 commands: 
-  SH:
+  realm:
     description: example
     permission-message: You don't have permission use this Commands

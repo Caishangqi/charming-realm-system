@@ -19,7 +19,7 @@ public class CheckUpdate {
   public static void checkUpdate() {
     Bukkit.getScheduler().runTaskAsynchronously((Plugin)Main.JavaPlugin, () -> {
           try {
-            HttpURLConnection huc = (HttpURLConnection)(new URL("https://gitee.com/api/v5/repos/a1242839141/SelfHomeMain/tags")).openConnection();
+            HttpURLConnection huc = (HttpURLConnection)(new URL("https://gitee.com/api/v5/repos/a1242839141/CharmRealm/tags")).openConnection();
             huc.setRequestMethod("GET");
             huc.connect();
             ByteArrayOutputStream ba = new ByteArrayOutputStream(16384);
@@ -39,7 +39,7 @@ public class CheckUpdate {
                 if (temp.contains("<New>"))
                   temp = temp.replace("<New>", new_Version); 
                 if (temp.contains("<Link>"))
-                  temp = temp.replace("<Link>", "https://gitee.com/a1242839141/SelfHomeMain/releases"); 
+                  temp = temp.replace("<Link>", "https://gitee.com/a1242839141/CharmRealm/releases"); 
                 Bukkit.getConsoleSender().sendMessage(temp);
               } 
             } else {

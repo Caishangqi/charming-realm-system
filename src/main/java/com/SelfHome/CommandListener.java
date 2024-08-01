@@ -61,13 +61,8 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
     @EventHandler
     public boolean onCommand(final CommandSender sender, Command cmd, String Label, final String[] args) {
-        if (sender instanceof Player) {
-            if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
-                Main.charmGuiHandler.openGUI(new RealmGUISetting((Player) sender));
-                return false;
-            }
-        }
-        if (!cmd.getName().equalsIgnoreCase("sh"))
+
+        if (!cmd.getName().equalsIgnoreCase("realm"))
             return false;
         if (Main.JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport") && Variable.bungee) {
             if (sender instanceof Player) {
@@ -84,7 +79,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     }
                     if (MySQL.alreadyhastheplayerjoin(player.getName()) && !MySQL.getJoinServer(player.getName()).equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                         try {
-                            Channel.waitDelayToSomeWhere(player, MySQL.getJoinServer(player.getName()), "sh h");
+                            Channel.waitDelayToSomeWhere(player, MySQL.getJoinServer(player.getName()), "realm h");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -93,7 +88,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     }
                     if (MySQL.alreadyhastheplayerhome(player.getName()) && !MySQL.getServer(player.getName()).equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                         try {
-                            Channel.waitDelayToSomeWhere(player, MySQL.getServer(player.getName()), "sh h");
+                            Channel.waitDelayToSomeWhere(player, MySQL.getServer(player.getName()), "realm h");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -156,7 +151,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         if (Main.JavaPlugin.getConfig().getString("DecideBy").equalsIgnoreCase("Player")) {
                             if (!MySQL.getLowerstLagServer().equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                                 try {
-                                    Channel.waitToCommand(player, MySQL.getLowerstLagServer(), "sh create " + args[1]);
+                                    Channel.waitToCommand(player, MySQL.getLowerstLagServer(), "realm create " + args[1]);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -174,7 +169,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
                             if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                                 try {
-                                    Channel.waitToCommand(player, MySQL.getHighestTPSServer(), "sh create " + args[1]);
+                                    Channel.waitToCommand(player, MySQL.getHighestTPSServer(), "realm create " + args[1]);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -234,7 +229,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         if (Util.CheckIsHome(args[1])) {
                             if (!MySQL.getServer(args[1]).equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                                 try {
-                                    Channel.waitDelayToSomeWhere(player, MySQL.getServer(args[1]), "sh visit " + args[1]);
+                                    Channel.waitDelayToSomeWhere(player, MySQL.getServer(args[1]), "realm visit " + args[1]);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -336,6 +331,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             }
             sender.sendMessage(Variable.Lang_YML.getString("DisableFunctionTip"));
             return false;
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
+            if (sender instanceof Player) {
+                Main.charmGuiHandler.openGUI(new RealmGUISetting((Player) sender));
+                return false;
+            }
         }
         if (args.length == 1 &&
                 args[0].equalsIgnoreCase("reload")) {
@@ -1154,12 +1155,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         }
         if (args.length == 1 &&
                 args[0].equalsIgnoreCase("Help")) {
-            Bukkit.dispatchCommand(sender, "sh help 1");
+            Bukkit.dispatchCommand(sender, "realm help 1");
             return false;
         }
         if (args.length == 1 &&
                 args[0].equalsIgnoreCase("rank")) {
-            Bukkit.dispatchCommand(sender, "sh rank 1");
+            Bukkit.dispatchCommand(sender, "realm rank 1");
             return false;
         }
         if (!(sender instanceof Player)) {
@@ -1409,7 +1410,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                             TextComponent Click_Message = new TextComponent(
                                     "§e" + e + Variable.Lang_YML.getString("CheckSuffix"));
                             Click_Message
-                                    .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh v " + e));
+                                    .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm v " + e));
                             p.spigot().sendMessage((BaseComponent) Click_Message);
                         }
                     } else {
@@ -1428,7 +1429,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                                         TextComponent Click_Message = new TextComponent(
                                                 "§e" + want_to + Variable.Lang_YML.getString("CheckSuffix"));
                                         Click_Message.setClickEvent(
-                                                new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh v " + want_to));
+                                                new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm v " + want_to));
                                         p.spigot().sendMessage((BaseComponent) Click_Message);
                                     }
                             }
@@ -1905,7 +1906,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     p.sendMessage(Variable.Lang_YML.getString("ConfirmDelete"));
                 } else {
                     TextComponent Click_Message = new TextComponent(Variable.Lang_YML.getString("ConfirmDelete"));
-                    Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh wholedelete"));
+                    Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm wholedelete"));
                     p.spigot().sendMessage((BaseComponent) Click_Message);
                 }
                 Variable.waitDeleteconfirm.add(p.getName());
@@ -2120,7 +2121,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     continue;
                 }
                 TextComponent Click_Message = new TextComponent(temp);
-                Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh gift open"));
+                Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm gift open"));
                 if (Bukkit.getPlayer(home.getName()) != null)
                     Bukkit.getPlayer(home.getName()).spigot().sendMessage((BaseComponent) Click_Message);
             }
@@ -2222,7 +2223,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     Bukkit.getPlayer(home.getName()).sendMessage(temp);
             } else {
                 TextComponent Click_Message = new TextComponent(temp);
-                Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh gift open"));
+                Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm gift open"));
                 if (Bukkit.getPlayer(home.getName()) != null &&
                         Bukkit.getPlayer(home.getName()).isOnline() && !home.getName().equalsIgnoreCase(p.getName()))
                     Bukkit.getPlayer(home.getName()).spigot().sendMessage((BaseComponent) Click_Message);
@@ -2639,7 +2640,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         }
                     if (!MySQL.getJoinServer(p.getName()).equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                         try {
-                            Channel.waitDelayToSomeWhere(p, MySQL.getJoinServer(p.getName()), "sh h");
+                            Channel.waitDelayToSomeWhere(p, MySQL.getJoinServer(p.getName()), "realm h");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -2691,7 +2692,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         }
                     if (!MySQL.getServer(p.getName()).equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                         try {
-                            Channel.waitDelayToSomeWhere(p, MySQL.getServer(p.getName()), "sh h");
+                            Channel.waitDelayToSomeWhere(p, MySQL.getServer(p.getName()), "realm h");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -3438,7 +3439,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         p.teleport(loc);
                     } else {
                         try {
-                            Channel.waitDelayToSomeWhere(p, MySQL.getServer(args[1]), "sh v " + args[1]);
+                            Channel.waitDelayToSomeWhere(p, MySQL.getServer(args[1]), "realm v " + args[1]);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -3609,7 +3610,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                                 } else {
                                     TextComponent Click_Message = new TextComponent(temp2);
                                     Click_Message
-                                            .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh accept"));
+                                            .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm accept"));
                                     player.spigot().sendMessage((BaseComponent) Click_Message);
                                 }
                             }
@@ -3641,7 +3642,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         } else {
                             TextComponent Click_Message = new TextComponent(temp2);
                             Click_Message
-                                    .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh accept"));
+                                    .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm accept"));
                             be_invite.spigot().sendMessage((BaseComponent) Click_Message);
                         }
                     }
@@ -3793,7 +3794,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                                     } else {
                                         TextComponent Click_Message = new TextComponent(temp2);
                                         Click_Message.setClickEvent(
-                                                new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh accept"));
+                                                new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm accept"));
                                         player.spigot().sendMessage((BaseComponent) Click_Message);
                                     }
                                 }
@@ -3825,7 +3826,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                             } else {
                                 TextComponent Click_Message = new TextComponent(temp2);
                                 Click_Message
-                                        .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh accept"));
+                                        .setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm accept"));
                                 be_invite.spigot().sendMessage((BaseComponent) Click_Message);
                             }
                         }
@@ -5043,7 +5044,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             }
             if (args.length == 1 && !Main.JavaPlugin.getConfig().getString("NormalType").equalsIgnoreCase("0"))
                 Bukkit.dispatchCommand(sender,
-                        "sh create " + Main.JavaPlugin.getConfig().getString("NormalType"));
+                        "realm create " + Main.JavaPlugin.getConfig().getString("NormalType"));
             return false;
         }
         if (args.length == 2 &&
@@ -5083,7 +5084,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 if (Main.JavaPlugin.getConfig().getString("DecideBy").equalsIgnoreCase("Player")) {
                     if (!MySQL.getLowerstLagServer().equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                         try {
-                            Channel.waitToCommand(p, MySQL.getLowerstLagServer(), "sh create " + args[1]);
+                            Channel.waitToCommand(p, MySQL.getLowerstLagServer(), "realm create " + args[1]);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -5101,7 +5102,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
                     if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                         try {
-                            Channel.waitToCommand(p, MySQL.getHighestTPSServer(), "sh create " + args[1]);
+                            Channel.waitToCommand(p, MySQL.getHighestTPSServer(), "realm create " + args[1]);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -5437,7 +5438,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             p.sendMessage(Variable.Lang_YML.getString("ErrorHelp"));
         } else {
             TextComponent Click_Message = new TextComponent(Variable.Lang_YML.getString("ErrorHelp"));
-            Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sh Help 1"));
+            Click_Message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/realm Help 1"));
             p.spigot().sendMessage((BaseComponent) Click_Message);
         }
         sender.sendMessage(Variable.Lang_YML.getString("BottomLineTtitle"));

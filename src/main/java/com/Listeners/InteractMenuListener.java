@@ -12,6 +12,6 @@ public class InteractMenuListener implements Listener {
   public void onMenuOpen(PlayerInteractEvent event) {
     if (event.getPlayer().getItemInHand().getType().toString()
       .equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Material")))
-      Bukkit.dispatchCommand((CommandSender)event.getPlayer(), "sh open"); 
+      Bukkit.dispatchCommand((CommandSender)event.getPlayer(), "realm open"); 
   }
 }

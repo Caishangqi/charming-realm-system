@@ -114,47 +114,47 @@ public class InventoryClickListener implements Listener {
 
         if (ButtonClass.equalsIgnoreCase("VisitGUI.PlayerHead")) {
             p.closeInventory(); // 尝试直接关闭这里的GUI
-            Bukkit.dispatchCommand((CommandSender) p, "sh v " + Owner);
+            Bukkit.dispatchCommand((CommandSender) p, "realm v " + Owner);
             return;
         }
 
 //    if (name.contains(Variable.Lang_YML.getString("VisitGuiHomeSuffix")) && name.contains(Variable.Lang_YML.getString("VisitGuiHomePrefix"))) {
 //      name = name.replace(Variable.Lang_YML.getString("VisitGuiHomePrefix"), "");
 //      name = name.replace(Variable.Lang_YML.getString("VisitGuiHomeSuffix"), "");
-//      Bukkit.dispatchCommand((CommandSender)p, "sh v " + name);
+//      Bukkit.dispatchCommand((CommandSender)p, "realm v " + name);
 //      return;
 //    }
         if (name.contains(Variable.Lang_YML.getString("CheckGuiHomePrefix")) &&
                 name.contains(Variable.Lang_YML.getString("CheckGuiHomeSuffix"))) {
             name = name.replace(Variable.Lang_YML.getString("CheckGuiHomePrefix"), "");
             name = name.replace(Variable.Lang_YML.getString("CheckGuiHomeSuffix"), "");
-            Bukkit.dispatchCommand((CommandSender) p, "sh v " + name);
+            Bukkit.dispatchCommand((CommandSender) p, "realm v " + name);
             return;
         }
         if (name.contains(Variable.Lang_YML.getString("TrustGuiPrefix"))) {
             name = name.replace(Variable.Lang_YML.getString("TrustGuiPrefix"), "");
             if (event.getClick() == ClickType.LEFT) {
-                Bukkit.dispatchCommand((CommandSender) p, "sh trust " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm trust " + name);
             } else {
-                Bukkit.dispatchCommand((CommandSender) p, "sh remove " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm remove " + name);
             }
             return;
         }
         if (name.contains(Variable.Lang_YML.getString("InviteGuiPrefix"))) {
             name = name.replace(Variable.Lang_YML.getString("InviteGuiPrefix"), "");
             if (event.getClick() == ClickType.LEFT) {
-                Bukkit.dispatchCommand((CommandSender) p, "sh invite " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm invite " + name);
             } else {
-                Bukkit.dispatchCommand((CommandSender) p, "sh kick " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm kick " + name);
             }
             return;
         }
         if (name.contains(Variable.Lang_YML.getString("DenyGuiPrefix"))) {
             name = name.replace(Variable.Lang_YML.getString("DenyGuiPrefix"), "");
             if (event.getClick() == ClickType.LEFT) {
-                Bukkit.dispatchCommand((CommandSender) p, "sh deny " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm deny " + name);
             } else {
-                Bukkit.dispatchCommand((CommandSender) p, "sh undeny " + name);
+                Bukkit.dispatchCommand((CommandSender) p, "realm undeny " + name);
             }
             return;
         }

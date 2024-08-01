@@ -82,6 +82,8 @@ public abstract class GUIButton {
 
     public void onClick(InventoryClickEvent event) {
         if (handler != null) {
+            // 如果將聲音處理放在這裏則lambda表達式會覆蓋下面聲音
+            // 代碼
             handler.onClick(event);
             // Handle basic button click logic, sounds etc
             Player player = Bukkit.getPlayer(event.getWhoClicked().getUniqueId());

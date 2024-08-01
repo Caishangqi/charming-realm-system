@@ -28,19 +28,19 @@ HikariCP:
 WorldPrefix: "SH_"
 
 
-#在不需要该家园功能的子服,但是需要快捷传送的子服内将其改为true
+#在不需要该领域功能的子服,但是需要快捷传送的子服内将其改为true
 DisableFunctionButTeleport: false
 
-#是否开启均衡负载,在人数少的服务器创建家园?
+#是否开启均衡负载,在人数少的服务器创建领域?
 AutoReCreateInLowerLagHome: true
 #均衡负载根据什么？Player还是TPS,Player即指玩家少的服务器,TPS则指三次tps均值最高的那个服务器，如果是TPS需要提前安装Server的papi拓展,/papi ecloud download Server.
 DecideBy: Player
-#是否开启加载家园存档根据DecideBy进行转移加载?.
+#是否开启加载领域存档根据DecideBy进行转移加载?.
 AutoMoveWorldFilesToOther: false
 #是否只有地图被卸载关闭了才能进行存档转移操作?(此功能看需特殊开启,大部分人不需要用到,改为false即可)
 MoveWorldAfterUnLoad: false
 
-#是否启用异步家园形状创建?:
+#是否启用异步领域形状创建?:
 FaweSwitch: false
 #边界形状材质,默认基岩.
 BorderMaterial: 'BEDROCK'
@@ -58,13 +58,13 @@ EnableHeightLimit: true
 MaxHeight: 255
 
 #服务器名字,不同子服要求设置的不一样才可以.
-Server: 家园一区
+Server: 领域一区
 #插件前缀:
-Prefix: '§b[§d家园系统§b]'
+Prefix: '§b[§d领域系统§b]'
 #右键打开菜单的物品材质:
 Material: "COMPASS"
 
-#是否开启家园聊天前缀自动在玩家聊天时显示（聊天不支持papi时开启本功能,如ESS)(若您有MiaoChat等聊天插件,可以用Papi变量)(兼容多世界变量)
+#是否开启领域聊天前缀自动在玩家聊天时显示（聊天不支持papi时开启本功能,如ESS)(若您有MiaoChat等聊天插件,可以用Papi变量)(兼容多世界变量)
 EnableChatPrefix: true
 
 #违法名字禁止使用本插件,如多世界的名字.
@@ -72,23 +72,23 @@ IlleagalName:
   - 'zc'
   - 'world'
 
-#创建家园前是否清空背包.
+#创建领域前是否清空背包.
 ClearInventoryBeforeCreate: false
-#创建家园后执行的指令[后台执行]:
+#创建领域后执行的指令[后台执行]:
 #DispathCommand:
 #  - '[console]kit xinshou give <Name>'
 #  - '[player]kit xinshou'
 DispathCommand: []
 
-#是否设置在家园内死亡自动复活在当前死亡的家园传送点.
+#是否设置在领域内死亡自动复活在当前死亡的领域传送点.
 EnableAutoRespawnInHome: true
 
-#默认创建的家园世界/SH create 2 [设置为0则禁用]
+#默认创建的领域世界/SH create 2 [设置为0则禁用]
 NormalType: 2
 #是否自定义种子,为0则不启用自定义种子.
 Seed: 0
 
-#是否开启家园出生点检测,如果为虚空则为玩家搭一个草方块防止掉进虚空[可选开启,空岛推荐]
+#是否开启领域出生点检测,如果为虚空则为玩家搭一个草方块防止掉进虚空[可选开启,空岛推荐]
 EnableSpawnProtection: true
 
 #是否开启高版本的原版边界,低版本关闭就行,因为低版本无原版边界.
@@ -96,7 +96,7 @@ BorderSwitch: true
 #是否自定义边界插件,指令为:(留空即不开启)<Radius> <Player> <X> <Y> <Z><不推荐><建议用插件自带的>
 #CustomBorder: 'wb <Player> set <Radius> <X> <Z>'
 CustomBorder: ''
-#家园的初始边界范围
+#领域的初始边界范围
 WorldBoard: 64
 #升级一次的半径大小
 UpdateRadius: 50
@@ -113,13 +113,13 @@ PlayerMoveOverBorderHit: false
 #移动到边界时是否给予缓慢BUFF
 PlayerMoveOverBorderBuff: true
 
-#最大家园管理员数
+#最大领域管理员数
 MaxOP: 2
 #最大成员数
 MaxJoin: 6
-#最大家园可升级的等级
+#最大领域可升级的等级
 MaxLevel: 10
-#升级家园所需金币
+#升级领域所需金币
 MoneyNeed:
   #第一次升级,从1级到二级所需金币
   - 5000
@@ -131,7 +131,7 @@ MoneyNeed:
   - 0
   - 0
   - 0
-#升级家园所需点券
+#升级领域所需点券
 PointsNeed:
   #第一次升级,从1级到二级所需点券
   - 0
@@ -143,7 +143,7 @@ PointsNeed:
   - 10
   - 20
   - 30
-#升级家园所需材料,数量.
+#升级领域所需材料,数量.
 ItemsNeed:
   - 'DIAMOND,16'
   - 'DIAMOND,32'
@@ -154,7 +154,7 @@ ItemsNeed:
   - 'DIAMOND,64'
   - 'DIAMOND,64'
   - 'DIAMOND,64'
-#升级家园所需物品中文名字,显示在papi变量上.
+#升级领域所需物品中文名字,显示在papi变量上.
 ItemsChineseName:
   - '钻石'
   - '钻石'
@@ -165,18 +165,18 @@ ItemsChineseName:
   - '钻石'
   - '钻石'
   - '钻石'
-#最大可以删除家园的次数
+#最大可以删除领域的次数
 MaxDelete: 3
 
-#家园警告的Tile数量
+#领域警告的Tile数量
 MaxTiles: 5000
-#家园封锁的Tile数量
+#领域封锁的Tile数量
 UnLoadTiles: 8500
-#家园最大物品掉落物数量
+#领域最大物品掉落物数量
 DeleteItems: 500
-#家园最大实体总数.
+#领域最大实体总数.
 DeleteEntities: 2000
-#家园检查的频率:[秒][0为禁用]
+#领域检查的频率:[秒][0为禁用]
 CheckTime: 600
 WhiteEntities:
   - 'VILLAGE'
@@ -186,7 +186,7 @@ WhiteEntities:
 #盔甲架实体限制,防止过多卡服[-1不启用]
 ArmorStand: -1
 
-#家园自动保存地图时间（秒)[0为禁用]
+#领域自动保存地图时间（秒)[0为禁用]
 SaveTime: 300
 #是否跳过一些世界不进行保存[在开启Windows存档映射时,或者其他特殊需求可以设置一下]
 UnAutoSaveWorlds:
@@ -194,16 +194,16 @@ UnAutoSaveWorlds:
 
 
 
-#家园自动备份地图时间（秒)[默认36000秒][0为禁用][建议5分钟以上,否则报错勿扰]
+#领域自动备份地图时间（秒)[默认36000秒][0为禁用][建议5分钟以上,否则报错勿扰]
 AutoBackup: 0
-#多少天家园未被访问取消自动备份(天)[BC模式下同样有效]
+#多少天领域未被访问取消自动备份(天)[BC模式下同样有效]
 NoBackup: 3
 #是否开启自定义备份路径？,若开启,则填写路径,例如:E:\,如果不想自定义,填写为''空.
 #CustomBackupLocation: 'E:\'
 CustomBackupLocation: ''
 
 
-#若出现生成大量DIM文件或玩家家园维度id变更，请关闭此优化项以及停用其他类似功能的插件
+#若出现生成大量DIM文件或玩家领域维度id变更，请关闭此优化项以及停用其他类似功能的插件
 #是本插件导致的,模组服不建议世界卸载或者区块卸载进行优化的效果.
 
 #优化类型[1为卸载世界,2为卸载区块]
@@ -222,7 +222,7 @@ doMobSpawning: false
 mobGriefing: false
 #是否关闭火势蔓延功能,false为开启,true为关闭
 doFireTick: false
-#创建家园时的默认设置
+#创建领域时的默认设置
 NormalPublic: false
 NormalPVP: false
 NormalPickup: true
@@ -255,7 +255,7 @@ EnableBlackEntities: false
 BlackEntitiesList:
   - 'VILLAGER'
 
-#是否禁止指定物品在无权限的家园中使用:
+#是否禁止指定物品在无权限的领域中使用:
 EnableBlackItemsUseInNoPermission: false
 #黑名单物品列表
 BlackItems:
@@ -265,7 +265,7 @@ BlackItems:
 
 #默认的世界模式选择,(设置为''则禁用)
 Difficulty: 'Easy'
-#是否生成家园里的自然建筑:
+#是否生成领域里的自然建筑:
 generateStructures: false
 #世界最大生成怪物数量:(-1为禁用)
 MaxSpawnMonstersAmount: 100
@@ -313,7 +313,7 @@ ShowFormat: '§6§l#<index> §a<world> §e的世界 §7<tile> §eTiles §7<chunk
 #置底
 StatisticsEnd:
   - '§8§m————————————————————————————————————————————————————————'
-  - '§a上方世界仅供参考，如果存在你的家园请及时清理掉落物和生物！'
+  - '§a上方世界仅供参考，如果存在你的领域请及时清理掉落物和生物！'
 #默认权限开关
 Permission:
   CommandUser: true
@@ -350,13 +350,13 @@ RealisticSeasons: false
 #是否在GUI页面显示所有玩家,还是非公开的进行隐藏,ALL->显示公开,支持跨服/Public->显示公开,支持跨服/Load->显示加载,仅支持单服显示 三种选择.
 VisitGuiShowAll: 'Load'
 
-#是否开启玩家死亡后自动在家园复活
+#是否开启玩家死亡后自动在领域复活
 EnableAutoRespawnInHome: false
 
-#是否开启家园实体交互保护功能,盔甲架等物品无权限禁止交互,该功能对拔刀剑相关实体无效.
+#是否开启领域实体交互保护功能,盔甲架等物品无权限禁止交互,该功能对拔刀剑相关实体无效.
 EnableEntityInteract: true
 
-#是否禁用家园传送门的创建
+#是否禁用领域传送门的创建
 DisablePortalCreate: true
 
 #是否开启多世界兼容模式
