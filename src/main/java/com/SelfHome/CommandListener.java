@@ -2,6 +2,7 @@ package com.SelfHome;
 
 import WorldBorder.WBControl;
 import com.GUI.*;
+import com.GUI.realms.RealmManageGUI;
 import com.Util.*;
 import com.comphenix.protocol.utility.StreamSerializer;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
@@ -60,6 +61,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
     @EventHandler
     public boolean onCommand(final CommandSender sender, Command cmd, String Label, final String[] args) {
+        if (sender instanceof Player) {
+            if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
+                Main.guiManager.openGUI((Player) sender, new RealmManageGUI("Realm Manage GUI", 54));
+                return false;
+            }
+        }
         if (!cmd.getName().equalsIgnoreCase("sh"))
             return false;
         if (Main.JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport") && Variable.bungee) {
@@ -160,10 +167,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         } else if (!MySQL.getHighestTPSServer().equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                             double now = 0.0D;
 
-                                double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
-                                double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
-                                double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
-                                now = (se1 + se2 + se3) / 3.0D;
+                            double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
+                            double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
+                            double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
+                            now = (se1 + se2 + se3) / 3.0D;
 
                             if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                                 try {
@@ -2613,10 +2620,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         } else if (!MySQL.getHighestTPSServer().equalsIgnoreCase(MySQL.getServer(MySQL.getJoinHome(p.getName())))) {
                             double now = 0.0D;
 
-                                double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
-                                double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
-                                double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
-                                now = (se1 + se2 + se3) / 3.0D;
+                            double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
+                            double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
+                            double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
+                            now = (se1 + se2 + se3) / 3.0D;
 
                             if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                                 try {
@@ -2665,10 +2672,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         } else if (!MySQL.getHighestTPSServer().equalsIgnoreCase(MySQL.getServer(p.getName()))) {
                             double now = 0.0D;
 
-                                double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
-                                double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
-                                double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
-                                now = (se1 + se2 + se3) / 3.0D;
+                            double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
+                            double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
+                            double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
+                            now = (se1 + se2 + se3) / 3.0D;
 
                             if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                                 try {
@@ -3400,10 +3407,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         } else if (!MySQL.getHighestTPSServer().equalsIgnoreCase(MySQL.getServer(args[1]))) {
                             double now = 0.0D;
 
-                                double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
-                                double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
-                                double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
-                                now = (se1 + se2 + se3) / 3.0D;
+                            double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
+                            double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
+                            double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
+                            now = (se1 + se2 + se3) / 3.0D;
 
                             if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                                 try {
@@ -5086,10 +5093,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 } else if (!MySQL.getHighestTPSServer().equalsIgnoreCase(Main.JavaPlugin.getConfig().getString("Server"))) {
                     double now = 0.0D;
 
-                        double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
-                        double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
-                        double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
-                        now = (se1 + se2 + se3) / 3.0D;
+                    double se1 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_1%").replace("*", "")).doubleValue();
+                    double se2 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_5%").replace("*", "")).doubleValue();
+                    double se3 = Double.valueOf(PlaceholderAPI.setPlaceholders(null, "%server_tps_15%").replace("*", "")).doubleValue();
+                    now = (se1 + se2 + se3) / 3.0D;
 
                     if (MySQL.getServerAmount(MySQL.getLowerstLagServer()) != now) {
                         try {
@@ -5320,14 +5327,14 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         e2.printStackTrace();
                     }
                     // Add playerOwnerUUID section
-                    Player player = (Player)sender;
+                    Player player = (Player) sender;
                     // Get Current Date
                     LocalDate currentDate = LocalDate.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月 d号, yyyy年", Locale.CHINESE);
                     String formattedDate = currentDate.format(formatter);
 
-                    yamlConfiguration1.set("playerOwnerUUID",player.getUniqueId().toString());
-                    yamlConfiguration1.set("CreatedDate",formattedDate);
+                    yamlConfiguration1.set("playerOwnerUUID", player.getUniqueId().toString());
+                    yamlConfiguration1.set("CreatedDate", formattedDate);
                     yamlConfiguration1.set("Public", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPublic")));
                     yamlConfiguration1.set("pickup", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPVP")));
                     yamlConfiguration1.set("drop", Boolean.valueOf(Main.JavaPlugin.getConfig().getBoolean("NormalPickup")));

@@ -1,5 +1,6 @@
 package com.SelfHome;
 
+import com.GUI.handler.GUIManager;
 import com.Listeners.*;
 import com.PlaceHolder.API;
 import com.PlaceHolder.RealmExpansion;
@@ -30,7 +31,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Main extends JavaPlugin implements PluginMessageListener {
+
     public static JavaPlugin JavaPlugin;
+    public static GUIManager guiManager;
 
     public static boolean isOSLinux() {
         Properties prop = System.getProperties();
@@ -99,6 +102,9 @@ public class Main extends JavaPlugin implements PluginMessageListener {
 
     public void onEnable() {
         JavaPlugin = this;
+
+        guiManager = new GUIManager();
+
         int pluginId = 19436;
         Metrics ms = new Metrics(JavaPlugin, pluginId);
         Variable.NMS_Version = Bukkit.getServer().getClass().getPackage().toString().substring(Bukkit.getServer().getClass().getPackage().toString().lastIndexOf(".") + 1, Bukkit.getServer().getClass().getPackage().toString().length()).replace("V", "v");
@@ -107,6 +113,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Bukkit.getConsoleSender().sendMessage("检测到 Arclight 服务器,启用适用于Arclight的方式");
         if (!JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport")) {
             Bukkit.getPluginManager().registerEvents((Listener) new CreatureSpawnListener(), (Plugin) this);
+            Bukkit.getPluginManager().registerEvents((Listener) guiManager, (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new InteractBlackListener(), (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new BlockBreakListener(), (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new BlockPlaceListener(), (Plugin) this);

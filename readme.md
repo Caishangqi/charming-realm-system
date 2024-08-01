@@ -68,9 +68,9 @@
 | 领域权限修改,信任GUI重置          | 正常  | 📌 |
 
 ## 待修复
-> 项目中关于Placeholder的代码有部分存在着问题,包括不限于在 `setPlaceholders(null, str);` `字符串时没有传入OfflinePlayer`,这样做会导致绝大部分插件的Placeholder调用失败. 后续修复应该重写插件`API.java`中的分支并默认传入OfflinePlayer (无论何时)
+> 项目中关于Placeholder的代码有部分存在着问题,包括不限于在 `setPlaceholders(null, str);` 字符串时没有传入`OfflinePlayer`,这样做会导致绝大部分插件的Placeholder调用失败. 后续修复应该重写插件`API.java`中的分支并默认传入OfflinePlayer (无论何时)
 
-- 在GUI菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取玩家实例
+- 在GUI菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取在线/离线玩家实例
 
 ## 协调系列 Homeward Species
 
