@@ -118,12 +118,6 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-//    if (name.contains(Variable.Lang_YML.getString("VisitGuiHomeSuffix")) && name.contains(Variable.Lang_YML.getString("VisitGuiHomePrefix"))) {
-//      name = name.replace(Variable.Lang_YML.getString("VisitGuiHomePrefix"), "");
-//      name = name.replace(Variable.Lang_YML.getString("VisitGuiHomeSuffix"), "");
-//      Bukkit.dispatchCommand((CommandSender)p, "realm v " + name);
-//      return;
-//    }
         if (name.contains(Variable.Lang_YML.getString("CheckGuiHomePrefix")) &&
                 name.contains(Variable.Lang_YML.getString("CheckGuiHomeSuffix"))) {
             name = name.replace(Variable.Lang_YML.getString("CheckGuiHomePrefix"), "");

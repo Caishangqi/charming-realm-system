@@ -223,6 +223,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             CheckUpdate.checkUpdate();
         Bukkit.getConsoleSender().sendMessage("§8[§6SelfHomeMain§8] §aAuthor - Tencent - QQ :  §d1242839141");
         Bukkit.getConsoleSender().sendMessage("§8[§6CharmRealms§8] §aAuthor - Caizii 菜籽");
+
     }
 
     public static void init() {
@@ -243,7 +244,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Variable.world_prefix = "";
             Variable.Cat_Check = true;
         } else {
-            Variable.world_prefix = "SelfHomeWorld/";
+            Variable.world_prefix = "CharmRealm/";
         }
         if (Bukkit.getVersion().toString().contains("1.7.10")) {
             Variable.world_prefix = "";
@@ -266,7 +267,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
             Variable.Cat_Check = true;
         }
         if (Bukkit.getVersion().toString().contains("Banner") && Bukkit.getVersion().toString().toUpperCase().contains("1.20.1"))
-            Variable.world_prefix = "SelfHomeWorld/";
+            Variable.world_prefix = "CharmRealm/";
         JavaPlugin.saveDefaultConfig();
         JavaPlugin.reloadConfig();
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_setting.yml")).exists())

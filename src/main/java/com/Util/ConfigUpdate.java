@@ -684,7 +684,7 @@ public class ConfigUpdate {
         config_check = true;
       } 
       if (Variable.Lang_YML.getString("GivePopularityButOP") == null) {
-        Variable.Lang_YML.set("GivePopularityButOP", "§8[§6CharmRealms§8] §7您是OP,访问他人领域为隐身状,不给予人气以及提示领域主人~");
+        Variable.Lang_YML.set("GivePopularityButOP", "§8[§6CharmRealms§8] §7您是OP,访问他人领域为隐身状,不给予人气以及提示领域所有者~");
         lang_check = true;
       } 
     } 
