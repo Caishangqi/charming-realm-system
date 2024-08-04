@@ -1,5 +1,5 @@
-size: 18
-name: "%img_offset_-8%:settings_menu_container:"
+size: 54
+name: "Realm Create Panel"
 # This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
 # The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
 matrix:
@@ -13,11 +13,11 @@ matrix:
 items:
   # Here you will specify a name for your button. No matter what you put, the name will only be present in the configuration.
   # Attention, the name of your button must be unique. We advise you to choose a name that will describe what the button does.
-  # MANAGE_MEMBER
-  manageMember:
-    type: DEFAULT
+  worldType1:
+    type: WORLD_CREATE
+    template: template_forest
     # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
-    slot: 10-11
+    slot: 38
 
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -41,10 +41,10 @@ items:
         - "&f領域人員數量: / "
         - ""
         - "#80c606 → 點擊打開菜單"
-  #RESET_REALM
-  resetRealm:
+
+  confirm:
     type: DEFAULT
-    slot: 13
+    slot: 49
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
     volume: 2.0
@@ -53,22 +53,6 @@ items:
       modelID: 1000
       name: "&c重置領域"
       lore: []
-  #VISIT_STATE
-  visitState:
-    type: DEFAULT
-    slot: 15-16
-
-    sound: BLOCK_TRIPWIRE_CLICK_ON
-    pitch: 1.0
-    volume: 2.0
-    item:
-      material: SUNFLOWER
-      modelID: 1000
-      name: " "
-      lore:
-        - "#a6aab4隨時控制您領域的可見性"
-        - ""
-        - "#80c606 → 點擊打開菜單"
   #HELP_STATE
   help:
     type: DEFAULT

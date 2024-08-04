@@ -2,6 +2,7 @@ package com.SelfHome;
 
 import WorldBorder.WBControl;
 import com.GUI.*;
+import com.GUI.realms.RealmGUICreate;
 import com.GUI.realms.RealmGUISetting;
 import com.Util.*;
 import com.comphenix.protocol.utility.StreamSerializer;
@@ -335,6 +336,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
             if (sender instanceof Player) {
                 Main.charmGuiHandler.openGUI(new RealmGUISetting((Player) sender));
+                return false;
+            }
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("setup")) {
+            if (sender instanceof Player) {
+                Main.charmGuiHandler.openGUI(new RealmGUICreate((Player) sender));
                 return false;
             }
         }
@@ -1008,6 +1015,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         sender.sendMessage(Variable.Lang_YML.getString("BottomLineTtitle"));
                         return false;
                     }
+                    // TODO: Optimization
                     Util.copyDir(oldDir, newDir);
                     WorldCreator creator = null;
                     creator = new WorldCreator(String.valueOf(Variable.world_prefix) + args[2]);

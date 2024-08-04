@@ -28,11 +28,10 @@ public class RealmGUISetting extends CharmGUIBase {
      */
     @Override
     public void onCustomGUIInitialize() {
-        super.onCustomGUIInitialize();
+        //super.onCustomGUIInitialize();
         setButton(readButtons("manageMember"), (event) -> {
             event.getWhoClicked().sendMessage("You clicked manageMember");
         });
-
 
         setButton(readButtons("resetRealm"), (event) -> {
             event.getWhoClicked().sendMessage("You clicked resetRealm");

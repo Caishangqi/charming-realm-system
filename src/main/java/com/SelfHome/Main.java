@@ -272,6 +272,8 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         JavaPlugin.reloadConfig();
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_setting.yml")).exists())
             JavaPlugin.saveResource("guis" + Variable.file_loc_prefix + "gui_setting.yml", false);
+        if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_create.yml")).exists())
+            JavaPlugin.saveResource("guis" + Variable.file_loc_prefix + "gui_create.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI.yml")).exists())
             JavaPlugin.saveResource("GUI.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI_en.yml")).exists())
@@ -366,6 +368,7 @@ public class Main extends JavaPlugin implements PluginMessageListener {
         Variable.GUI_YML =
                 (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "GUI.yml"));
         Variable.GUI_SETTING_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_setting.yml"));
+        Variable.GUI_CREATE_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + Variable.file_loc_prefix + "guis" + Variable.file_loc_prefix + "gui_create.yml"));
         ConfigUpdate.update();
         Variable.Soil = JavaPlugin.getConfig().getString("SoilType");
         initHome.init();

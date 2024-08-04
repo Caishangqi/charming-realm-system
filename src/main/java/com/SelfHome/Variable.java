@@ -65,7 +65,8 @@ public class Variable {
   public static FileConfiguration getName_yml;
 
   public static FileConfiguration GUI_SETTING_YML;
-  
+  public static FileConfiguration GUI_CREATE_YML;
+
   public static String custom_playerdata_location = "";
   
   public static String custom_autobackup_location = "";

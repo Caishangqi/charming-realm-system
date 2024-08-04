@@ -3,11 +3,12 @@ package com.GUI.factory;
 import com.GUI.components.ButtonClickHandler;
 import com.GUI.components.CharmGUIBase;
 import com.GUI.components.GUIButton;
+import com.GUI.types.EButtonType;
 import de.tr7zw.nbtapi.NBT;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -15,42 +16,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseButtonFactory implements ButtonFactory {
-    private String displayName;
-    private List<String> lore;
+
+    protected String displayName;
+    protected List<String> lore;
+    protected EButtonType buttonType = EButtonType.DEFAULT;
     @Getter
     public ButtonClickHandler handler = null;
-    private Material material = Material.AIR;
-    private int modelID = 0;
-    private Sound clickSound = null;
-    private double pitch = 0.0;
-    private double volume = 0.0;
-    private String slotRange = "";
+    protected Material material = Material.AIR;
+    protected int modelID = 0;
+    protected Sound clickSound = null;
+    protected double pitch = 0.0;
+    protected double volume = 0.0;
+    protected String slotRange = "";
+    protected ConfigurationSection buttonConfig;
 
+    public BaseButtonFactory(ConfigurationSection buttonConfig) {
+        this.buttonConfig = buttonConfig;
+        ConfigurationSection buttonItemStackConfig = buttonConfig.getConfigurationSection("item");
 
-    public BaseButtonFactory(Material material, String displayName, List<String> lore, String slotRange, ButtonClickHandler handler) {
-        this.displayName = displayName;
-        this.lore = lore;
-        this.material = material;
-        this.slotRange = slotRange;
-    }
+        this.material = Material.valueOf(buttonItemStackConfig.getString("material"));
+        this.modelID = buttonItemStackConfig.getInt("modelID");
+        this.displayName = buttonItemStackConfig.getString("name");
+        this.lore = buttonItemStackConfig.getStringList("lore");
 
-    public BaseButtonFactory(Material material, int modelID, String displayName, List<String> lore, String slotRange) {
-        this.displayName = displayName;
-        this.lore = lore;
-        this.material = material;
-        this.modelID = modelID;
-        this.slotRange = slotRange;
-    }
-
-    public BaseButtonFactory(Material material, int modelID, String displayName, List<String> lore, String slotRange, Sound clickSound, double pitch, double volume) {
-        this.displayName = displayName;
-        this.lore = lore;
-        this.material = material;
-        this.modelID = modelID;
-        this.clickSound = clickSound;
-        this.pitch = pitch;
-        this.volume = volume;
-        this.slotRange = slotRange;
+        this.slotRange = buttonConfig.getString("slot");
+        this.buttonType = EButtonType.valueOf(buttonConfig.getString("type"));
+        this.clickSound = Sound.valueOf(buttonConfig.getString("sound"));
+        this.pitch = buttonConfig.getDouble("pitch");
+        this.volume = buttonConfig.getDouble("volume");
     }
 
     @Override
@@ -78,17 +71,28 @@ public class BaseButtonFactory implements ButtonFactory {
             GUIButton button = new GUIButton(parentGUI, item, i) {
 
             };
+            button.setButtonType(this.buttonType);
             button.setMaterial(this.material);
             button.setModelID(this.modelID);
             button.setClickSound(clickSound);
             button.setPitch(pitch);
             button.setVolume(volume);
+            // inject the click event to button
+            injectEvent();
+            button.setHandler(handler);
+
             buttons.add(button);
         }
 
         return buttons;
 
 
+    }
+
+    // base button factory will not contain any event
+    @Override
+    public void injectEvent() {
+        this.handler = null;
     }
 
     public List<Integer> convertRange(String range) {

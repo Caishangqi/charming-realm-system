@@ -1,5 +1,6 @@
 package com.GUI.components;
 
+import com.GUI.types.EButtonType;
 import com.Util.Color;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +39,9 @@ public abstract class GUIButton {
     public double volume = 0.0;
     @Setter
     public String slotRange = "";
+    @Getter
+    @Setter
+    public EButtonType buttonType = EButtonType.DEFAULT;
 
     public GUIButton(CharmGUIBase parentGUI, ItemStack item, int slotIndex) {
         this.parentGUI = parentGUI;

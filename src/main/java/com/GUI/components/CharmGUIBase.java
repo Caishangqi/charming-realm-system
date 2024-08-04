@@ -1,11 +1,11 @@
 package com.GUI.components;
 
 import com.GUI.factory.BaseButtonFactory;
+import com.GUI.factory.WorldCreateButtonFactory;
+import com.GUI.types.EButtonType;
 import com.Util.Color;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -14,9 +14,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CharmGUIBase implements InventoryHolder {
     private final Inventory inventory;
@@ -45,7 +43,9 @@ public class CharmGUIBase implements InventoryHolder {
 
     // Set the layouts and buttons but not render papi and color
     public void onCustomGUIInitialize() {
-
+        // read all buttons from config yml and create button instance
+       List<GUIButton> buttonArrayList = readButtons();
+        setButton(buttonArrayList);
     }
 
     // Start rend the buttons and papi, color to the native bukkit inventory
@@ -68,6 +68,29 @@ public class CharmGUIBase implements InventoryHolder {
     public void setButton(GUIButton button, ButtonClickHandler handler) {
         buttons.put(button.slotIndex, button);
         button.setHandler(handler);
+    }
+
+    /*
+    Only put the Button instance on List (Layout) later onDisplay will rend those
+    buttons into the bukkit inventory
+     */
+    public void setButton(GUIButton button) {
+        buttons.put(button.slotIndex, button);
+    }
+
+    /*
+    Only put the Button instance on List (Layout) later onDisplay will rend those
+    buttons into the bukkit inventory
+     */
+    public void setButton(List<GUIButton> buttons) {
+        if (buttons.size() == 1) {
+            setButton(buttons.get(0));
+        } else {
+            for (GUIButton button : buttons) {
+                setButton(button);
+            }
+        }
+
     }
 
     /*
@@ -108,16 +131,42 @@ public class CharmGUIBase implements InventoryHolder {
 
     public List<GUIButton> readButtons(String ButtonKey) {
         ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
-        ConfigurationSection buttonItemConfig = buttonConfig.getConfigurationSection("item");
 
-        return new BaseButtonFactory(Material.valueOf(buttonItemConfig.getString("material")), buttonItemConfig.getInt("modelID"), buttonItemConfig.getString("name"), buttonItemConfig.getStringList("lore"), buttonConfig.getString("slot"), Sound.valueOf(buttonConfig.getString("sound")), buttonConfig.getDouble("pitch"), buttonConfig.getDouble("volume")).createButton(this);
+        switch (getButtonType(ButtonKey)) {
+            case DEFAULT:
+                return new BaseButtonFactory(readButtonConfiguration(ButtonKey)).createButton(this);
+            case WORLD_CREATE:
+                return new WorldCreateButtonFactory(readButtonConfiguration(ButtonKey)).createButton(this);
+            default:
+                throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
+        }
+
+
+    }
+
+    EButtonType getButtonType(String ButtonKey) {
+        ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
+        return EButtonType.valueOf(buttonConfig.getString("type"));
     }
 
     public FileConfiguration getGUIConfig() {
         return this.GUIConfigYML;
     }
 
-    ;
+    /*
+    Read all buttons from the GUI configuration
+     */
+    public List<GUIButton> readButtons() {
+
+        ArrayList<GUIButton> buttonList = new ArrayList<>();
+
+
+        Set<String> buttons = this.GUIConfigYML.getConfigurationSection("items").getKeys(false);
+        for (String buttonSection : buttons) {
+            buttonList.addAll(readButtons(buttonSection));
+        }
+        return buttonList;
+    }
 
     /**
      * @return
@@ -127,4 +176,15 @@ public class CharmGUIBase implements InventoryHolder {
     public Inventory getInventory() {
         return inventory;
     }
+
+
+    public GUIButton getButton(int slot) {
+        for (GUIButton button : buttons.values()) {
+            if (button.slotIndex == slot) {
+                return button;
+            }
+        }
+        throw new RuntimeException("Slot " + slot + " not found");
+    }
+
 }
