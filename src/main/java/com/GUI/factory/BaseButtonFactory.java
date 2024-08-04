@@ -77,9 +77,10 @@ public class BaseButtonFactory implements ButtonFactory {
             button.setClickSound(clickSound);
             button.setPitch(pitch);
             button.setVolume(volume);
+            // put buttonConfig into button for validation (can optimize)
+            button.setButtonConfig(this.buttonConfig);
             // inject the click event to button
-            injectEvent();
-            button.setHandler(handler);
+            injectEvent(button);
 
             buttons.add(button);
         }
@@ -91,8 +92,8 @@ public class BaseButtonFactory implements ButtonFactory {
 
     // base button factory will not contain any event
     @Override
-    public void injectEvent() {
-        this.handler = null;
+    public void injectEvent(GUIButton button) {
+        button.setHandler(null);
     }
 
     public List<Integer> convertRange(String range) {

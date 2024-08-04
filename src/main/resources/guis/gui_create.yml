@@ -1,5 +1,22 @@
 size: 54
-name: "Realm Create Panel"
+name: "%img_offset_-8%:menu_realms_presets:"
+
+# Whether or not enable dynamic title with selection slot
+# The use of dynamic title needs protocol API
+dynamic-title:
+  enable: true
+  rowFontImage:
+    - "\uE614"
+    - "\uE615"
+    - "\uE616"
+    - "\uE617"
+    - "\uE618"
+    - "\uE619"
+
+# The default selection of the realm template
+default-select: template_forest
+
+
 # This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
 # The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
 matrix:
@@ -16,6 +33,7 @@ items:
   worldType1:
     type: WORLD_CREATE
     template: template_forest
+    display-image: ""
     # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
     slot: 38
 
@@ -29,19 +47,95 @@ items:
       modelID: 1000
       # Here we will name this item
       # Color code, mini message and placeholders are supported
-      name: " "
+      name: "#a6aab4森林"
 
       # This is the lore.
       # You must put several lines to the lore.
       # Color code, mini message and placeholders are supported
-      lore:
-        - "#a6aab4添加,刪除,管理你的領域人員,"
-        - "#a6aab4最大人數通過會員獲得提升"
-        - ""
-        - "&f領域人員數量: / "
-        - ""
-        - "#80c606 → 點擊打開菜單"
+      lore: [ ]
+    selected-style:
+      item:
+        material: SUNFLOWER
+        modelID: 1000
+        name: "#94c643森林(已選擇)"
+        lore: [ ]
 
+  worldType2:
+    type: WORLD_CREATE
+    template: template_desert
+    display-image: ""
+    slot: 39
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "#a6aab4沙漠"
+      lore: [ ]
+    selected-style:
+      item:
+        material: SUNFLOWER
+        modelID: 1000
+        name: "#94c643沙漠(已選擇)"
+        lore: [ ]
+  worldType3:
+    type: WORLD_CREATE
+    template: template_jungle
+    display-image: ""
+    slot: 40
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "#a6aab4雨林"
+      lore: [ ]
+    selected-style:
+      item:
+        material: SUNFLOWER
+        modelID: 1000
+        name: "#94c643雨林(已選擇)"
+        lore: [ ]
+  worldType4:
+    type: WORLD_CREATE
+    template: template_taiga
+    display-image: ""
+    slot: 41
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "#a6aab4苔原"
+      lore: [ ]
+    selected-style:
+      item:
+        material: SUNFLOWER
+        modelID: 1000
+        name: "#94c643苔原(已選擇)"
+        lore: [ ]
+  worldType5:
+    type: WORLD_CREATE
+    template: template_grove
+    display-image: ""
+    slot: 42
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "#a6aab4雪林"
+      lore: [ ]
+    selected-style:
+      item:
+        material: SUNFLOWER
+        modelID: 1000
+        name: "#94c643雪林(已選擇)"
+        lore: [ ]
   confirm:
     type: DEFAULT
     slot: 49
@@ -50,9 +144,12 @@ items:
     volume: 2.0
     item:
       material: SUNFLOWER
-      modelID: 1000
-      name: "&c重置領域"
-      lore: []
+      modelID: 1005
+      name: "&l#94c643確認選擇"
+      lore:
+        - "#a6aab4使用當前的選擇創建領域"
+        - ""
+        - "#dda743 → 點擊創建"
   #HELP_STATE
   help:
     type: DEFAULT

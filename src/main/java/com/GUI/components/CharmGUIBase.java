@@ -5,6 +5,7 @@ import com.GUI.factory.WorldCreateButtonFactory;
 import com.GUI.types.EButtonType;
 import com.Util.Color;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,17 +19,21 @@ import java.util.*;
 
 public class CharmGUIBase implements InventoryHolder {
     private final Inventory inventory;
-    private final Map<Integer, GUIButton> buttons = new HashMap<>();
+    protected Map<Integer, GUIButton> buttons = new HashMap<>();
     @Getter
     private final boolean bIsAllowEmptyClick = false;
     @Getter
     protected Player owner;
     @Getter
     protected FileConfiguration GUIConfigYML;
+    @Setter
     @Getter
     protected String title;
     @Getter
     protected int size;
+    @Getter
+    @Setter
+    public HashMap<String, String> internalData = new HashMap<>();
 
     public CharmGUIBase(Player owner) {
         this.GUIConfigYML = getGUIConfig();
@@ -37,6 +42,7 @@ public class CharmGUIBase implements InventoryHolder {
         size = GUIConfigYML.getInt("size");
         String parsedTitle = Color.parseColorAndPlaceholder(owner, GUITitle);
         assert GUITitle != null;
+        this.setTitle(parsedTitle);
         this.inventory = Bukkit.createInventory(this, size, parsedTitle);
         onCustomGUIInitialize();
     }
@@ -44,7 +50,7 @@ public class CharmGUIBase implements InventoryHolder {
     // Set the layouts and buttons but not render papi and color
     public void onCustomGUIInitialize() {
         // read all buttons from config yml and create button instance
-       List<GUIButton> buttonArrayList = readButtons();
+        List<GUIButton> buttonArrayList = readButtons();
         setButton(buttonArrayList);
     }
 
@@ -120,7 +126,6 @@ public class CharmGUIBase implements InventoryHolder {
         if (button != null) {
             button.onClick(event);
         }
-
         event.setCancelled(!bIsAllowEmptyClick);
     }
 
@@ -134,14 +139,12 @@ public class CharmGUIBase implements InventoryHolder {
 
         switch (getButtonType(ButtonKey)) {
             case DEFAULT:
-                return new BaseButtonFactory(readButtonConfiguration(ButtonKey)).createButton(this);
+                return new BaseButtonFactory(buttonConfig).createButton(this);
             case WORLD_CREATE:
-                return new WorldCreateButtonFactory(readButtonConfiguration(ButtonKey)).createButton(this);
+                return new WorldCreateButtonFactory(buttonConfig).createButton(this);
             default:
                 throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
         }
-
-
     }
 
     EButtonType getButtonType(String ButtonKey) {
@@ -185,6 +188,16 @@ public class CharmGUIBase implements InventoryHolder {
             }
         }
         throw new RuntimeException("Slot " + slot + " not found");
+    }
+
+    // this is a more abstract method called by Button clicked
+    // you should not directly called this methods
+    public void onButtonClicked(GUIButton button) {
+
+    }
+
+    public boolean onUpdateGUI() {
+        return true;
     }
 
 }

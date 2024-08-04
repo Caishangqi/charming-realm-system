@@ -2,7 +2,9 @@ name: CharmRealm
 main: com.SelfHome.Main
 author: Caizii
 version: 2.1.2.3
-softdepend: [PlaceholderAPI,Vault,Multiverse-Core,FastAsyncWorldEdit,WorldEdit,NBTAPI,PlayerPoints,HolographicDisplays,ProtocolLib,RealisticSeasons]
+depend:
+  - ProtocolLib
+softdepend: [PlaceholderAPI,Vault,Multiverse-Core,FastAsyncWorldEdit,WorldEdit,NBTAPI,PlayerPoints,HolographicDisplays,RealisticSeasons]
 commands: 
   realm:
     description: example

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ButtonFactory {
     List<GUIButton> createButton(CharmGUIBase parentGUI);
-    void injectEvent();
+    void injectEvent(GUIButton button);
 }
