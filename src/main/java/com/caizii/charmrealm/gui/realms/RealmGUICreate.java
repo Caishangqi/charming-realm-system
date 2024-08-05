@@ -20,12 +20,12 @@ import java.util.List;
 public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
 
     protected String selectedTemplate = "NONE";
-    protected GUIButton selectedButton = null;
+    protected GUIButton selectedButton;
 
     /*============= Select Style ============*/
-    protected String rowFontImageWidth = "";
-    protected List<String> rowFontImage = new ArrayList<>();
-    protected String selectStyleTitleComponent = "";
+    protected String rowFontImageWidth;
+    protected List<String> rowFontImage;
+    protected String selectStyleTitleComponent;
     /*============= Select Style ============*/
 
     public RealmGUICreate(Player owner) {
@@ -48,11 +48,20 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     public void onCustomGUIInitialize() {
         super.onCustomGUIInitialize();
         selectedTemplate = getGUIConfig().getString("default-select");
+
+        System.out.println("onCustomGUIInitialize()");
+        System.out.println(getGUIConfig().getStringList("dynamic-title.rowFontImage"));
+
         rowFontImage = getGUIConfig().getStringList("dynamic-title.rowFontImage");
         rowFontImageWidth = getGUIConfig().getString("dynamic-title.rowFontImageWidth");
+
+        System.out.println(rowFontImage);
+
         selectedButton = getDefaultSelectedButton();
         setButtonSelect(selectedButton, true);
         System.out.println("selected button index is: " + selectedButton.getSlotIndex());
+
+
     }
 
     protected GUIButton getDefaultSelectedButton() {
@@ -68,6 +77,31 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     }
 
     /**
+     * @param targetPlayer
+     * @param targetGUI
+     */
+    @Override
+    public void onCustomGUIDisplay(Player targetPlayer, CharmGUIBase targetGUI) {
+        super.onCustomGUIDisplay(targetPlayer, targetGUI);
+
+        // TODO: Fix the onUpdateGUITitle() invalid during playeropeninventory event
+
+        /*
+            normally, for sake of safe and consistency onUpdateGUITitle() should should
+            called by InventoryOpenEvent event by bukkit, and the onUpdateGUITitle()
+            should place in here to ensure client has receive the GUI, then, do the
+            packaged based GUITitle update.
+
+            :( but it was broken so I put onUpdateGUITitle() after open(), may cause small
+            problem in the future
+         */
+
+        // Addition update that ensure the selection is selected
+        //onUpdateGUITitle();
+
+    }
+
+    /**
      * @param button
      */
     @Override
@@ -80,19 +114,19 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
                     selectedButton = button;
                     setButtonSelect(selectedButton, true);
                     getOwner().sendMessage("Selected template: " + buttonSavedTemplate);
-                    onUpdateGUI();
+                    onUpdateGUITitle();
                 }
         }
     }
 
     /**
-     * We want to update other button name and lore
-     * also update the GUI title
+     * We want to update the GUI title that origin
+     * bukkit API can't
      *
      * @return
      */
     @Override
-    public boolean onUpdateGUI() {
+    public boolean onUpdateGUITitle() {
         updateSelectTypeButtonStyle();
 
         // we use this method to confirm selectStyleString
@@ -108,7 +142,7 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
         components.add(new TextComponent(updatedGUITitle));
         CharmRealm.titleHandler.setPlayerInventoryTitle(getOwner(), components);
 
-        return super.onUpdateGUI();
+        return super.onUpdateGUITitle();
     }
 
     protected void updateSelectTypeButtonStyle() {
@@ -117,6 +151,17 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
                 setButtonSelect(guiButton, guiButton == selectedButton);
             }
         }
+    }
+
+    /**
+     * @param player
+     * @param targetGUI
+     */
+    @Override
+    public void onCustomGUIOpen(Player player, CharmGUIBase targetGUI) {
+        super.onCustomGUIOpen(player, targetGUI);
+        // Addition update that ensure the selection is selected
+        onUpdateGUITitle();
     }
 
     protected void setButtonSelect(GUIButton button, boolean bIsSelect) {
@@ -142,6 +187,7 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     @Override
     public void clickSelect(GUIButton clickedComponents) {
 
+        System.out.println("clickSelect()");
         int clickedComponentsSlotIndex = clickedComponents.getSlotIndex();
         int[] indexToRowCol = indexToRowCol(clickedComponentsSlotIndex);
 
@@ -158,7 +204,7 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
         String horizontalOffset = rowFontImageWidth.repeat(indexToRowCol[1]);
 
         // then we update GUI Create selection part of UI
-        selectStyleTitleComponent = horizontalOffset + verticalOffsetFont;
+        selectStyleTitleComponent = horizontalOffset + "&f" + verticalOffsetFont;
 
     }
 

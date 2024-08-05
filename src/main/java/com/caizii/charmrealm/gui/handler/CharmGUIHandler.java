@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,19 @@ public class CharmGUIHandler implements Listener {
     public void openGUI(Player player, CharmGUIBase gui) {
         openGUIs.put(player.getUniqueId(), gui);
         gui.open(player);
+    }
+
+    @EventHandler
+    public void onInventoryDisplay(InventoryOpenEvent event) {
+
+        if (event.getInventory().getHolder() instanceof CharmGUIBase) {
+            Player player = (Player) event.getPlayer();
+            CharmGUIBase gui = openGUIs.get(player.getUniqueId());
+
+            if (gui != null) {
+                gui.onCustomGUIDisplay(player, gui);
+            }
+        }
     }
 
     @EventHandler

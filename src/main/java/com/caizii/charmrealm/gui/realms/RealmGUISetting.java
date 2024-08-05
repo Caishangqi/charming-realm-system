@@ -51,8 +51,8 @@ public class RealmGUISetting extends CharmGUIBase {
      * @return
      */
     @Override
-    public boolean onCustomGUIDisplay(Player player) {
-        return super.onCustomGUIDisplay(player);
+    public boolean rendCustomGUI(Player player) {
+        return super.rendCustomGUI(player);
     }
 
     /**

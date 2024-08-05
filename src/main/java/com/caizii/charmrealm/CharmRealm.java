@@ -117,6 +117,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         titleHandler = new TitleHandler(this, protocolManager);
         titleHandler.registerPacketListeners();
 
+        getLogger().info("CharmRealm is enabling...");
         pluginVariable = new Variable();
         init();
 

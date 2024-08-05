@@ -56,11 +56,20 @@ public class CharmGUIBase implements InventoryHolder {
     }
 
     // Start rend the buttons and papi, color to the native bukkit inventory
-    public boolean onCustomGUIDisplay(Player player) {
+    public boolean rendCustomGUI(Player player) {
         for (GUIButton button : buttons.values()) {
             button.rendButton(player);
         }
         return player.isValid();
+    }
+
+    /*
+        Called when the custom GUI is displayed to player -> this method is ensure the
+        player actually see the GUI
+     */
+    public void onCustomGUIDisplay(Player targetPlayer, CharmGUIBase targetGUI) {
+        //String string = MessageFormat.format("onCustomGUIDisplay({0}, {1})", targetPlayer.getDisplayName(), targetGUI.getTitle());
+        //        System.out.println(string);
     }
 
     public boolean onCustomGUIClose(Player player) {
@@ -117,8 +126,15 @@ public class CharmGUIBase implements InventoryHolder {
 
     public void open(Player player) {
         this.owner = player;
-        onCustomGUIDisplay(player);
+        rendCustomGUI(player);
         player.openInventory(inventory);
+        onCustomGUIDisplay(player, this);
+    }
+
+    // this method is server side event that indicate server actively open
+    // the gui for player, but not guarantee player will receive GUI
+    public void onCustomGUIOpen(Player player, CharmGUIBase targetGUI) {
+
     }
 
     public void handleClick(InventoryClickEvent event) {
@@ -197,7 +213,7 @@ public class CharmGUIBase implements InventoryHolder {
 
     }
 
-    public boolean onUpdateGUI() {
+    public boolean onUpdateGUITitle() {
         return true;
     }
 
