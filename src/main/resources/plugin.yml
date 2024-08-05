@@ -1,11 +1,11 @@
 name: CharmRealm
-main: com.SelfHome.Main
-author: Caizii
-version: 2.1.2.3
-depend:
-  - ProtocolLib
-softdepend: [PlaceholderAPI,Vault,Multiverse-Core,FastAsyncWorldEdit,WorldEdit,NBTAPI,PlayerPoints,HolographicDisplays,RealisticSeasons]
-commands: 
+main: com.caizii.charmrealm.CharmRealm
+author: [ Caizii ]
+version: 2.3.1-BETA-PRO
+api-version: "1.16"
+depend: [ ProtocolLib,PlaceholderAPI ]
+softdepend: [ Vault,Multiverse-Core,FastAsyncWorldEdit,WorldEdit,NBTAPI,PlayerPoints,HolographicDisplays,RealisticSeasons ]
+commands:
   realm:
-    description: example
+    description: Realm related command that create, modify and delete realms.
     permission-message: You don't have permission use this Commands

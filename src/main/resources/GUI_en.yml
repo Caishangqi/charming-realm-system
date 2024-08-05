@@ -32,7 +32,7 @@ HeadMaterial: 'SKULL_ITEM'
 #玻璃板的颜色ID
 GlassSubID: 15
 'Button1':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a Manor System §8]'
   Material: 'COMPASS'
   SubID: 0
@@ -47,7 +47,7 @@ GlassSubID: 15
   RightInTo: 'realm open check'
   KeepOpen: true
 'Button2':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§aCreating a Home§8]'
   Material: 'NETHER_STAR'
   SubID: 0
@@ -60,7 +60,7 @@ GlassSubID: 15
   RightInTo: ''
   KeepOpen: true
 'Button3':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§aAdministering the Home§8]'
   Material: 'BOOK'
   SubID: 0
@@ -86,7 +86,7 @@ GlassSubID: 15
   RightInTo: ''
   KeepOpen: true
 'Button4':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§aVisiting Home§8]'
   Material: 'BEACON'
   SubID: 0
@@ -99,7 +99,7 @@ GlassSubID: 15
   RightInTo: ''
   KeepOpen: true
 'Button5':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§aClose §8]'
   Material: 'FEATHER'
   SubID: 0

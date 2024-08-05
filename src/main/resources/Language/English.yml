@@ -3,7 +3,7 @@ PlaceHolders:
   RefreshTime: 5
   WorldName: "§a<PlayerName>§a's home"
   OtherWorldAlias:
-    - "World, §e Main City World"
+    - "World, §e CharmRealm City World"
     - "world/DIM-1, §d Hell World"
     - "world/DIM1, §d End World"
   NotIsHome: "Non-Home"

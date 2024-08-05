@@ -5,6 +5,7 @@ name: "%img_offset_-8%:menu_realms_presets:"
 # The use of dynamic title needs protocol API
 dynamic-title:
   enable: true
+  rowFontImageWidth: " "
   rowFontImage:
     - "\uE614"
     - "\uE615"

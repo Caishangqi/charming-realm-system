@@ -67,7 +67,7 @@ VisitGuiLores:
 VisitSlogan: true
 
 'Button1':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a庄园系统§8]'
   Material: 'COMPASS'
   SubID: 0
@@ -83,7 +83,7 @@ VisitSlogan: true
   KeepOpen: true
   CustomModelData: 123456
 'Button2':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a创建领域§8]'
   Material: 'NETHER_STAR'
   SubID: 0
@@ -97,7 +97,7 @@ VisitSlogan: true
   KeepOpen: true
   CustomModelData: 123456
 'Button3':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a管理领域§8]'
   Material: 'BOOK'
   SubID: 0
@@ -124,7 +124,7 @@ VisitSlogan: true
   KeepOpen: true
   CustomModelData: 123456
 'Button4':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a访问领域§8]'
   Material: 'BEACON'
   SubID: 0
@@ -138,7 +138,7 @@ VisitSlogan: true
   KeepOpen: true
   CustomModelData: 123456
 'Button5':
-  InMenu: 'Main'
+  InMenu: 'CharmRealm'
   CustomName: '§8[§a关闭§8]'
   Material: 'FEATHER'
   SubID: 0
