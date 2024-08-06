@@ -128,7 +128,6 @@ public class CharmGUIBase implements InventoryHolder {
         this.owner = player;
         rendCustomGUI(player);
         player.openInventory(inventory);
-        onCustomGUIDisplay(player, this);
     }
 
     // this method is server side event that indicate server actively open

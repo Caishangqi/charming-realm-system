@@ -14,7 +14,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
@@ -23,8 +22,13 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     protected GUIButton selectedButton;
 
     /*============= Select Style ============*/
+    // The unit blank image that control the dynamic select slot font
     protected String rowFontImageWidth;
+    // The list of select frames in different y offset
     protected List<String> rowFontImage;
+    // The overall row select offset
+    protected String rowFontImageOffset;
+    // Keep track the select part title of the GUI
     protected String selectStyleTitleComponent;
     /*============= Select Style ============*/
 
@@ -49,17 +53,16 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
         super.onCustomGUIInitialize();
         selectedTemplate = getGUIConfig().getString("default-select");
 
-        System.out.println("onCustomGUIInitialize()");
-        System.out.println(getGUIConfig().getStringList("dynamic-title.rowFontImage"));
+        //System.out.println("onCustomGUIInitialize()");
+        //System.out.println(getGUIConfig().getStringList("dynamic-title.rowFontImage"));
 
         rowFontImage = getGUIConfig().getStringList("dynamic-title.rowFontImage");
+        rowFontImageOffset = getGUIConfig().getString("dynamic-title.rowFontImageOffset");
         rowFontImageWidth = getGUIConfig().getString("dynamic-title.rowFontImageWidth");
-
-        System.out.println(rowFontImage);
 
         selectedButton = getDefaultSelectedButton();
         setButtonSelect(selectedButton, true);
-        System.out.println("selected button index is: " + selectedButton.getSlotIndex());
+        //System.out.println("selected button index is: " + selectedButton.getSlotIndex());
 
 
     }
@@ -129,12 +132,17 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     public boolean onUpdateGUITitle() {
         updateSelectTypeButtonStyle();
 
+        // we get the central display image
+        String centralDisplayImage = getCentralDisplayImage();
+        String centralDisplayImageOffSet = selectedButton.getButtonConfig().getString("templateImageOffset");
+        String parsedCentralDisplayImage = Color.parseColorAndPlaceholder(owner, "&f" + centralDisplayImageOffSet + centralDisplayImage);
+
         // we use this method to confirm selectStyleString
         // and let gui title append this
         clickSelect(selectedButton);
         String parsedSelectStyleTitle = Color.parseColorAndPlaceholder(owner, selectStyleTitleComponent);
         // append parsedSelectStyleTitle to original saved gui title from config
-        String updatedGUITitle = getTitle() + parsedSelectStyleTitle;
+        String updatedGUITitle = getTitle() + parsedCentralDisplayImage + parsedSelectStyleTitle;
 
         // we do not append select style to gui title because it is client data
         // we want the updatedGUITitle only send to client not saved by server side
@@ -143,6 +151,10 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
         CharmRealm.titleHandler.setPlayerInventoryTitle(getOwner(), components);
 
         return super.onUpdateGUITitle();
+    }
+
+    protected String getCentralDisplayImage() {
+        return selectedButton.getButtonConfig().getString("template-image");
     }
 
     protected void updateSelectTypeButtonStyle() {
@@ -155,12 +167,11 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
 
     /**
      * @param player
-     * @param targetGUI
      */
     @Override
-    public void onCustomGUIOpen(Player player, CharmGUIBase targetGUI) {
-        super.onCustomGUIOpen(player, targetGUI);
-        // Addition update that ensure the selection is selected
+    public void open(Player player) {
+        super.open(player);
+        // After open we update title by sending package
         onUpdateGUITitle();
     }
 
@@ -187,24 +198,24 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
     @Override
     public void clickSelect(GUIButton clickedComponents) {
 
-        System.out.println("clickSelect()");
+        //System.out.println("clickSelect()");
         int clickedComponentsSlotIndex = clickedComponents.getSlotIndex();
         int[] indexToRowCol = indexToRowCol(clickedComponentsSlotIndex);
 
         // suppose i clicked 40 (index)
         // to row and col is [4,4]
 
-        System.out.println(Arrays.toString(indexToRowCol));
-        System.out.println(getGUIConfig().getStringList("dynamic-title.rowFontImage"));
-        System.out.println(rowFontImage);
+        //System.out.println(Arrays.toString(indexToRowCol));
+        //System.out.println(getGUIConfig().getStringList("dynamic-title.rowFontImage"));
+        //System.out.println(rowFontImage);
         // we choose the vertical offset font image
         String verticalOffsetFont = rowFontImage.get(indexToRowCol[0]);
 
         // we calculate how many horizontal offset String
-        String horizontalOffset = rowFontImageWidth.repeat(indexToRowCol[1]);
+        String horizontalDynamicOffset = rowFontImageWidth.repeat(indexToRowCol[1]);
 
         // then we update GUI Create selection part of UI
-        selectStyleTitleComponent = horizontalOffset + "&f" + verticalOffsetFont;
+        selectStyleTitleComponent = rowFontImageOffset + horizontalDynamicOffset + "&f" + verticalOffsetFont;
 
     }
 

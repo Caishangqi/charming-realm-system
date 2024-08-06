@@ -5,7 +5,12 @@ name: "%img_offset_-8%:menu_realms_presets:"
 # The use of dynamic title needs protocol API
 dynamic-title:
   enable: true
-  rowFontImageWidth: " "
+  # Width decide automatically offset varies from slot select
+  rowFontImageWidth: "%img_offset_18%"
+  # Font image offset shift left or right the entire row base offset
+  rowFontImageOffset: "%img_offset_-124%"
+  # per row select frame image, normally you should set the Offset in the section rowFontImageOffset but you could also
+  # add to the font image like "%img_offset_-124%\uE614" both okay :) , this part is for sake of convenience and organized
   rowFontImage:
     - "\uE614"
     - "\uE615"
@@ -34,7 +39,11 @@ items:
   worldType1:
     type: WORLD_CREATE
     template: template_forest
-    display-image: ""
+    # The template preview image you want to display in the panel
+    template-image: "\uE623"
+    # The offset of template preview image, you can also leave this blank and fill template-image "%img_offset_-130%\uE623", this part is for sake of
+    # convenience and organized
+    templateImageOffset: "%img_offset_-130%"
     # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
     slot: 38
 
@@ -64,7 +73,8 @@ items:
   worldType2:
     type: WORLD_CREATE
     template: template_desert
-    display-image: ""
+    template-image: "\uE621"
+    templateImageOffset: "%img_offset_-130%"
     slot: 39
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -83,7 +93,8 @@ items:
   worldType3:
     type: WORLD_CREATE
     template: template_jungle
-    display-image: ""
+    template-image: "\uE622"
+    templateImageOffset: "%img_offset_-130%"
     slot: 40
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -102,7 +113,8 @@ items:
   worldType4:
     type: WORLD_CREATE
     template: template_taiga
-    display-image: ""
+    template-image: "\uE627"
+    templateImageOffset: "%img_offset_-130%"
     slot: 41
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -121,7 +133,8 @@ items:
   worldType5:
     type: WORLD_CREATE
     template: template_grove
-    display-image: ""
+    template-image: "\uE625"
+    templateImageOffset: "%img_offset_-130%"
     slot: 42
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
