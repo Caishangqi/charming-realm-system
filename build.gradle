@@ -93,6 +93,7 @@ dependencies {
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "5.0.0";
     implementation "net.kyori:adventure-api:4.17.0"
     implementation "net.kyori:adventure-text-minimessage:4.17.0"
+    implementation 'org.reflections:reflections:0.10.2'
 
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
     // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-healthchecks

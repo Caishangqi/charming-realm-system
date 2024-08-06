@@ -151,7 +151,7 @@ items:
         name: "#94c643雪林(已選擇)"
         lore: [ ]
   confirm:
-    type: DEFAULT
+    type: CONFIRM
     slot: 49
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0

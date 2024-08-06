@@ -154,7 +154,7 @@ public class CharmGUIBase implements InventoryHolder {
         ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
 
         switch (getButtonType(ButtonKey)) {
-            case DEFAULT:
+            case DEFAULT, CONFIRM:
                 return new BaseButtonFactory(buttonConfig).createButton(this);
             case WORLD_CREATE:
                 return new WorldCreateButtonFactory(buttonConfig).createButton(this);

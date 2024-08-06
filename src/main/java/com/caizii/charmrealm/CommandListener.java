@@ -345,6 +345,13 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 return false;
             }
         }
+        if (args.length == 1 && args[0].equalsIgnoreCase("cleartask")) {
+            if (sender instanceof Player) {
+                CharmRealm.realmGeneratorManager.cleanAllTasks();
+                sender.sendMessage("§8[§6CharmRealms§8] §7正在清除所有运行中的世界创建任务...");
+                return false;
+            }
+        }
         if (args.length == 1 &&
                 args[0].equalsIgnoreCase("reload")) {
             if (sender instanceof Player) {
@@ -5456,6 +5463,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
             List<String> list = new ArrayList<>();
+            list.add("cleartask");
             list.add("open");
             list.add("setting");
             list.add("create");

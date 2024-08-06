@@ -84,16 +84,14 @@ public class BaseButtonFactory implements ButtonFactory {
 
             buttons.add(button);
         }
-
         return buttons;
-
-
     }
 
     // base button factory will not contain any event
     @Override
     public void injectEvent(GUIButton button) {
-        button.setHandler(null);
+        button.setHandler(event -> {
+        });
     }
 
     public List<Integer> convertRange(String range) {

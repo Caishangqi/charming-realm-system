@@ -1,18 +1,22 @@
 package com.caizii.charmrealm.gui.realms;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.events.RealmCreateEvent;
 import com.caizii.charmrealm.gui.components.CharmGUIBase;
 import com.caizii.charmrealm.gui.components.ClickSelectGUI;
 import com.caizii.charmrealm.gui.components.GUIButton;
 import com.caizii.charmrealm.gui.factory.BaseItemStackFactory;
 import com.caizii.charmrealm.gui.types.EButtonType;
+import com.caizii.charmrealm.task.RealmCreateTask;
 import com.caizii.charmrealm.utils.Color;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,6 +123,16 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
                     getOwner().sendMessage("Selected template: " + buttonSavedTemplate);
                     onUpdateGUITitle();
                 }
+                break;
+            case CONFIRM:
+                if (!CharmRealm.realmGeneratorManager.isPlayerAlreadyCreated(getOwner().getUniqueId())) {
+                    RealmCreateTask realmCreateTask = new RealmCreateTask(getOwner().getUniqueId(), selectedTemplate);
+                    Bukkit.getServer().getPluginManager().callEvent(new RealmCreateEvent(realmCreateTask));
+                } else {
+                    String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7任务创建失败 原因 §7<§c{0}§7>", "玩家不能创建重复任务");
+                    Bukkit.getConsoleSender().sendMessage(string);
+                }
+
         }
     }
 

@@ -4,6 +4,9 @@ import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.handler.CharmGUIHandler;
 import com.caizii.charmrealm.gui.handler.TitleHandler;
 import com.caizii.charmrealm.listeners.*;
+import com.caizii.charmrealm.listeners.createtask.RealmCreateListener;
+import com.caizii.charmrealm.manager.PluginEventManager;
+import com.caizii.charmrealm.manager.RealmGeneratorManager;
 import com.caizii.charmrealm.placeHolder.API;
 import com.caizii.charmrealm.placeHolder.RealmExpansion;
 import com.caizii.charmrealm.utils.*;
@@ -37,9 +40,16 @@ import java.util.Properties;
 public class CharmRealm extends JavaPlugin implements PluginMessageListener {
 
     public static JavaPlugin JavaPlugin;
-    public static CharmGUIHandler charmGuiHandler;
+    public static CharmRealm plugin;
+
+    public final static String packageName = CharmRealm.class.getPackageName();
+
     private ProtocolManager protocolManager;
     public static TitleHandler titleHandler;
+    public static PluginEventManager pluginEventManager;
+    public static CharmGUIHandler charmGuiHandler;
+    public static RealmGeneratorManager realmGeneratorManager;
+
     public static Variable pluginVariable;
 
     public static boolean isOSLinux() {
@@ -48,6 +58,10 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         if (os != null && os.toLowerCase().indexOf("linux") > -1)
             return true;
         return false;
+    }
+
+    public static CharmRealm getInstance() {
+        return plugin;
     }
 
     @Override
@@ -113,11 +127,21 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
     public void onEnable() {
 
         JavaPlugin = this;
+        plugin = this;
+
+
+        // 注册指定包下的事件监听器
+        pluginEventManager = new PluginEventManager();
+        Bukkit.getPluginManager().registerEvents(new RealmCreateListener(), this);
+        //pluginEventManager.registerEventsByPackage("createtask");
+
         charmGuiHandler = new CharmGUIHandler();
         titleHandler = new TitleHandler(this, protocolManager);
         titleHandler.registerPacketListeners();
 
-        getLogger().info("CharmRealm is enabling...");
+        realmGeneratorManager = new RealmGeneratorManager(5);
+
+
         pluginVariable = new Variable();
         init();
 
