@@ -57,11 +57,10 @@ public class RealmGeneratorManager {
                     Bukkit.getScheduler().runTask(CharmRealm.getInstance(), () -> {
                         Bukkit.getPluginManager().callEvent(new RealmFinishCreateEvent(task));
                     });
-
-
                     realmCreateTasks.remove(playerId);
                     String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7清除任务创建者 <§a{0}§7> §7创建的任务, 原因 <§a{1}§7>", Bukkit.getOfflinePlayer(playerId).getName(), "已完成");
                     Bukkit.getConsoleSender().sendMessage(string);
+                    executeNextTask();
                 }
             });
 

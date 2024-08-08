@@ -5421,6 +5421,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                     p.teleport(world.getSpawnLocation());
                     FirstBorderShaped.ShapeBorder(world);
                     if (CharmRealm.JavaPlugin.getConfig().getBoolean("ClearInventoryBeforeCreate")) {
