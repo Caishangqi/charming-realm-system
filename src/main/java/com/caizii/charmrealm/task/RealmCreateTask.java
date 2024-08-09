@@ -66,7 +66,21 @@ public class RealmCreateTask implements Runnable {
         }
 
         CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + playerName);
-        createdWorld = Bukkit.createWorld(creator);
+
+        Bukkit.getScheduler().runTask(CharmRealm.getInstance(), () -> {
+            createdWorld = Bukkit.createWorld(creator);
+            // 确保世界创建完成后再调用 setWorldGameRule 和 syncRealmConfig
+            if (createdWorld != null) {
+                setWorldGameRule();
+                syncRealmConfig();
+                String message = MessageFormat.format("              §8(§a+§8) §7世界 <§a{0}§7> 已成功创建!", createdWorld.getName());
+                Bukkit.getConsoleSender().sendMessage(message);
+            } else {
+                // 处理世界创建失败的情况
+                String errorMessage = "              §8(§c-§8) §7世界创建失败!";
+                Bukkit.getConsoleSender().sendMessage(errorMessage);
+            }
+        });
 
     }
 
@@ -78,13 +92,6 @@ public class RealmCreateTask implements Runnable {
         Bukkit.getConsoleSender().sendMessage(string);
 
         generateWorldFile();
-
-        // Set the game rule
-        setWorldGameRule();
-
-        // Update the player realm config
-        syncRealmConfig();
-
     }
 
     private void setWorldGameRule() {
@@ -136,7 +143,7 @@ public class RealmCreateTask implements Runnable {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月 d号, yyyy年", Locale.CHINESE);
             String formattedDate = currentDate.format(formatter);
 
-            playerRealmConfig.set("playerOwnerUUID", playerUUID);
+            playerRealmConfig.set("playerOwnerUUID", playerUUID.toString());
             playerRealmConfig.set("CreatedDate", formattedDate);
             playerRealmConfig.set("Public", Boolean.valueOf(CharmRealm.JavaPlugin.getConfig().getBoolean("NormalPublic")));
             playerRealmConfig.set("pickup", Boolean.valueOf(CharmRealm.JavaPlugin.getConfig().getBoolean("NormalPVP")));

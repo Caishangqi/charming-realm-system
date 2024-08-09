@@ -119,6 +119,7 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
                 String buttonSavedTemplate = button.getButtonConfig().getString("template");
                 if (button != selectedButton) {
                     selectedButton = button;
+                    //selectedTemplate = button.getButtonConfig().getString("template");
                     setButtonSelect(selectedButton, true);
                     getOwner().sendMessage("Selected template: " + buttonSavedTemplate);
                     onUpdateGUITitle();
@@ -127,10 +128,12 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
             case CONFIRM:
                 if (!CharmRealm.realmGeneratorManager.isPlayerAlreadyCreated(getOwner().getUniqueId())) {
                     RealmCreateTask realmCreateTask = new RealmCreateTask(getOwner().getUniqueId(), selectedTemplate);
-                    Bukkit.getServer().getPluginManager().callEvent(new RealmCreateEvent(realmCreateTask));
+                    Bukkit.getServer().getPluginManager().callEvent(new RealmCreateEvent(realmCreateTask, owner));
+                    close(owner);
                 } else {
                     String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7任务创建失败 原因 §7<§c{0}§7>", "玩家不能创建重复任务");
                     Bukkit.getConsoleSender().sendMessage(string);
+                    close(owner);
                 }
 
         }
@@ -193,6 +196,9 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
         if (button.getButtonType() != EButtonType.WORLD_CREATE) {
             throw new RuntimeException("Invalid button type: " + button.getButtonType());
         }
+
+        if (bIsSelect)
+            selectedTemplate = button.getButtonConfig().getString("template");
 
         ConfigurationSection styleItem = bIsSelect
                 ? button.getButtonConfig().getConfigurationSection("selected-style.item")

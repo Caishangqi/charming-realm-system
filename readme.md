@@ -21,18 +21,23 @@
 通过菜单，玩家可以管理领域的合作建设者，并选择是否将自己的领域展示到公共菜单中，以便其他玩家访问。**→** [原帖地址](https://www.minebbs.com/resources/selfhomemain-1-7-10-1-21.8693/)
 
 
-
-
 <p align="center">
-<img alt="GitHub code size in bytes" src="https://github.com/user-attachments/assets/2893f69c-6c72-4927-8fa2-d8255635ca25">
+<img alt="Realm Select" src="https://github.com/user-attachments/assets/3222a075-5417-4175-9a28-2cc244f2e3fd">
 </p>
 <p align="center">
 领域导航菜单和领域选择列表
 </p>
 
+<p align="center">
+<img alt="Realm Create" src="https://github.com/user-attachments/assets/0ebe7793-5c1f-4a05-8622-7299f0bb5bbd">
+</p>
+<p align="center">
+领域创建菜单选择列表 - 动态Title
+</p>
+
 ## 特性
 
-> **加粗**内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件GUI的可读性和外观, 随着版本更新该插件会逐步修改其他可以改善的地方
+> *斜体* 内容代表原插件 `SelfHomeMain` 不同的特性,该版本目前更改原插件GUI的可读性和外观, 随着版本更新该插件会逐步修改其他可以改善的地方
 
 - 创建玩家独立世界 （支持超平坦 / 默认生存 / 及其他设定的模板地图）
 - 设置或更改独立世界出生点,信任名单
@@ -40,10 +45,13 @@
 - 同步世界时间功能,季节等
 - 设置独立世界最大的`Tiles`数量
 
-- **在指定菜单区域内展示玩家领域头像而非直接填充**
-- **给予按钮不同的样式基于当前页数**
-- **支持HexColor,使用 `#83c22d` 充当颜色代码**
-- **GUI中的物品名称现在也可以使用占位符**
+- *分离出模板创建领域时的磁盘拷贝操作至线程池*
+- *添加创建队列,默认5个线程处理玩家的领域创建请求*
+- *模板选择菜单,支持动态界面Title刷新,按钮选择时自定义样式*
+- *在指定菜单区域内展示玩家领域头像而非直接填充*
+- *给予按钮不同的样式基于当前页数*
+- *支持HexColor,使用 `#83c22d` 充当颜色代码*
+- *GUI中的物品名称现在也可以使用占位符*
   ...
 
 ## 占位符
@@ -62,16 +70,20 @@
 | 内容                      | 优先级 | 状态 |
 |:------------------------|:---:|:--:|
 | 更好看的UI适配                | 最高  | 📝 |
+| 插件热重载                   | 最高  | 📝 |
 | PlaceholderAPI 支持玩家头颅展示 | 正常  | ✅  |
 | 更改配置文件记录创建者和创建时间        | 正常  | ✅  |
 | 领域列表基于页数自动判断按钮样式        | 正常  | ✅  |
 | 领域权限修改,信任GUI重置          | 正常  | 📌 |
+| 将创建GUI的逻辑操作适配 bungee    | 最低  | 📌 |
 
 ## 待修复
 > 项目中关于Placeholder的代码有部分存在着问题,包括不限于在 `setPlaceholders(null, str);` 字符串时没有传入`OfflinePlayer`,这样做会导致绝大部分插件的Placeholder调用失败. 后续修复应该重写插件`API.java`中的分支并默认传入OfflinePlayer (无论何时)
 
-- 配置文件`GUI.yml 中,若按钮`CustomName`相同则会触发相同脚本 (严重)
-- 在GUI菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取在线/离线玩家实例
+- 插件无法进行热重载,出现 `Variable.java` 类的 `ClassNotDefine` `(错误)`
+- 跟进领域创建gui中的创建判断,玩家拥有领域时无法打开界面 `(跟进)`
+- 配置文件`GUI.yml` 中,若按钮 `CustomName` 相同则会触发相同脚本 `(以调查)`
+- 在gui菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取在线/离线玩家实例
 
 ## 协调系列 Homeward Species
 

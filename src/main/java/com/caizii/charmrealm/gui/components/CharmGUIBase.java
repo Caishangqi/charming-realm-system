@@ -130,6 +130,10 @@ public class CharmGUIBase implements InventoryHolder {
         player.openInventory(inventory);
     }
 
+    public void close(Player player) {
+        player.closeInventory();
+    }
+
     // this method is server side event that indicate server actively open
     // the gui for player, but not guarantee player will receive GUI
     public void onCustomGUIOpen(Player player, CharmGUIBase targetGUI) {
