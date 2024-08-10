@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
 
 @Getter
 @Setter
@@ -67,20 +68,31 @@ public class RealmCreateTask implements Runnable {
 
         CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + playerName);
 
+        // 计时锁, 默认分配 1 主线程创建完毕世界后让锁打开
+        // 继续执行该线程的后续操作
+        final CountDownLatch latch = new CountDownLatch(1);
+
         Bukkit.getScheduler().runTask(CharmRealm.getInstance(), () -> {
             createdWorld = Bukkit.createWorld(creator);
-            // 确保世界创建完成后再调用 setWorldGameRule 和 syncRealmConfig
+
             if (createdWorld != null) {
-                setWorldGameRule();
-                syncRealmConfig();
-                String message = MessageFormat.format("              §8(§a+§8) §7世界 <§a{0}§7> 已成功创建!", createdWorld.getName());
+                String message = MessageFormat.format("§8(§a+§8) §7世界 <§a{0}§7> 已成功创建!", createdWorld.getName());
                 Bukkit.getConsoleSender().sendMessage(message);
+                latch.countDown();  // 世界创建成功，继续执行任务
             } else {
-                // 处理世界创建失败的情况
-                String errorMessage = "              §8(§c-§8) §7世界创建失败!";
+                String errorMessage = "§8(§c-§8) §7世界创建失败!";
                 Bukkit.getConsoleSender().sendMessage(errorMessage);
             }
         });
+
+        try {
+            latch.await();  // 等待世界创建完成
+            setWorldGameRule();
+            syncRealmConfig();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            e.printStackTrace();
+        }
 
     }
 
@@ -94,14 +106,14 @@ public class RealmCreateTask implements Runnable {
         generateWorldFile();
     }
 
-    private void setWorldGameRule() {
+    public void setWorldGameRule() {
         createdWorld.setGameRuleValue("keepInventory", "false");
         createdWorld.setGameRuleValue("doMobSpawning", "true");
         createdWorld.setGameRuleValue("mobGriefing", "false");
         createdWorld.setGameRuleValue("doFireTick", "false");
     }
 
-    private void syncRealmConfig() {
+    public void syncRealmConfig() {
         File playerRealmConfigFile = new File(CharmRealm.pluginVariable.Tempf, playerName + ".yml");
         if (!playerRealmConfigFile.exists()) {
             try {

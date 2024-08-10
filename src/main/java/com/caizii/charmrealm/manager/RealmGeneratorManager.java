@@ -49,6 +49,7 @@ public class RealmGeneratorManager {
             threadPoolExecutor.execute(() -> {
                 try {
                     task.run();
+
                     Bukkit.getScheduler().runTask(CharmRealm.getInstance(), () -> {
                         Bukkit.getPluginManager().callEvent(new RealmFinishCreateEvent(task));
                     });
