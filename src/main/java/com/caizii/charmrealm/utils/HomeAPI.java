@@ -1,6 +1,7 @@
 package com.caizii.charmrealm.utils;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.library.RealmCreateLibrary;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -36,7 +37,8 @@ public class HomeAPI {
     }
 
     public static Home getHome(String name) {
-        name = name.replace(CharmRealm.pluginVariable.world_prefix, "");
+
+        name = RealmCreateLibrary.getRealmYMLFileName(name);
         if (!Util.CheckIsHome(name)) {
             boolean has_been_join = false;
             if (CharmRealm.pluginVariable.bungee) {

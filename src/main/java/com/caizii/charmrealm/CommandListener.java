@@ -3,6 +3,7 @@ package com.caizii.charmrealm;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
+import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.utils.*;
 import com.caizii.charmrealm.worldborder.WBControl;
 import com.comphenix.protocol.utility.StreamSerializer;
@@ -32,6 +33,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -65,6 +67,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
         if (!cmd.getName().equalsIgnoreCase("realm"))
             return false;
+        if (cmd.getName().equalsIgnoreCase("realm") && args.length == 0) {
+            if (sender instanceof Player) {
+                Bukkit.dispatchCommand(sender, "realm open visit");
+            }
+            return false;
+        }
         if (CharmRealm.JavaPlugin.getConfig().getBoolean("DisableFunctionButTeleport") && CharmRealm.pluginVariable.bungee) {
             if (sender instanceof Player) {
                 final Player player = (Player) sender;
@@ -341,7 +349,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("setup")) {
             if (sender instanceof Player) {
-                CharmRealm.charmGuiHandler.openGUI(new RealmGUICreate((Player) sender));
+                if (!RealmCreateLibrary.IsPlayerHasRealm((Player) sender))
+                    CharmRealm.charmGuiHandler.openGUI(new RealmGUICreate((Player) sender));
+                else sender.sendMessage("§7你已经有一个领域了,请先重置领域在使用该指令");
                 return false;
             }
         }
@@ -809,7 +819,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 MySQL.removePlayer(args[1]);
                 sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("WorldConfigHasBeenDeleted"));
             } else {
-                File f2 = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(args[1])) + ".yml");
+                File f2 = new File(CharmRealm.pluginVariable.Tempf, RealmCreateLibrary.getRealmYMLFileName(args[1]) + ".yml");
                 if (f2.exists()) {
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("WorldConfigHasBeenDeleted"));
                     f2.delete();
@@ -2767,13 +2777,18 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 File f2 = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(p.getName())) + ".yml");
                 if (f2.exists() || has_been_join) {
                     if (!what_has_been_join.equalsIgnoreCase("")) {
-                        World world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
+                        World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         if (world == null) {
-                            WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
-                            CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
-                            Bukkit.createWorld(creator);
+
+                            String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", what_has_been_join, "该世界不存在");
+                            Bukkit.getConsoleSender().sendMessage(string);
+                            return false;
+
+                            //WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
+                            //CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
+                            //Bukkit.createWorld(creator);
                         }
-                        world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
+                        world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         Location loc = world.getSpawnLocation();
                         loc = Util.getNotAir(loc);
                         File tp_set = new File(CharmRealm.pluginVariable.Tempf,
@@ -2785,13 +2800,18 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         loc = Util.getNotAir(loc);
                         p.teleport(loc);
                     } else {
-                        World world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
+                        World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         if (world == null) {
-                            WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
-                            CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
-                            Bukkit.createWorld(creator);
+
+                            String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", p.getName(), "该世界不存在");
+                            Bukkit.getConsoleSender().sendMessage(string);
+                            return false;
+
+                            //WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
+                            //CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
+                            //Bukkit.createWorld(creator);
                         }
-                        world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
+                        world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         Location loc = world.getSpawnLocation();
                         loc = Util.getNotAir(loc);
                         File tp_set = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(p.getName())) + ".yml");
@@ -3470,11 +3490,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 File f = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(args[1])) + ".yml");
                 if (f.exists()) {
                     YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(f);
-                    World world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
-                    WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
+
+                    World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(args[1]));
+                    WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(args[1]));
                     CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
                     Bukkit.createWorld(creator);
-                    world = Bukkit.getWorld(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
+                    world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(args[1]));
                     Location loc = world.getSpawnLocation();
                     loc = Util.getNotAir(loc);
                     loc.setX(yamlConfiguration.getDouble("X"));

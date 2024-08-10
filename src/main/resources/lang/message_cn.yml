@@ -1,0 +1,11 @@
+prefix:
+message:
+  realm:
+    create:
+    delete:
+    reset:
+    invite:
+  help:
+console:
+  realm:
+    create:

@@ -1,6 +1,7 @@
 package com.caizii.charmrealm.task;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.utils.FirstBorderShaped;
 import com.caizii.charmrealm.utils.Util;
 import lombok.Getter;
@@ -47,7 +48,7 @@ public class RealmCreateTask implements Runnable {
 
         String worldTemplatePath = (CharmRealm.pluginVariable.worldFinal) + worldTemplate;
         worldFile = new File(String.valueOf(CharmRealm.pluginVariable.single_server_gen) + CharmRealm.pluginVariable.world_prefix);
-        String createdWorldPath = worldFile.getPath() + CharmRealm.pluginVariable.file_loc_prefix + playerName;
+        String createdWorldPath = worldFile.getPath() + "/" + RealmCreateLibrary.createdFolderName + "/" +  playerName;
 
         File exist_template_file = new File(worldTemplatePath);
         if (!exist_template_file.exists()) {
@@ -59,7 +60,7 @@ public class RealmCreateTask implements Runnable {
         }
 
         Util.copyDir(worldTemplatePath, createdWorldPath);
-        WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + playerName);
+        WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + RealmCreateLibrary.createdFolderName + "/" + playerName);
         if (CharmRealm.JavaPlugin.getConfig().getBoolean("generateStructures")) {
             creator.generateStructures(true);
         } else {
@@ -76,12 +77,13 @@ public class RealmCreateTask implements Runnable {
             createdWorld = Bukkit.createWorld(creator);
 
             if (createdWorld != null) {
-                String message = MessageFormat.format("§8(§a+§8) §7世界 <§a{0}§7> 已成功创建!", createdWorld.getName());
+                String message = MessageFormat.format("              §8(§a+§8) §7世界 <§a{0}§7> 已成功创建!", createdWorld.getName());
                 Bukkit.getConsoleSender().sendMessage(message);
                 latch.countDown();  // 世界创建成功，继续执行任务
             } else {
-                String errorMessage = "§8(§c-§8) §7世界创建失败!";
+                String errorMessage = "              §8(§c-§8) §7世界创建失败!";
                 Bukkit.getConsoleSender().sendMessage(errorMessage);
+                Thread.currentThread().interrupt();
             }
         });
 
@@ -107,10 +109,12 @@ public class RealmCreateTask implements Runnable {
     }
 
     public void setWorldGameRule() {
-        createdWorld.setGameRuleValue("keepInventory", "false");
+        createdWorld.setGameRuleValue("keepInventory", "true");
         createdWorld.setGameRuleValue("doMobSpawning", "true");
         createdWorld.setGameRuleValue("mobGriefing", "false");
         createdWorld.setGameRuleValue("doFireTick", "false");
+        String message = MessageFormat.format("              §8(§a+§8) §7世界 <§a{0}§7> 已设置默认 GameRule", createdWorld.getName());
+        Bukkit.getConsoleSender().sendMessage(message);
     }
 
     public void syncRealmConfig() {
@@ -206,9 +210,9 @@ public class RealmCreateTask implements Runnable {
             }
 
             FirstBorderShaped.ShapeBorder(createdWorld);
+            String message = MessageFormat.format("              §8(§a+§8) §7领域 <§a{0}§7> 的配置文件同步已同步至 §aplayerdata§7 中", createdWorld.getName());
+            Bukkit.getConsoleSender().sendMessage(message);
         }
-
-
     }
 
     public void terminateTask() {

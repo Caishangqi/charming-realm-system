@@ -2,6 +2,7 @@ package com.caizii.charmrealm.utils;
 
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.Redis;
+import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import de.tr7zw.nbtapi.NBTItem;
@@ -127,6 +128,7 @@ public class Util {
   }
   
   public static boolean CheckIsHome(String name) {
+    name = RealmCreateLibrary.getRealmYMLFileName(name);
     if (CharmRealm.pluginVariable.list_home.contains(name.replace(CharmRealm.pluginVariable.world_prefix, "")))
       return true; 
     return false;
