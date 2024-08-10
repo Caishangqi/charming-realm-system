@@ -23,6 +23,9 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
+import static com.caizii.charmrealm.library.RealmConfigLibrary.getTemplatePath;
+import static com.caizii.charmrealm.library.RealmCreateLibrary.createdFolderName;
+
 @Getter
 @Setter
 public class RealmCreateTask implements Runnable {
@@ -46,9 +49,11 @@ public class RealmCreateTask implements Runnable {
 
     private void generateWorldFile() {
 
-        String worldTemplatePath = (CharmRealm.pluginVariable.worldFinal) + worldTemplate;
+        // TODO: pack into method
+        String worldTemplatePath = getTemplatePath(worldTemplate);
+        //System.out.println(worldTemplatePath);
         worldFile = new File(String.valueOf(CharmRealm.pluginVariable.single_server_gen) + CharmRealm.pluginVariable.world_prefix);
-        String createdWorldPath = worldFile.getPath() + "/" + RealmCreateLibrary.createdFolderName + "/" +  playerName;
+        String createdWorldPath = worldFile.getPath() + "/" + createdFolderName + "/" + playerName;
 
         File exist_template_file = new File(worldTemplatePath);
         if (!exist_template_file.exists()) {
@@ -60,7 +65,7 @@ public class RealmCreateTask implements Runnable {
         }
 
         Util.copyDir(worldTemplatePath, createdWorldPath);
-        WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + RealmCreateLibrary.createdFolderName + "/" + playerName);
+        WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + createdFolderName + "/" + playerName);
         if (CharmRealm.JavaPlugin.getConfig().getBoolean("generateStructures")) {
             creator.generateStructures(true);
         } else {

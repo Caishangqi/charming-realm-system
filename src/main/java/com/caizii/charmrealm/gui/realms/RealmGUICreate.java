@@ -7,6 +7,7 @@ import com.caizii.charmrealm.gui.components.ClickSelectGUI;
 import com.caizii.charmrealm.gui.components.GUIButton;
 import com.caizii.charmrealm.gui.factory.BaseItemStackFactory;
 import com.caizii.charmrealm.gui.types.EButtonType;
+import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.task.RealmCreateTask;
 import com.caizii.charmrealm.utils.Color;
@@ -127,9 +128,8 @@ public class RealmGUICreate extends CharmGUIBase implements ClickSelectGUI {
                 }
                 break;
             case CONFIRM:
-
                 if (RealmCreateLibrary.IsPlayerHasRealm(getOwner())) {
-                    getOwner().sendMessage("§7你已经拥有一个领域,如果要创建新的领域请进行重置");
+                    getOwner().sendMessage(RealmConfigLibrary.getLangString("message.realm.create.AlreadyHasRealm"));
                     return;
                 }
 

@@ -3,6 +3,7 @@ package com.caizii.charmrealm;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
+import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.utils.*;
 import com.caizii.charmrealm.worldborder.WBControl;
@@ -37,6 +38,8 @@ import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import static com.caizii.charmrealm.library.RealmConfigLibrary.getLangString;
 
 public class CommandListener implements CommandExecutor, TabExecutor {
     public void invite_guoqi(final Player p) {
@@ -253,12 +256,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         }
                     return false;
                 }
-                if (args.length == 1 && (
+                /*if (args.length == 1 && (
                         args[0].equalsIgnoreCase("Open") || args[0].equalsIgnoreCase("Menu"))) {
                     MainGui gui = new MainGui(player);
                     player.openInventory(gui.getInventory());
                     return false;
-                }
+                }*/
                 if (args.length == 2 &&
                         args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("CharmRealm")) {
                     MainGui gui = new MainGui(player);
@@ -351,7 +354,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             if (sender instanceof Player) {
                 if (!RealmCreateLibrary.IsPlayerHasRealm((Player) sender))
                     CharmRealm.charmGuiHandler.openGUI(new RealmGUICreate((Player) sender));
-                else sender.sendMessage("§7你已经有一个领域了,请先重置领域在使用该指令");
+                else sender.sendMessage(getLangString("message.realm.create.AlreadyHasRealm"));
                 return false;
             }
         }
@@ -2779,14 +2782,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     if (!what_has_been_join.equalsIgnoreCase("")) {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         if (world == null) {
-
-                            String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", what_has_been_join, "该世界不存在");
-                            Bukkit.getConsoleSender().sendMessage(string);
-                            return false;
-
-                            //WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
-                            //CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
-                            //Bukkit.createWorld(creator);
+                            WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
+                            CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
+                            Bukkit.createWorld(creator);
                         }
                         world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         Location loc = world.getSpawnLocation();
@@ -2802,14 +2800,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     } else {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         if (world == null) {
-
-                            String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", p.getName(), "该世界不存在");
-                            Bukkit.getConsoleSender().sendMessage(string);
-                            return false;
-
-                            //WorldCreator creator = new WorldCreator(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
-                            //CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
-                            //Bukkit.createWorld(creator);
+                            WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(p));
+                            CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
+                            Bukkit.createWorld(creator);
                         }
                         world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         Location loc = world.getSpawnLocation();
@@ -2823,9 +2816,11 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         p.teleport(loc);
                     }
                 } else {
-                    String temp = CharmRealm.pluginVariable.Lang_YML.getString("NoCreateOrJoin");
+                    String temp = getLangString("message.realm.create.CanNotFindWorld");
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("HeadLineTtitle"));
                     sender.sendMessage(temp);
+                    String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", p.getName(), "该世界不存在");
+                    Bukkit.getConsoleSender().sendMessage(string);
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("BottomLineTtitle"));
                     return false;
                 }
@@ -5486,7 +5481,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         if (args.length == 1) {
             List<String> list = new ArrayList<>();
             list.add("cleartask");
-            list.add("open");
+            //list.add("open");
             list.add("setting");
             list.add("create");
             list.add("look");

@@ -3,6 +3,7 @@ package com.caizii.charmrealm.listeners.createtask;
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.events.RealmCreateEvent;
 import com.caizii.charmrealm.events.RealmFinishCreateEvent;
+import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.task.RealmCreateTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,7 +21,7 @@ public class RealmCreateListener implements Listener {
             @Override
             public void run() {
                 Player instigator = realmCreateEvent.getInstigator();
-                instigator.sendMessage("§7我們正在生成你的領域, 請稍等片刻...");
+                instigator.sendMessage(RealmConfigLibrary.getLangString("message.realm.create.ProcessRealmCreation"));
                 RealmCreateTask realmCreateTask = realmCreateEvent.getRealmCreateTask();
                 CharmRealm.realmGeneratorManager.addRealmCreateTask(realmCreateTask.getPlayerUUID(), realmCreateTask);
             }
@@ -36,7 +37,7 @@ public class RealmCreateListener implements Listener {
                 RealmCreateTask realmCreateTask = realmFinishCreateEvent.getRealmCreateTask();
                 Player player = Bukkit.getPlayer(realmCreateTask.getPlayerUUID());
                 if (player != null) {
-                    player.sendMessage("§7你的領域已創建完畢,輸入指令 §6/realm h §7來訪問");
+                    player.sendMessage(RealmConfigLibrary.getLangString("message.realm.create.FinishRealmCreation"));
                 }
                 String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§a+§8) §7任务 <§a{0}§7> §7已完成 创建者 §7<§a{1}§7>", realmCreateTask.getTaskUUID(), Bukkit.getOfflinePlayer(realmCreateTask.getPlayerUUID()).getName());
                 Bukkit.getConsoleSender().sendMessage(string);

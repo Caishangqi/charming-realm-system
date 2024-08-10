@@ -8,7 +8,7 @@ import java.io.File;
 public final class RealmCreateLibrary {
 
     public static final String createdFolderName = "playerrealms";
-    public final String templateFolderName = "template";
+    public static final String templateFolderName = "template";
 
     private RealmCreateLibrary() {
         throw new IllegalStateException("Utility class");

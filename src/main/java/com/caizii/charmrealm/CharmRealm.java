@@ -3,8 +3,10 @@ package com.caizii.charmrealm;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.handler.CharmGUIHandler;
 import com.caizii.charmrealm.gui.handler.TitleHandler;
+import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.listeners.*;
 import com.caizii.charmrealm.listeners.createtask.RealmCreateListener;
+import com.caizii.charmrealm.manager.PluginConfigManager;
 import com.caizii.charmrealm.manager.PluginEventManager;
 import com.caizii.charmrealm.manager.RealmGeneratorManager;
 import com.caizii.charmrealm.placeHolder.API;
@@ -49,6 +51,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
     public static PluginEventManager pluginEventManager;
     public static CharmGUIHandler charmGuiHandler;
     public static RealmGeneratorManager realmGeneratorManager;
+    public static PluginConfigManager pluginConfigManager;
 
     public static Variable pluginVariable;
 
@@ -103,9 +106,11 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
             if (!is_jump)
                 temp.save();
         }
+        Bukkit.getConsoleSender().sendMessage("\n");
         Bukkit.getConsoleSender().sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("AutoSaveSuccess"));
         getServer().getPluginManager().disablePlugin((Plugin) this);
         Bukkit.getConsoleSender().sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("DisablePlugin"));
+        Bukkit.getConsoleSender().sendMessage("\n");
     }
 
     private boolean setupEconomy() {
@@ -129,6 +134,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         JavaPlugin = this;
         plugin = this;
 
+        RealmConfigLibrary.displayPluginBanner();
 
         // 注册指定包下的事件监听器
         pluginEventManager = new PluginEventManager();
@@ -140,6 +146,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         titleHandler.registerPacketListeners();
 
         realmGeneratorManager = new RealmGeneratorManager(5);
+        pluginConfigManager = new PluginConfigManager();
 
 
         pluginVariable = new Variable();
@@ -308,8 +315,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         }
         if (Bukkit.getVersion().toString().contains("Banner") && Bukkit.getVersion().toString().toUpperCase().contains("1.20.1"))
             CharmRealm.pluginVariable.world_prefix = "CharmRealm/";
-        JavaPlugin.saveDefaultConfig();
-        JavaPlugin.reloadConfig();
+        pluginConfigManager.initConfig();
         if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_setting.yml")).exists())
             JavaPlugin.saveResource("guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_setting.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_create.yml")).exists())

@@ -2,6 +2,11 @@ prefix:
 message:
   realm:
     create:
+      AlreadyHasRealm: "§7你已经有一个领域了,请先重置领域在使用该指令"
+      ProcessRealmCreation: "§7我們正在生成你的領域, 請稍等片刻..."
+      FinishRealmCreation: "§7你的領域已創建完畢,輸入指令 §6/realm h §7來訪問"
+    join:
+      CanNotFindWorld: "§7你還沒有領域,請輸入 §6/realm setup §7來創建"
     delete:
     reset:
     invite:
