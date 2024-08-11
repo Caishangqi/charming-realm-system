@@ -7,6 +7,7 @@ import com.caizii.charmrealm.utils.MySQL;
 import com.caizii.charmrealm.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
+import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -40,24 +41,24 @@ public class PlayerTeleportListener implements Listener {
     if (!Util.CheckIsHome(event.getTo().getWorld().getName().replace(CharmRealm.pluginVariable.world_prefix, "")))
       return; 
     if (!CharmRealm.JavaPlugin.getConfig().getBoolean("KeepInventory")) {
-      event.getTo().getWorld().setGameRuleValue("keepInventory", "false");
+      event.getTo().getWorld().setGameRule(GameRule.KEEP_INVENTORY, false);
     } else if (CharmRealm.JavaPlugin.getConfig().getBoolean("KeepInventory")) {
-      event.getTo().getWorld().setGameRuleValue("keepInventory", "true");
+      event.getTo().getWorld().setGameRule(GameRule.KEEP_INVENTORY, true);
     } 
     if (!CharmRealm.JavaPlugin.getConfig().getBoolean("doMobSpawning")) {
-      event.getTo().getWorld().setGameRuleValue("doMobSpawning", "false");
+      event.getTo().getWorld().setGameRule(GameRule.DO_MOB_SPAWNING, false);
     } else if (CharmRealm.JavaPlugin.getConfig().getBoolean("doMobSpawning")) {
-      event.getTo().getWorld().setGameRuleValue("doMobSpawning", "true");
+      event.getTo().getWorld().setGameRule(GameRule.DO_MOB_SPAWNING, true);
     } 
     if (!CharmRealm.JavaPlugin.getConfig().getBoolean("mobGriefing")) {
-      event.getTo().getWorld().setGameRuleValue("mobGriefing", "false");
+      event.getTo().getWorld().setGameRule(GameRule.MOB_GRIEFING, false);
     } else if (CharmRealm.JavaPlugin.getConfig().getBoolean("mobGriefing")) {
-      event.getTo().getWorld().setGameRuleValue("mobGriefing", "true");
+      event.getTo().getWorld().setGameRule(GameRule.MOB_GRIEFING, true);
     } 
     if (!CharmRealm.JavaPlugin.getConfig().getBoolean("doFireTick")) {
-      event.getTo().getWorld().setGameRuleValue("doFireTick", "false");
+      event.getTo().getWorld().setGameRule(GameRule.DO_FIRE_TICK, false);
     } else if (CharmRealm.JavaPlugin.getConfig().getBoolean("doFireTick")) {
-      event.getTo().getWorld().setGameRuleValue("doFireTick", "true");
+      event.getTo().getWorld().setGameRule(GameRule.DO_FIRE_TICK, true);
     } 
     final String name = world.getName().replace(CharmRealm.pluginVariable.world_prefix, "");
     Player p = event.getPlayer();

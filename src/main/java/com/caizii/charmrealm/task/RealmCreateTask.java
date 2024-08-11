@@ -1,15 +1,11 @@
 package com.caizii.charmrealm.task;
 
 import com.caizii.charmrealm.CharmRealm;
-import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.utils.FirstBorderShaped;
 import com.caizii.charmrealm.utils.Util;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -114,10 +110,12 @@ public class RealmCreateTask implements Runnable {
     }
 
     public void setWorldGameRule() {
-        createdWorld.setGameRuleValue("keepInventory", "true");
-        createdWorld.setGameRuleValue("doMobSpawning", "true");
-        createdWorld.setGameRuleValue("mobGriefing", "false");
-        createdWorld.setGameRuleValue("doFireTick", "false");
+        createdWorld.setGameRule(GameRule.DO_MOB_SPAWNING, true);
+        createdWorld.setGameRule(GameRule.KEEP_INVENTORY, true);
+        createdWorld.setGameRule(GameRule.MOB_GRIEFING, false);
+        createdWorld.setGameRule(GameRule.DO_FIRE_TICK, false);
+        createdWorld.setDifficulty(Difficulty.HARD);
+
         String message = MessageFormat.format("              §8(§a+§8) §7世界 <§a{0}§7> 已设置默认 GameRule", createdWorld.getName());
         Bukkit.getConsoleSender().sendMessage(message);
     }

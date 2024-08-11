@@ -240,7 +240,7 @@ public class Util {
   }
   
   public static Boolean Check(Player p, String name) {
-    name = name.replace(CharmRealm.pluginVariable.world_prefix, "");
+    name = RealmCreateLibrary.getRealmYMLFileName(name);
     boolean result = false;
     File f = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(name)) + ".yml");
     if (CheckOwnerAndManagerAndOP(p, name).booleanValue())

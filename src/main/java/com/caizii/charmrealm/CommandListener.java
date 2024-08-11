@@ -262,7 +262,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     player.openInventory(gui.getInventory());
                     return false;
                 }*/
-                if (args.length == 2 &&
+                /*if (args.length == 2 &&
                         args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("CharmRealm")) {
                     MainGui gui = new MainGui(player);
                     player.openInventory(gui.getInventory());
@@ -309,7 +309,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     ManageGui5 gui = new ManageGui5(player);
                     player.openInventory(gui.getInventory());
                     return false;
-                }
+                }*/
                 if (args.length == 2 &&
                         args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Visit")) {
                     VisitGui gui = new VisitGui();
@@ -360,6 +360,10 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("cleartask")) {
             if (sender instanceof Player) {
+                if (!sender.isOp()) {
+                    sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("PlayerIsNotOperator"));
+                    return false;
+                }
                 CharmRealm.realmGeneratorManager.cleanAllTasks();
                 sender.sendMessage("§8[§6CharmRealms§8] §7正在清除所有运行中的世界创建任务...");
                 return false;
@@ -1202,60 +1206,60 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("PlayerHasIllegalName"));
             return false;
         }
-        if (args.length == 1 && (
-                args[0].equalsIgnoreCase("Open") || args[0].equalsIgnoreCase("Menu"))) {
-            MainGui gui = new MainGui(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("CharmRealm")) {
-            MainGui gui = new MainGui(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Check")) {
-            CheckGui gui = new CheckGui(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Create")) {
-            CreateGui gui = new CreateGui(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage")) {
-            ManageGui gui = new ManageGui(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage2")) {
-            ManageGui2 gui = new ManageGui2(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage3")) {
-            ManageGui3 gui = new ManageGui3(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage4")) {
-            ManageGui4 gui = new ManageGui4(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
-        if (args.length == 2 &&
-                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage5")) {
-            ManageGui5 gui = new ManageGui5(p);
-            p.openInventory(gui.getInventory());
-            return false;
-        }
+//        if (args.length == 1 && (
+//                args[0].equalsIgnoreCase("Open") || args[0].equalsIgnoreCase("Menu"))) {
+//            MainGui gui = new MainGui(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("CharmRealm")) {
+//            MainGui gui = new MainGui(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Check")) {
+//            CheckGui gui = new CheckGui(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Create")) {
+//            CreateGui gui = new CreateGui(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage")) {
+//            ManageGui gui = new ManageGui(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage2")) {
+//            ManageGui2 gui = new ManageGui2(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage3")) {
+//            ManageGui3 gui = new ManageGui3(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage4")) {
+//            ManageGui4 gui = new ManageGui4(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
+//        if (args.length == 2 &&
+//                args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage5")) {
+//            ManageGui5 gui = new ManageGui5(p);
+//            p.openInventory(gui.getInventory());
+//            return false;
+//        }
         if (args.length == 2 &&
                 args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Visit")) {
             VisitGui gui = new VisitGui();
@@ -2338,7 +2342,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             p.openInventory(giftgui.getInventory());
             return false;
         }
-        if (args.length == 1 &&
+        /*if (args.length == 1 &&
                 args[0].equalsIgnoreCase("Icon")) {
             if (!p.hasPermission("SelfHome.Icon")) {
                 p.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("NoPermissionSetIcon"));
@@ -2378,7 +2382,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             }
             p.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("SetIconSuccess"));
             return false;
-        }
+        }*/
         if (args.length == 5 && args[0].equalsIgnoreCase("AddBlockLimit")) {
             if (sender instanceof Player) {
                 Player te = (Player) sender;
@@ -2816,7 +2820,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         p.teleport(loc);
                     }
                 } else {
-                    String temp = getLangString("message.realm.create.CanNotFindWorld");
+                    String temp = getLangString("message.realm.join.CanNotFindWorld");
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("HeadLineTtitle"));
                     sender.sendMessage(temp);
                     String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§c-§8) §7找不到对应 <§a{0}§7> 的领域! 原因 <§c{1}§7>", p.getName(), "该世界不存在");
@@ -3073,8 +3077,8 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         return false;
                     }
                     World world = p.getWorld();
-                    if (world.getGameRuleValue("doMobSpawning").equalsIgnoreCase("false")) {
-                        world.setGameRuleValue("doMobSpawning", "true");
+                    if (world.getGameRuleValue(GameRule.DO_MOB_SPAWNING) == false) {
+                        world.setGameRule(GameRule.DO_MOB_SPAWNING,true);
                         if (CharmRealm.pluginVariable.hook_multiverseCore) {
                             MultiverseCore mvcore = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
                             MVWorldManager mv_m = mvcore.getMVWorldManager();
@@ -5479,11 +5483,31 @@ public class CommandListener implements CommandExecutor, TabExecutor {
 
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1) {
+
             List<String> list = new ArrayList<>();
-            list.add("cleartask");
-            //list.add("open");
+
+            if (sender.isOp()) {
+                list.add("cleartask");
+                list.add("sun");
+                list.add("rain");
+                list.add("night");
+                list.add("day");
+                list.add("lockTime");
+                list.add("lockWeather");
+                list.add("reload");
+                list.add("mobs");
+                list.add("nbt");
+                list.add("admin");
+                list.add("forceDelete");
+                list.add("MobSpawn");
+                list.add("GameMode");
+                list.add("icon");
+                list.add("info");
+                list.add("setBiome");
+                list.add("setWorldBiome");
+            }
+
             list.add("setting");
-            list.add("create");
             list.add("look");
             list.add("tpSet");
             list.add("invite");
@@ -5499,28 +5523,12 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             list.add("remove");
             list.add("check");
             list.add("rank");
-            list.add("sun");
-            list.add("rain");
-            list.add("night");
-            list.add("day");
-            list.add("lockTime");
-            list.add("lockWeather");
-            list.add("reload");
-            list.add("mobs");
-            list.add("nbt");
-            list.add("admin");
             list.add("wholedelete");
-            list.add("forceDelete");
+            list.add("setup");
             list.add("unLoad");
-            list.add("MobSpawn");
-            list.add("GameMode");
             list.add("flower");
             list.add("popularity");
             list.add("gift");
-            list.add("icon");
-            list.add("info");
-            list.add("setBiome");
-            list.add("setWorldBiome");
             return list;
         }
         if (args.length == 2) {

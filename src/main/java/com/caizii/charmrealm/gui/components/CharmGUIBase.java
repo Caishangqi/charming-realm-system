@@ -162,6 +162,8 @@ public class CharmGUIBase implements InventoryHolder {
                 return new BaseButtonFactory(buttonConfig).createButton(this);
             case WORLD_CREATE:
                 return new WorldCreateButtonFactory(buttonConfig).createButton(this);
+            case MANAGE_MEMBER:
+                return new BaseButtonFactory(buttonConfig).createButton(this);
             default:
                 throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
         }
