@@ -19,6 +19,7 @@ public class PluginConfigManager {
 
     public FileConfiguration mainConfig;
     public FileConfiguration languageConfig;
+    public FileConfiguration realmConfig;
 
 
     public PluginConfigManager() {
@@ -53,11 +54,13 @@ public class PluginConfigManager {
 
     private static void copyDefaultConfig() {
         RealmConfigLibrary.checkAndSaveResource("lang" + fileSeparator + "message_cn.yml");
+        RealmConfigLibrary.checkAndSaveResource("realm.yml");
         RealmConfigLibrary.checkAndSaveResource("template");
     }
 
     private void loadDefaultConfig() {
         languageConfig = RealmConfigLibrary.loadConfig("lang" + fileSeparator + "message_cn.yml");
+        realmConfig = RealmConfigLibrary.loadConfig("realm.yml");
     }
 
 }

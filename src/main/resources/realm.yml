@@ -1,0 +1,7 @@
+state:
+  out-date:
+    color: "#c8c8c8"
+    tag: ""
+  error:
+    color: "#c8c8c8"
+    tag: ""

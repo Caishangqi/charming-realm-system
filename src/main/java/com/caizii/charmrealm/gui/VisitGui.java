@@ -24,6 +24,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.caizii.charmrealm.library.RealmVisualLibrary.getPlayerRealmDisplayName;
+
 public class VisitGui implements InventoryHolder {
     // CharmRealm.pluginVariable.GUI_YML.getString("VisitTitle")
     public Inventory MainGui = Bukkit.createInventory(this, 54, Color.parseColorAndPlaceholder(null, CharmRealm.pluginVariable.GUI_YML.getString("VisitTitle")));
@@ -229,7 +231,7 @@ public class VisitGui implements InventoryHolder {
                     tempstr = PlaceholderAPI.setPlaceholders(null, tempstr);
                 } catch (Exception exception) {
                 }
-                lores.add(Color.parseColorAndPlaceholder(null,tempstr));
+                lores.add(Color.parseColorAndPlaceholder(null, tempstr));
             }
             for (int c = 0; c < CharmRealm.pluginVariable.GUI_YML.getStringList(String.valueOf(temp) + ".Enchants").size(); c++) {
                 String[] tempenc = ((String) CharmRealm.pluginVariable.GUI_YML.getStringList(String.valueOf(temp) + ".Enchants").get(c)).split(",");
@@ -261,16 +263,35 @@ public class VisitGui implements InventoryHolder {
             }
             ItemStack skull = new ItemStack(Material.valueOf(CharmRealm.pluginVariable.GUI_YML.getString("HeadMaterial")), 1, (short) SkullType.PLAYER.ordinal());
             SkullMeta player_SKULL = (SkullMeta) skull.getItemMeta();
-            Player temp_p = Bukkit.getPlayer(home.getName().replace(CharmRealm.pluginVariable.world_prefix, ""));
-            if (CharmRealm.pluginVariable.GUI_YML.getBoolean("EnableSkullSkin") && temp_p != null)
-                try {
-                    player_SKULL.setOwningPlayer((OfflinePlayer) temp_p);
-                } catch (Exception exception) {
-                }
-            /* 这里必须传入玩家实例让luck-perms区调用,如果你想使用其他插件的 placeholders */
-            String PlaceholderParsed = PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(home.getPlayerOwnerUUID()), (String.valueOf(CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix")) + home.getName().replace(CharmRealm.pluginVariable.world_prefix, "") + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
+            Player player = Bukkit.getPlayer(home.getName().replace(CharmRealm.pluginVariable.world_prefix, ""));
 
-            player_SKULL.setDisplayName(Color.parseColor(PlaceholderParsed));
+
+            if (CharmRealm.pluginVariable.GUI_YML.getBoolean("EnableSkullSkin")) {
+                if (player != null) {
+                    // player online
+                    player_SKULL.setOwningPlayer(player);
+                } else {
+                    // player offline
+                    OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(home.getName().replace(CharmRealm.pluginVariable.world_prefix, ""));
+                    player_SKULL.setOwningPlayer(offlinePlayer);
+                }
+            }
+
+            /* 这里必须传入玩家实例让luck-perms区调用,如果你想使用其他插件的 placeholders */
+            if (player != null) {
+
+                // player online
+                String PlaceholderParsed = PlaceholderAPI.setPlaceholders(Bukkit.getOfflinePlayer(home.getPlayerOwnerUUID()), (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + home.getName().replace(CharmRealm.pluginVariable.world_prefix, "") + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
+                player_SKULL.setDisplayName(Color.parseColor(PlaceholderParsed));
+
+            } else {
+                
+                OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(home.getName().replace(CharmRealm.pluginVariable.world_prefix, ""));
+                String playerRealmDisplayName = getPlayerRealmDisplayName(offlinePlayer.getName());
+                player_SKULL.setDisplayName(playerRealmDisplayName);
+
+            }
+
             List<String> lores = new ArrayList<>();
             for (int i = 0; i < CharmRealm.pluginVariable.GUI_YML.getStringList("VisitGuiLores").size() - 1; i++) {
                 String str = Color.parseColor(((String) CharmRealm.pluginVariable.GUI_YML.getStringList("VisitGuiLores").get(i)).replace("<Name>", home.getName().replace(CharmRealm.pluginVariable.world_prefix, "")));

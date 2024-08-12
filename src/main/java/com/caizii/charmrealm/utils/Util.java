@@ -204,8 +204,9 @@ public class Util {
     } 
   }
   
-  public static Boolean CheckOwnerAndManagerAndOP(Player p, String name) {
+  public static Boolean CheckOwnerAndManagerAndOP(Player p, String temp_name) {
     boolean return_boolean = false;
+    String name = RealmCreateLibrary.getRealmYMLFileName(temp_name);
     if (p.getName().equalsIgnoreCase(name))
       return_boolean = true; 
     if (p.isOp())
@@ -272,6 +273,7 @@ public class Util {
   }
   
   public static Boolean CheckBlack(Player p, String name) {
+    name = RealmCreateLibrary.getRealmYMLFileName(name);
     boolean check = false;
     if (CharmRealm.pluginVariable.bungee) {
       List<String> ops = MySQL.getDenys(name);

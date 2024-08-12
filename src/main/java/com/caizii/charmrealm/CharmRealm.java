@@ -139,6 +139,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         // 注册指定包下的事件监听器
         pluginEventManager = new PluginEventManager();
         Bukkit.getPluginManager().registerEvents(new RealmCreateListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), this);
         //pluginEventManager.registerEventsByPackage("createtask");
 
         charmGuiHandler = new CharmGUIHandler();

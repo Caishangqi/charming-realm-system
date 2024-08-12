@@ -5505,6 +5505,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 list.add("info");
                 list.add("setBiome");
                 list.add("setWorldBiome");
+                list.add("unLoad");
+                list.add("drop");
+                list.add("pickup");
             }
 
             list.add("setting");
@@ -5515,8 +5518,6 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             list.add("deny");
             list.add("add");
             list.add("pvp");
-            list.add("drop");
-            list.add("pickup");
             list.add("public");
             list.add("setspawn");
             list.add("kick");
@@ -5525,7 +5526,6 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             list.add("rank");
             list.add("wholedelete");
             list.add("setup");
-            list.add("unLoad");
             list.add("flower");
             list.add("popularity");
             list.add("gift");

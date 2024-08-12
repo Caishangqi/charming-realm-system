@@ -112,7 +112,7 @@ public class Variable {
   
   public  HashMap<String, String> wait_to_command = new HashMap<>();
   
-  public  String Soil = "SOIL";
+  public  String Soil = "FARMLAND";
   
   public  HashMap<String, List<String>> popularity_list = new HashMap<>();
   

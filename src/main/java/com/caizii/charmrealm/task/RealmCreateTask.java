@@ -1,10 +1,12 @@
 package com.caizii.charmrealm.task;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.utils.Color;
 import com.caizii.charmrealm.utils.FirstBorderShaped;
 import com.caizii.charmrealm.utils.Util;
 import lombok.Getter;
 import lombok.Setter;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -144,11 +146,14 @@ public class RealmCreateTask implements Runnable {
             playerRealmConfig.createSection("locktime");
             playerRealmConfig.createSection("lockweather");
             playerRealmConfig.createSection("time");
+            playerRealmConfig.createSection("saves");
+            playerRealmConfig.createSection("saves.display-name");
 
             if (!playerRealmConfig.contains("NowID"))
                 playerRealmConfig.set("NowID", Integer.valueOf(0));
             if (!playerRealmConfig.contains("MaxID"))
                 playerRealmConfig.set("MaxID", Integer.valueOf(1000));
+
             try {
                 playerRealmConfig.save(CharmRealm.pluginVariable.f_log);
             } catch (IOException e2) {
@@ -171,6 +176,10 @@ public class RealmCreateTask implements Runnable {
             playerRealmConfig.set("locktime", Boolean.valueOf(false));
             playerRealmConfig.set("time", Integer.valueOf(0));
             playerRealmConfig.set("lockweather", Boolean.valueOf(false));
+
+            // save the style of realm name because when player is offline, lp can not fetch player data
+            String parsedRealmDisplayName = Color.parseColorAndPlaceholder(creator, (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + creator.getName() + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
+            playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
 
             int set_level = 1;
             for (int i = CharmRealm.JavaPlugin.getConfig().getInt("MaxLevel"); i > 0; i--) {

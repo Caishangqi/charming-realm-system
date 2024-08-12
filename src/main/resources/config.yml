@@ -50,7 +50,7 @@ BorderShape: 'Square'
 UpdateClearOld: false
 
 #耕地材质选择,1.16.5-Cat填写FARMLAND
-SoilType: "SOIL"
+SoilType: "FARMLAND"
 
 #是否开启高度限制
 EnableHeightLimit: true
