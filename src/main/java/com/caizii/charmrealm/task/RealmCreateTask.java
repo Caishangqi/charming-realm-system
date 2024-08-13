@@ -6,7 +6,6 @@ import com.caizii.charmrealm.utils.FirstBorderShaped;
 import com.caizii.charmrealm.utils.Util;
 import lombok.Getter;
 import lombok.Setter;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -77,6 +76,8 @@ public class RealmCreateTask implements Runnable {
         final CountDownLatch latch = new CountDownLatch(1);
 
         Bukkit.getScheduler().runTask(CharmRealm.getInstance(), () -> {
+
+            Bukkit.broadcastMessage(CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.create.PerformanceWarningServer"));
             createdWorld = Bukkit.createWorld(creator);
 
             if (createdWorld != null) {

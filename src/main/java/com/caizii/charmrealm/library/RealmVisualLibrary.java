@@ -37,8 +37,16 @@ public final class RealmVisualLibrary {
         }
 
         String parsedRealmDisplayName = Color.parseColorAndPlaceholder(player, (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + player.getName() + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
-
+        if (playerRealmConfig.getString("saves.DisplayName").equalsIgnoreCase(parsedRealmDisplayName)) {
+            return;
+        }
         playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
+        try {
+            playerRealmConfig.save(playerRealmConfigFile);
+        } catch (Exception e) {
+            Bukkit.getLogger().log(Level.SEVERE, e.getMessage());
+        }
+
         Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域更新中完毕", playerName));
     }
 

@@ -2,11 +2,15 @@ prefix:
 message:
   realm:
     create:
+      PerformanceWarningServer: "§7服務器正在創建玩家領域,可能會有卡頓"
       AlreadyHasRealm: "§7你已经有一个领域了,请先重置领域在使用该指令"
       ProcessRealmCreation: "§7我們正在生成你的領域, 請稍等片刻..."
       FinishRealmCreation: "§7你的領域已創建完畢,輸入指令 §6/realm h §7來訪問"
     join:
       CanNotFindWorld: "§7你還沒有領域,請輸入 §6/realm setup §7來創建"
+    load:
+      PerformanceWarningClient: "§7正在加載你的領域,世界加載會對服務器產生負面影響"
+      PerformanceWarningServer: "§7服務器正在加載玩家領域,可能會有卡頓"
     delete:
     reset:
     invite:

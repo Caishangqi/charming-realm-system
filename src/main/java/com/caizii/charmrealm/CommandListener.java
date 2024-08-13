@@ -2786,6 +2786,13 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     if (!what_has_been_join.equalsIgnoreCase("")) {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         if (world == null) {
+
+                            String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                            String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                            // 播报性能影响
+                            Bukkit.broadcastMessage(pws);
+                            sender.sendMessage(pwc);
+
                             WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                             CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
                             Bukkit.createWorld(creator);
@@ -2804,6 +2811,13 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     } else {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         if (world == null) {
+
+                            String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                            String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                            // 播报性能影响
+                            Bukkit.broadcastMessage(pws);
+                            sender.sendMessage(pwc);
+
                             WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(p));
                             CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
                             Bukkit.createWorld(creator);
@@ -3491,6 +3505,15 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(f);
 
                     World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(args[1]));
+
+                    if (world == null) {
+                        String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                        String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                        // 播报性能影响
+                        Bukkit.broadcastMessage(pws);
+                        sender.sendMessage(pwc);
+                    }
+
                     WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(args[1]));
                     CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
                     Bukkit.createWorld(creator);
