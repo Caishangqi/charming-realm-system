@@ -3,7 +3,6 @@ package com.caizii.charmrealm;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
-import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.library.RealmCreateLibrary;
 import com.caizii.charmrealm.utils.*;
 import com.caizii.charmrealm.worldborder.WBControl;
@@ -2786,12 +2785,16 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     if (!what_has_been_join.equalsIgnoreCase("")) {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                         if (world == null) {
-
-                            String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
-                            String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
-                            // 播报性能影响
-                            Bukkit.broadcastMessage(pws);
-                            sender.sendMessage(pwc);
+                            Bukkit.getScheduler().runTaskAsynchronously(CharmRealm.JavaPlugin, new Runnable() {
+                                @Override
+                                public void run() {
+                                    String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                                    String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                                    // 播报性能影响
+                                    Bukkit.broadcastMessage(pws);
+                                    sender.sendMessage(pwc);
+                                }
+                            });
 
                             WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(what_has_been_join));
                             CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + what_has_been_join);
@@ -2811,13 +2814,16 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     } else {
                         World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(p));
                         if (world == null) {
-
-                            String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
-                            String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
-                            // 播报性能影响
-                            Bukkit.broadcastMessage(pws);
-                            sender.sendMessage(pwc);
-
+                            Bukkit.getScheduler().runTaskAsynchronously(CharmRealm.JavaPlugin, new Runnable() {
+                                @Override
+                                public void run() {
+                                    String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                                    String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                                    // 播报性能影响
+                                    Bukkit.broadcastMessage(pws);
+                                    sender.sendMessage(pwc);
+                                }
+                            });
                             WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(p));
                             CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + p.getName());
                             Bukkit.createWorld(creator);
@@ -3092,7 +3098,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     }
                     World world = p.getWorld();
                     if (world.getGameRuleValue(GameRule.DO_MOB_SPAWNING) == false) {
-                        world.setGameRule(GameRule.DO_MOB_SPAWNING,true);
+                        world.setGameRule(GameRule.DO_MOB_SPAWNING, true);
                         if (CharmRealm.pluginVariable.hook_multiverseCore) {
                             MultiverseCore mvcore = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
                             MVWorldManager mv_m = mvcore.getMVWorldManager();
@@ -3500,22 +3506,27 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("BottomLineTtitle"));
                 }
             } else {
-                File f = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(args[1])) + ".yml");
+                File f = new File(CharmRealm.pluginVariable.Tempf, args[1] + ".yml");
                 if (f.exists()) {
                     YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(f);
 
                     World world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(args[1]));
 
                     if (world == null) {
-                        String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
-                        String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
-                        // 播报性能影响
-                        Bukkit.broadcastMessage(pws);
-                        sender.sendMessage(pwc);
+                        Bukkit.getScheduler().runTaskAsynchronously(CharmRealm.JavaPlugin, new Runnable() {
+                            @Override
+                            public void run() {
+                                String pwc = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningClient");
+                                String pws = CharmRealm.pluginConfigManager.languageConfig.getString("message.realm.load.PerformanceWarningServer");
+                                // 播报性能影响
+                                Bukkit.broadcastMessage(pws);
+                                sender.sendMessage(pwc);
+                            }
+                        });
                     }
 
                     WorldCreator creator = new WorldCreator(RealmCreateLibrary.getRealmWorldPath(args[1]));
-                    CharmRealm.pluginVariable.create_list_home.add(String.valueOf(CharmRealm.pluginVariable.world_prefix) + args[1]);
+                    CharmRealm.pluginVariable.create_list_home.add(CharmRealm.pluginVariable.world_prefix + args[1]);
                     Bukkit.createWorld(creator);
                     world = Bukkit.getWorld(RealmCreateLibrary.getRealmWorldPath(args[1]));
                     Location loc = world.getSpawnLocation();
@@ -4403,8 +4414,9 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 p.sendMessage(tip);
                 return false;
             }
-            File f2 = new File(CharmRealm.pluginVariable.Tempf, String.valueOf(String.valueOf(p.getWorld().getName().replace(CharmRealm.pluginVariable.world_prefix, ""))) + ".yml");
-            if (Util.CheckOwnerAndManagerAndOP(p, p.getWorld().getName().replace(CharmRealm.pluginVariable.world_prefix, "")).booleanValue()) {
+
+            File f2 = new File(CharmRealm.pluginVariable.Tempf, RealmCreateLibrary.getRealmYMLFileName(p.getWorld().getName().replace(CharmRealm.pluginVariable.world_prefix, "")) + ".yml");
+            if (Util.CheckOwnerAndManagerAndOP(p, p.getWorld().getName().replace(CharmRealm.pluginVariable.world_prefix, ""))) {
                 if (args[1].equalsIgnoreCase(p.getName())) {
                     String temp = CharmRealm.pluginVariable.Lang_YML.getString("AddOwnerToTrust");
                     sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("HeadLineTtitle"));
@@ -4439,7 +4451,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                             sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("BottomLineTtitle"));
                         }
                     }
-                    if (!CheckSame.booleanValue()) {
+                    if (!CheckSame) {
                         if (save.size() + 1 > CharmRealm.JavaPlugin.getConfig().getInt("MaxJoin")) {
                             int max_player = CharmRealm.JavaPlugin.getConfig().getInt("MaxJoin");
                             for (int k = CharmRealm.JavaPlugin.getConfig().getInt("MaxJoin") * 3; k > CharmRealm.JavaPlugin

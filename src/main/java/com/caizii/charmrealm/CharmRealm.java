@@ -269,9 +269,6 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         init.init();
         if (JavaPlugin.getConfig().getBoolean("CheckUpdate"))
             CheckUpdate.checkUpdate();
-        Bukkit.getConsoleSender().sendMessage("§8[§6SelfHomeMain§8] §aAuthor - Tencent - QQ :  §d1242839141");
-        Bukkit.getConsoleSender().sendMessage("§8[§6CharmRealms§8] §aAuthor - Caizii 菜籽");
-
     }
 
     public static void init() {

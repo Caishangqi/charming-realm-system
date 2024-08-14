@@ -288,7 +288,7 @@ public class VisitGui implements InventoryHolder {
                 
                 OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(home.getName().replace(CharmRealm.pluginVariable.world_prefix, ""));
                 String playerRealmDisplayName = getPlayerRealmDisplayName(offlinePlayer.getName());
-                player_SKULL.setDisplayName(playerRealmDisplayName);
+                player_SKULL.setDisplayName(Color.parseColor(playerRealmDisplayName));
 
             }
 

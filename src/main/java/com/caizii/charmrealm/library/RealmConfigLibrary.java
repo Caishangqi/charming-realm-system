@@ -24,8 +24,7 @@ public final class RealmConfigLibrary {
     }
 
     public static String getTemplatePath(String templateName) {
-        String worldTemplatePath = (CharmRealm.pluginVariable.worldFinal) + RealmConfigLibrary.fileSeparator + RealmCreateLibrary.templateFolderName + RealmConfigLibrary.fileSeparator + templateName;
-        return worldTemplatePath;
+        return (CharmRealm.pluginVariable.worldFinal) + RealmConfigLibrary.fileSeparator + RealmCreateLibrary.templateFolderName + RealmConfigLibrary.fileSeparator + templateName;
     }
 
 

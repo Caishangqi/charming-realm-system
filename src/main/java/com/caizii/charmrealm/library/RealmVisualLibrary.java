@@ -15,39 +15,46 @@ import java.util.logging.Level;
 public final class RealmVisualLibrary {
 
     public static void updatePlayerRealmDisplayName(String playerName) {
-        File playerRealmConfigFile = new File(CharmRealm.pluginVariable.Tempf, playerName + ".yml");
-        if (!playerRealmConfigFile.exists()) {
-            throw new RuntimeException("无法找到玩家" + playerName + "的领域文件");
-        }
-        YamlConfiguration playerRealmConfig = YamlConfiguration.loadConfiguration(playerRealmConfigFile);
 
-        Player player = Bukkit.getPlayer(playerName);
+        Player player = Bukkit.getPlayer(playerName); // not suitable use in asynchronous because it can be null
+        String parsedRealmDisplayName = Color.parseColorAndPlaceholder(player, (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + player.getName() + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
 
-        if (!playerRealmConfig.contains("saves.DisplayName")) {
+        Bukkit.getScheduler().runTaskAsynchronously(CharmRealm.JavaPlugin, () -> {
+            File playerRealmConfigFile = new File(CharmRealm.pluginVariable.Tempf, playerName + ".yml");
+            if (!playerRealmConfigFile.exists()) {
+                throw new RuntimeException("无法找到玩家" + playerName + "的领域文件");
+            }
+            YamlConfiguration playerRealmConfig = YamlConfiguration.loadConfiguration(playerRealmConfigFile);
 
-            Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.DisplayName 创建中...", playerName));
-            playerRealmConfig.createSection("saves");
-            playerRealmConfig.createSection("saves.DisplayName");
+
+            if (!playerRealmConfig.contains("saves.DisplayName")) {
+
+                Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.DisplayName 创建中...", playerName));
+                playerRealmConfig.createSection("saves");
+                playerRealmConfig.createSection("saves.DisplayName");
+                try {
+                    playerRealmConfig.save(playerRealmConfigFile);
+                } catch (Exception e) {
+                    Bukkit.getLogger().log(Level.SEVERE, e.getMessage());
+                }
+
+            }
+
+
+            if (playerRealmConfig.getString("saves.DisplayName").equalsIgnoreCase(parsedRealmDisplayName)) {
+                return;
+            }
+            playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
             try {
                 playerRealmConfig.save(playerRealmConfigFile);
             } catch (Exception e) {
                 Bukkit.getLogger().log(Level.SEVERE, e.getMessage());
             }
 
-        }
+            Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域更新中完毕", playerName));
+        });
 
-        String parsedRealmDisplayName = Color.parseColorAndPlaceholder(player, (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + player.getName() + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
-        if (playerRealmConfig.getString("saves.DisplayName").equalsIgnoreCase(parsedRealmDisplayName)) {
-            return;
-        }
-        playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
-        try {
-            playerRealmConfig.save(playerRealmConfigFile);
-        } catch (Exception e) {
-            Bukkit.getLogger().log(Level.SEVERE, e.getMessage());
-        }
 
-        Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域更新中完毕", playerName));
     }
 
     public static void updatePlayerRealmDisplayName(UUID playerUUID) {
@@ -73,7 +80,7 @@ public final class RealmVisualLibrary {
             }
             return getPlayerDefaultRealmDisplayName(playerName);
         } else {
-            if (playerRealmConfig.getConfigurationSection("saves.DisplayName").getKeys(false).isEmpty())
+            if (playerRealmConfig.getConfigurationSection("saves").getKeys(false).isEmpty())
                 return getPlayerDefaultRealmDisplayName(playerName);
             return playerRealmConfig.getString("saves.DisplayName");
         }
