@@ -56,6 +56,26 @@
 - *GUI中的物品名称现在也可以使用占位符*
   ...
 
+## 权限系统重置
+目前正在重构权限系统,包含的5个基础权限组为 `Owner 所有者`, `Operator 管理者`,`Member 成员`,和 `Visitor 访问者` 以及 `Banned 被封禁` 
+
+| 名称         | 建造 | 邀请 | 封禁 | 访问 | 设置可见性 |    最大晋升    | 设置出生点 |
+|------------|:--:|----|:--:|----|:-----:|:----------:|:-----:|
+| `Owner`    | ✅  | ✅  | ✅  | ✅  |   ✅   | `Operator` |   ✅   |
+| `Operator` | ✅  | ✅  | ✅  | ✅  |   ✅   |  `Member`  |   ✅   |
+| `Member`   | ✅  | ❌  | ❌  | ✅  |   ❌   |   `None`   |   ❌   |
+| `Visitor`  | ❌  | ❌  | ❌  | ✅  |   ❌   |   `None`   |   ❌   |
+| `Banned`   | ❌  | ❌  | ❌  | ❌  |   ❌   |   `None`   |   ❌   |
+
+- 在领域主界面中你可以**右键**头颅图标打开该领域的设置面板 (如果你有权限的话),**左键**则打开你自己的领域设置面板 (如果有的话)
+- 使用指令 `/realm invite/remove/ban <玩家名称> from <所有者名称>` 操作指定领域玩家`邀请`/`移除`/`封禁`操作
+- 使用指令 `/realm invite/remove/ban <玩家名称>` 操作你的领域玩家`邀请`/`移除`/`封禁`操作
+- 当使用 `/realm invite` 后默认给予的权限是 `Member`, 若需要更改你需要去设置面板进行设置
+- 当使用 `/realm remove` 后该玩家的权限会变为 `Visitor`
+- 当使用 `/realm ban` 后该玩家的权限会变为 `Banned`
+
+>**危险行为**: 如果你希望你的 `Operator` 可以将其他成员的权限也提升至 `Operator` 则可以打开设置面板并启用面板中的 `Enable perm proliferation` 允许管理员 *权限增生*. 只不过不建议这样做
+
 ## 占位符
 
 > 当前注册的占位符标识有2个分别是:`SelfHomeMain`和`realm`,这里只说明模块 `realm`
@@ -90,14 +110,6 @@
 - 跟进领域创建gui中的创建判断,玩家拥有领域时无法打开界面 `(已修复)`
 - 配置文件`GUI.yml` 中,若按钮 `CustomName` 相同则会触发相同脚本 `(以弃用)`
 - 在gui菜单的物品lore中不支持调用luck-perms插件的占位符因为这些占位符需要读取在线/离线玩家实例 `(使用静态文本实现)`
-
-## 协调系列 Homeward Species
-
-| [Homeward Cooking 协调烹饪](https://github.com/Caishangqi/homeward-plugin-cooking)     | Caishangqi     | 1.18.2     |
-|------------------------------------------------------------------------------------|----------------|------------|
-| **[Homeward Brewing 协调酿造](https://github.com/Ba1oretto/Brewing)**                  | **Ba1oretto**  | **1.18.2** |
-| **[Homeward Libs 协调核心](https://github.com/Caishangqi/homeward-plugin-lib)**        | **Caishangqi** | **1.18.2** |
-| **[Homeward InfoBar 协调浮窗](https://github.com/Caishangqi/homeward-plugin-infobar)** | **Caishangqi** | **1.18.2** |
 
 ## 特别说明
 

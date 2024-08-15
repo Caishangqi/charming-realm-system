@@ -43,8 +43,6 @@ public final class RealmCreateLibrary {
         } else {
             return worldName;
         }
-
-
     }
 
     public static File getPlayerRealmYMLFile(Player player) {
