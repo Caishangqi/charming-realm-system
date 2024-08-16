@@ -54,7 +54,8 @@ public final class Logger {
                 break;
         }
 
-        Bukkit.getLogger().log(logLevel, prefix + " " + operateTabString + operate + message);
+        Bukkit.getConsoleSender().sendMessage(prefix + " " + operateTabString + operate + message);
+        //Bukkit.getLogger().log(logLevel, prefix + " " + operateTabString + operate + message);
     }
 
 }

@@ -39,6 +39,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import static com.caizii.charmrealm.utils.TimeAsync.cancelAsyncTime;
+
 public class CharmRealm extends JavaPlugin implements PluginMessageListener {
 
     public static JavaPlugin JavaPlugin;
@@ -106,6 +108,11 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
             if (!is_jump)
                 temp.save();
         }
+
+        realmGeneratorManager.cleanAllTasks();
+        realmGeneratorManager.shutdown();
+        TimeAsync.cancelAsyncTime();
+
         Bukkit.getConsoleSender().sendMessage("\n");
         Bukkit.getConsoleSender().sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("AutoSaveSuccess"));
         getServer().getPluginManager().disablePlugin((Plugin) this);
@@ -192,7 +199,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
             Bukkit.getPluginManager().registerEvents((Listener) new WorldInitListener(), (Plugin) this);
             Bukkit.getPluginManager().registerEvents((Listener) new FrameProtectListener(), (Plugin) this);
             if (JavaPlugin.getConfig().getBoolean("EnableAsnycTime"))
-                TimeAsync.asnycTime();
+                TimeAsync.asyncTime();
         }
         Bukkit.getPluginManager().registerEvents((Listener) new InventoryClickListener(), (Plugin) this);
         Bukkit.getPluginManager().registerEvents((Listener) new InventoryDragListener(), (Plugin) this);

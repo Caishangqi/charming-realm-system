@@ -29,6 +29,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class init implements Listener {
+
+    public static BukkitRunnable taskWorldBorder;
+    public static BukkitRunnable taskPopularityCal;
+
     public static void refreshWorldStatics(boolean broad) {
         CharmRealm.pluginVariable.list_home.clear();
         if (CharmRealm.pluginVariable.bungee) {
@@ -132,7 +136,7 @@ public class init implements Listener {
 
     public static void init() {
         if (CharmRealm.JavaPlugin.getConfig().getBoolean("BorderSwitch"))
-            (new BukkitRunnable() {
+            taskWorldBorder = new BukkitRunnable() {
                 public void run() {
                     for (World world : Bukkit.getWorlds()) {
                         if (!Util.CheckIsHome(world.getName().replace(CharmRealm.pluginVariable.world_prefix, "")))
@@ -157,8 +161,9 @@ public class init implements Listener {
                             }
                     }
                 }
-            }).runTaskTimer((Plugin) CharmRealm.JavaPlugin, 0L, 60L);
-        (new BukkitRunnable() {
+            };
+        taskWorldBorder.runTaskTimer((Plugin) CharmRealm.JavaPlugin, 0L, 60L);
+        taskPopularityCal = new BukkitRunnable() {
             public void run() {
                 Calendar cal = Calendar.getInstance();
                 int hour = cal.getTime().getHours();
@@ -169,7 +174,8 @@ public class init implements Listener {
                     CharmRealm.pluginVariable.flowers_list.clear();
                 }
             }
-        }).runTaskTimerAsynchronously((Plugin) CharmRealm.JavaPlugin, 0L, 20L);
+        };
+        taskPopularityCal.runTaskTimerAsynchronously((Plugin) CharmRealm.JavaPlugin, 0L, 20L);
         (new BukkitRunnable() {
             public void run() {
                 CharmRealm.pluginVariable.list_home.clear();

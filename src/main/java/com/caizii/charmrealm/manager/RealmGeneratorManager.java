@@ -2,6 +2,8 @@ package com.caizii.charmrealm.manager;
 
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.events.RealmFinishCreateEvent;
+import com.caizii.charmrealm.library.Logger;
+import com.caizii.charmrealm.library.OperateType;
 import com.caizii.charmrealm.task.RealmCreateTask;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 @Getter
 @Setter
@@ -67,9 +70,8 @@ public class RealmGeneratorManager {
     }
 
     public void cleanAllTasks() {
-        Bukkit.getConsoleSender().sendMessage("§8[§6CharmRealms§8] §8(§a!§8) §7清除所有任务中...");
+        Logger.log(false, true, Level.INFO, OperateType.CAUTION, "§7清除所有任务中...");
         realmCreateTasks.clear();
-        threadPoolExecutor.shutdownNow(); // Interrupt all running tasks
         shutdown();
         // Reinitialize the thread pool
         threadPoolExecutor = new ThreadPoolExecutor(3, threadPoolSize,
@@ -77,13 +79,14 @@ public class RealmGeneratorManager {
     }
 
     public void shutdown() {
+        Logger.log(false, true, Level.INFO, OperateType.REMOVE, "§7正在关闭领域生成器的线程...");
         threadPoolExecutor.shutdown();
         try {
             if (!threadPoolExecutor.awaitTermination(60, TimeUnit.SECONDS)) {
                 threadPoolExecutor.shutdownNow();
             }
         } catch (InterruptedException e) {
-            Bukkit.getConsoleSender().sendMessage("§8[§6CharmRealms§8] §8(§c!§8) §7清除所有任务超时,强制结束线程池!");
+            Logger.log(false, true, Level.INFO, OperateType.REMOVE, "§7清除所有任务超时,强制结束线程池!");
             threadPoolExecutor.shutdownNow();
             Thread.currentThread().interrupt();
         }
