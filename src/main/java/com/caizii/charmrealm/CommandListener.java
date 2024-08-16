@@ -345,14 +345,14 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
             if (sender instanceof Player) {
-                CharmRealm.charmGuiHandler.openGUI(new RealmGUISetting((Player) sender));
+                CharmRealm.charmGuiHandler.openGUI((Player) sender, RealmGUISetting.class);
                 return false;
             }
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("setup")) {
             if (sender instanceof Player) {
                 if (!RealmCreateLibrary.IsPlayerHasRealm((Player) sender))
-                    CharmRealm.charmGuiHandler.openGUI(new RealmGUICreate((Player) sender));
+                    CharmRealm.charmGuiHandler.openGUI((Player) sender, RealmGUICreate.class);
                 else sender.sendMessage(getLangString("message.realm.create.AlreadyHasRealm"));
                 return false;
             }

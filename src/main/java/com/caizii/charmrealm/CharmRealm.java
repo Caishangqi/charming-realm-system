@@ -39,8 +39,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-import static com.caizii.charmrealm.utils.TimeAsync.cancelAsyncTime;
-
 public class CharmRealm extends JavaPlugin implements PluginMessageListener {
 
     public static JavaPlugin JavaPlugin;

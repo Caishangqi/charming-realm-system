@@ -70,7 +70,7 @@ public class RealmGeneratorManager {
     }
 
     public void cleanAllTasks() {
-        Logger.log(false, true, Level.INFO, OperateType.CAUTION, "§7清除所有任务中...");
+        Logger.log(true, false, Level.INFO, OperateType.CAUTION, "§7清除所有任务中...");
         realmCreateTasks.clear();
         shutdown();
         // Reinitialize the thread pool
@@ -79,14 +79,14 @@ public class RealmGeneratorManager {
     }
 
     public void shutdown() {
-        Logger.log(false, true, Level.INFO, OperateType.REMOVE, "§7正在关闭领域生成器的线程...");
+        Logger.log(true, false, Level.INFO, OperateType.REMOVE, "§7正在关闭领域生成器的线程...");
         threadPoolExecutor.shutdown();
         try {
             if (!threadPoolExecutor.awaitTermination(60, TimeUnit.SECONDS)) {
                 threadPoolExecutor.shutdownNow();
             }
         } catch (InterruptedException e) {
-            Logger.log(false, true, Level.INFO, OperateType.REMOVE, "§7清除所有任务超时,强制结束线程池!");
+            Logger.log(true, false, Level.INFO, OperateType.REMOVE, "§7清除所有任务超时,强制结束线程池!");
             threadPoolExecutor.shutdownNow();
             Thread.currentThread().interrupt();
         }

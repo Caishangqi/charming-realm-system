@@ -22,7 +22,8 @@ public final class RealmVisualLibrary {
         Bukkit.getScheduler().runTaskAsynchronously(CharmRealm.JavaPlugin, () -> {
             File playerRealmConfigFile = new File(CharmRealm.pluginVariable.Tempf, playerName + ".yml");
             if (!playerRealmConfigFile.exists()) {
-                throw new RuntimeException("无法找到玩家" + playerName + "的领域文件");
+                Logger.log(true, false, Level.INFO, OperateType.REMOVE, "玩家" + playerName + "没有领域文件, 跳过保存");
+                return;
             }
             YamlConfiguration playerRealmConfig = YamlConfiguration.loadConfiguration(playerRealmConfigFile);
 

@@ -73,8 +73,7 @@ public class CharmGUIBase implements InventoryHolder {
     }
 
     public boolean onCustomGUIClose(Player player) {
-        player.closeInventory();
-        return player.isValid();
+        return true;
     }
 
     /*
@@ -131,6 +130,7 @@ public class CharmGUIBase implements InventoryHolder {
     }
 
     public void close(Player player) {
+        onCustomGUIClose(player);
         player.closeInventory();
     }
 
