@@ -1,0 +1,36 @@
+size: 45
+name: "%img_offset_-8%:menu_content_small:%img_offset_-177%:back-button-1:"
+# This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
+# The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
+matrix:
+  - "AAAAAAAAA"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "AAAAAAAAA"
+
+items:
+  #RESET_REALM
+  backButton:
+    type: INVENTORY
+    slot: 0
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "&7返回"
+      lore: []
+  manageBanned:
+    type: INVENTORY
+    slot: 40
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1011
+      name: "&4切换至封禁名单"
+      lore: []

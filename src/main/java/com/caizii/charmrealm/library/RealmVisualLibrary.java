@@ -3,8 +3,13 @@ package com.caizii.charmrealm.library;
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.utils.Color;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.SkullType;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +33,11 @@ public final class RealmVisualLibrary {
             YamlConfiguration playerRealmConfig = YamlConfiguration.loadConfiguration(playerRealmConfigFile);
 
 
-            if (!playerRealmConfig.contains("saves.DisplayName")) {
+            if (!playerRealmConfig.contains("saves.display-name")) {
 
-                Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.DisplayName 创建中...", playerName));
+                Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.display-name 创建中...", playerName));
                 playerRealmConfig.createSection("saves");
-                playerRealmConfig.createSection("saves.DisplayName");
+                playerRealmConfig.createSection("saves.display-name");
                 try {
                     playerRealmConfig.save(playerRealmConfigFile);
                 } catch (Exception e) {
@@ -42,10 +47,10 @@ public final class RealmVisualLibrary {
             }
 
 
-            if (playerRealmConfig.getString("saves.DisplayName").equalsIgnoreCase(parsedRealmDisplayName)) {
+            if (playerRealmConfig.getString("saves.display-name").equalsIgnoreCase(parsedRealmDisplayName)) {
                 return;
             }
-            playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
+            playerRealmConfig.set("saves.display-name", parsedRealmDisplayName);
             try {
                 playerRealmConfig.save(playerRealmConfigFile);
             } catch (Exception e) {
@@ -70,10 +75,10 @@ public final class RealmVisualLibrary {
             throw new RuntimeException("无法找到玩家" + playerName + "的领域文件");
         }
         YamlConfiguration playerRealmConfig = YamlConfiguration.loadConfiguration(playerRealmConfigFile);
-        if (!playerRealmConfig.contains("saves.DisplayName")) {
-            Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.DisplayName 等待下次更新", playerName));
+        if (!playerRealmConfig.contains("saves.display-name")) {
+            Logger.log(false, true, Level.WARNING, OperateType.ADD, MessageFormat.format("玩家 <§a{0}§7> 的领域文件不存在saves.display-name 等待下次更新", playerName));
             playerRealmConfig.createSection("saves");
-            playerRealmConfig.createSection("saves.DisplayName");
+            playerRealmConfig.createSection("saves.display-name");
             try {
                 playerRealmConfig.save(playerRealmConfigFile);
             } catch (IOException e) {
@@ -83,7 +88,7 @@ public final class RealmVisualLibrary {
         } else {
             if (playerRealmConfig.getConfigurationSection("saves").getKeys(false).isEmpty())
                 return getPlayerDefaultRealmDisplayName(playerName);
-            return playerRealmConfig.getString("saves.DisplayName");
+            return playerRealmConfig.getString("saves.display-name");
         }
     }
 
@@ -92,5 +97,36 @@ public final class RealmVisualLibrary {
         String outDateTag = CharmRealm.pluginConfigManager.realmConfig.getString("state.out-date.tag");
         return Color.parseColor("§f" + outDateTag + outDateColor + playerName);
     }
+
+    public static <T> ItemStack buildPlayerHead(T identifier) {
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
+        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+
+        OfflinePlayer offlinePlayer = null;
+        if (identifier instanceof String) {
+            offlinePlayer = getPlayerOrOfflinePlayer((String) identifier);
+        } else if (identifier instanceof UUID) {
+            offlinePlayer = getPlayerOrOfflinePlayer((UUID) identifier);
+        }
+
+        if (offlinePlayer != null) {
+            skullMeta.setOwningPlayer(offlinePlayer);
+        }
+
+        skull.setItemMeta(skullMeta);
+        return skull;
+    }
+
+    private static OfflinePlayer getPlayerOrOfflinePlayer(String playerName) {
+        Player player = Bukkit.getPlayer(playerName);
+        return (player != null) ? player : Bukkit.getOfflinePlayer(playerName);
+    }
+
+    private static OfflinePlayer getPlayerOrOfflinePlayer(UUID playerUUID) {
+        Player player = Bukkit.getPlayer(playerUUID);
+        return (player != null) ? player : Bukkit.getOfflinePlayer(playerUUID);
+    }
+
+
 
 }

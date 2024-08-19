@@ -1,5 +1,5 @@
-size: 18
-name: "%img_offset_-8%:settings_menu_container:"
+size: 27
+name: "%img_offset_-8%:settings_menu_container:%img_offset_-177%:back-button-1:"
 # This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
 # The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
 matrix:
@@ -17,7 +17,7 @@ items:
   manageMember:
     type: DEFAULT
     # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
-    slot: 10-11
+    slot: 19-20
 
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -41,10 +41,21 @@ items:
         - "&f領域人員數量: / "
         - ""
         - "#80c606 → 點擊打開菜單"
+  settingBanner:
+    type: DEFAULT
+    slot: 4
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "&c重置領域"
+      lore: []
   #RESET_REALM
   resetRealm:
     type: DEFAULT
-    slot: 13
+    slot: 22
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
     volume: 2.0
@@ -56,7 +67,7 @@ items:
   #VISIT_STATE
   visitState:
     type: DEFAULT
-    slot: 15-16
+    slot: 24-25
 
     sound: BLOCK_TRIPWIRE_CLICK_ON
     pitch: 1.0
@@ -84,3 +95,14 @@ items:
       lore:
         - "#3b8bc1點擊這裏瞭解你更多關於領域"
         - "#3b8bc1的内容和事項"
+  backButton:
+    type: INVENTORY
+    slot: 0
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: SUNFLOWER
+      modelID: 1000
+      name: "&7返回"
+      lore: []

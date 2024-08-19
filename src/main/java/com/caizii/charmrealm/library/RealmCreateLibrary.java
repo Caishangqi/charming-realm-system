@@ -50,6 +50,11 @@ public final class RealmCreateLibrary {
         return playerRealmConfigFile.exists() ? playerRealmConfigFile : null;
     }
 
+    public static File getPlayerRealmYMLFile(String playerName) {
+        File playerRealmConfigFile = new File(CharmRealm.pluginVariable.Tempf, playerName + ".yml");
+        return playerRealmConfigFile.exists() ? playerRealmConfigFile : null;
+    }
+
     public static boolean IsPlayerHasRealm(Player player) {
         boolean realmConfigValid = false;
         realmConfigValid = getPlayerRealmYMLFile(player) != null;

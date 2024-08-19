@@ -6,6 +6,7 @@ import com.caizii.charmrealm.gui.handler.TitleHandler;
 import com.caizii.charmrealm.library.RealmConfigLibrary;
 import com.caizii.charmrealm.listeners.*;
 import com.caizii.charmrealm.listeners.createtask.RealmCreateListener;
+import com.caizii.charmrealm.listeners.plugin.PluginReloadListener;
 import com.caizii.charmrealm.manager.PluginConfigManager;
 import com.caizii.charmrealm.manager.PluginEventManager;
 import com.caizii.charmrealm.manager.RealmGeneratorManager;
@@ -145,6 +146,7 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
         pluginEventManager = new PluginEventManager();
         Bukkit.getPluginManager().registerEvents(new RealmCreateListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PluginReloadListener(), this);
         //pluginEventManager.registerEventsByPackage("createtask");
 
         charmGuiHandler = new CharmGUIHandler();

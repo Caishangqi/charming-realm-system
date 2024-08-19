@@ -2,14 +2,28 @@ package com.caizii.charmrealm.gui.realms;
 
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.gui.components.ButtonClickHandler;
-import com.caizii.charmrealm.gui.components.CharmGUIBase;
+import com.caizii.charmrealm.gui.components.CrossRealmContainer;
 import com.caizii.charmrealm.gui.components.GUIButton;
+import com.caizii.charmrealm.library.RealmVisualLibrary;
+import com.caizii.charmrealm.utils.Color;
+import lombok.Getter;
+import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class RealmGUISetting extends CharmGUIBase {
+import java.util.List;
 
+import static com.caizii.charmrealm.library.RealmVisualLibrary.getPlayerRealmDisplayName;
+
+@Getter
+@Setter
+public class RealmGUISetting extends CrossRealmContainer {
+
+    public RealmGUISetting(Player owner, String InteractRealmConfigName) {
+        super(owner, InteractRealmConfigName);
+    }
 
     public RealmGUISetting(Player owner) {
         super(owner);
@@ -23,6 +37,21 @@ public class RealmGUISetting extends CharmGUIBase {
         return CharmRealm.pluginVariable.GUI_SETTING_YML;
     }
 
+    @Override
+    public void postCustomGUIInitialize() {
+        super.postCustomGUIInitialize();
+        // Set the player head for banner
+        List<GUIButton> settingBanner = readButtons("settingBanner");
+        for (GUIButton guiButton : settingBanner) {
+            guiButton.setItem(RealmVisualLibrary.buildPlayerHead(getCrossRealmOwner()));
+            String playerRealmDisplayName = getPlayerRealmDisplayName(InteractRealmConfigName);
+            guiButton.setButtonName(Color.parseColor(playerRealmDisplayName));
+        }
+        setButton(settingBanner, (event) -> {
+            event.getWhoClicked().sendMessage("You clicked settingBanner");
+        });
+    }
+
     /**
      *
      */
@@ -31,6 +60,8 @@ public class RealmGUISetting extends CharmGUIBase {
         //super.onCustomGUIInitialize();
         setButton(readButtons("manageMember"), (event) -> {
             event.getWhoClicked().sendMessage("You clicked manageMember");
+            // 这里不用放到Post应为lambda是基于点击事件的运行时函数,非构造器调用
+            CharmRealm.charmGuiHandler.openGUI(owner, new RealmGUIContentMember(owner, InteractRealmConfigName));
         });
 
         setButton(readButtons("resetRealm"), (event) -> {
@@ -44,6 +75,13 @@ public class RealmGUISetting extends CharmGUIBase {
         setButton(readButtons("help"), (event) -> {
             event.getWhoClicked().sendMessage("You clicked help");
         });
+
+        setButton(readButtons("backButton"), (event) -> {
+            event.getWhoClicked().sendMessage("You clicked backButton");
+            CharmRealm.charmGuiHandler.closeGUI(owner);
+            Bukkit.dispatchCommand(owner, "realm");
+        });
+
     }
 
     /**
@@ -88,4 +126,5 @@ public class RealmGUISetting extends CharmGUIBase {
     public void handleClick(InventoryClickEvent event) {
         super.handleClick(event);
     }
+
 }

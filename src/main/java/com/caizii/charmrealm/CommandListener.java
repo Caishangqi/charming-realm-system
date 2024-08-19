@@ -1,5 +1,6 @@
 package com.caizii.charmrealm;
 
+import com.caizii.charmrealm.events.PluginReloadEvent;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
@@ -345,10 +346,20 @@ public class CommandListener implements CommandExecutor, TabExecutor {
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
             if (sender instanceof Player) {
-                CharmRealm.charmGuiHandler.openGUI((Player) sender, RealmGUISetting.class);
+                RealmGUISetting realmGUISetting = new RealmGUISetting((Player) sender);
+                CharmRealm.charmGuiHandler.openGUI((Player) sender, realmGUISetting);
                 return false;
             }
         }
+
+        if (args.length == 2 && args[0].equalsIgnoreCase("setting")) {
+            if (sender instanceof Player) {
+                RealmGUISetting realmGUISetting = new RealmGUISetting((Player) sender, args[1]);
+                CharmRealm.charmGuiHandler.openGUI((Player) sender, realmGUISetting);
+                return false;
+            }
+        }
+
         if (args.length == 1 && args[0].equalsIgnoreCase("setup")) {
             if (sender instanceof Player) {
                 if (!RealmCreateLibrary.IsPlayerHasRealm((Player) sender))
@@ -395,7 +406,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                     for (Hologram temp2 : CharmRealm.pluginVariable.hololist.get(temp.getName()))
                         temp2.delete();
             }
-            CharmRealm.init();
+            Bukkit.getPluginManager().callEvent(new PluginReloadEvent());
             sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("HeadLineTtitle"));
             sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("ReloadSuccess"));
             sender.sendMessage(CharmRealm.pluginVariable.Lang_YML.getString("BottomLineTtitle"));

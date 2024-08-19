@@ -48,6 +48,16 @@ public class CharmGUIBase implements InventoryHolder {
         onCustomGUIInitialize();
     }
 
+    /**
+     * The post Initialize life cycle, this method is called before
+     * rend the buttons, this method usually handle some dynamic data
+     * that need to set after read button (second modification of button
+     * )
+     */
+    public void postCustomGUIInitialize() {
+
+    }
+
     // Set the layouts and buttons but not render papi and color
     public void onCustomGUIInitialize() {
         // read all buttons from config yml and create button instance
@@ -125,6 +135,7 @@ public class CharmGUIBase implements InventoryHolder {
 
     public void open(Player player) {
         this.owner = player;
+        postCustomGUIInitialize();
         rendCustomGUI(player);
         player.openInventory(inventory);
     }
@@ -158,6 +169,8 @@ public class CharmGUIBase implements InventoryHolder {
         ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
 
         switch (getButtonType(ButtonKey)) {
+            case INVENTORY:
+                return new BaseButtonFactory(buttonConfig).createButton(this);
             case DEFAULT, CONFIRM:
                 return new BaseButtonFactory(buttonConfig).createButton(this);
             case WORLD_CREATE:

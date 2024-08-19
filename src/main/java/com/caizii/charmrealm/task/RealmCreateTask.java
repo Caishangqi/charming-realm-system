@@ -180,7 +180,7 @@ public class RealmCreateTask implements Runnable {
 
             // save the style of realm name because when player is offline, lp can not fetch player data
             String parsedRealmDisplayName = Color.parseColorAndPlaceholder(creator, (CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomePrefix") + creator.getName() + CharmRealm.pluginVariable.Lang_YML.getString("VisitGuiHomeSuffix")));
-            playerRealmConfig.set("saves.DisplayName", parsedRealmDisplayName);
+            playerRealmConfig.set("saves.display-name", parsedRealmDisplayName);
 
             int set_level = 1;
             for (int i = CharmRealm.JavaPlugin.getConfig().getInt("MaxLevel"); i > 0; i--) {
