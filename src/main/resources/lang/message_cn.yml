@@ -15,6 +15,11 @@ message:
     reset:
     invite:
   help:
+button:
+  realm:
+    visit:
+      TeleportToTargetRealm: "#80c606 → 左鍵訪問該領域"
+      OpenSettingTargetRealm: "#3b8bc1 → 右鍵管理該領域"
 console:
   realm:
     create:

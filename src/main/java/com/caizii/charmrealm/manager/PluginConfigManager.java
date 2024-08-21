@@ -25,6 +25,7 @@ public class PluginConfigManager {
 
     // GUI
     public FileConfiguration GUI_MEMBER_YML;
+    public FileConfiguration GUI_BANNED_YML;
 
 
     public PluginConfigManager() {
@@ -62,12 +63,14 @@ public class PluginConfigManager {
         RealmConfigLibrary.checkAndSaveResource("realm.yml");
         RealmConfigLibrary.checkAndSaveResource("template");
         RealmConfigLibrary.checkAndSaveResource("guis" + fileSeparator +"gui_member.yml");
+        RealmConfigLibrary.checkAndSaveResource("guis" + fileSeparator +"gui_banned.yml");
     }
 
     private void loadDefaultConfig() {
         languageConfig = RealmConfigLibrary.loadConfig("lang" + fileSeparator + "message_cn.yml");
         realmConfig = RealmConfigLibrary.loadConfig("realm.yml");
         GUI_MEMBER_YML = RealmConfigLibrary.loadConfig("guis" + fileSeparator +"gui_member.yml");
+        GUI_BANNED_YML = RealmConfigLibrary.loadConfig("guis" + fileSeparator +"gui_banned.yml");
     }
 
 

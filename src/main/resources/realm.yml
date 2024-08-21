@@ -1,3 +1,6 @@
+members:
+  # 默認最大領域成員人數
+  default-maximum-members: 6
 state:
   out-date:
     color: "#c8c8c8"

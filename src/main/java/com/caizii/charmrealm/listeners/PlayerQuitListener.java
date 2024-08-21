@@ -1,5 +1,6 @@
 package com.caizii.charmrealm.listeners;
 
+import com.caizii.charmrealm.CharmRealm;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -11,5 +12,6 @@ public class PlayerQuitListener implements Listener {
     public void onLeave(final PlayerQuitEvent event) {
         // Update player realm display name
         updatePlayerRealmDisplayName(event.getPlayer().getName());
+        CharmRealm.charmGuiHandler.cleanCache(false, event.getPlayer());
     }
 }

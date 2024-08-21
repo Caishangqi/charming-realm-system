@@ -10,6 +10,10 @@ matrix:
   - "A       A"
   - "AAAAAAAAA"
 
+# Internal Placeholders
+# {REALM_MEMBER} returns the current setting's number of realm member
+# {REALM_MAX_MEMBER} returns the current setting's max number of realm member
+
 items:
   # Here you will specify a name for your button. No matter what you put, the name will only be present in the configuration.
   # Attention, the name of your button must be unique. We advise you to choose a name that will describe what the button does.
@@ -25,11 +29,11 @@ items:
     item:
       # Let’s start with a block of grass
       # To find the list of materials you must go to the spigot documentation: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       # Here we will name this item
       # Color code, mini message and placeholders are supported
-      name: " "
+      name: "#a6aab4管理领域成员"
 
       # This is the lore.
       # You must put several lines to the lore.
@@ -38,7 +42,7 @@ items:
         - "#a6aab4添加,刪除,管理你的領域人員,"
         - "#a6aab4最大人數通過會員獲得提升"
         - ""
-        - "&f領域人員數量: / "
+        - "&f領域人員數量: #a6aab4{REALM_MEMBER}&f/{REALM_MAX_MEMBER}"
         - ""
         - "#80c606 → 點擊打開菜單"
   settingBanner:
@@ -48,7 +52,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "&c重置領域"
       lore: []
@@ -60,7 +64,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "&c重置領域"
       lore: []
@@ -73,9 +77,9 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
-      name: " "
+      name: "#a6aab4更改领域可见"
       lore:
         - "#a6aab4隨時控制您領域的可見性"
         - ""
@@ -89,7 +93,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "&l#3b8bc1幫助"
       lore:
@@ -102,7 +106,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "&7返回"
       lore: []

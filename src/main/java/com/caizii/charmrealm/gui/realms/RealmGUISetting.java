@@ -50,6 +50,36 @@ public class RealmGUISetting extends CrossRealmContainer {
         setButton(settingBanner, (event) -> {
             event.getWhoClicked().sendMessage("You clicked settingBanner");
         });
+
+        List<GUIButton> manageMember = readButtons("manageMember");
+        parseInternalPlaceholder(manageMember);
+
+        setButton(manageMember, (event) -> {
+            event.getWhoClicked().sendMessage("You clicked manageMember");
+            CharmRealm.charmGuiHandler.openGUI(owner, new RealmGUIContentMember(owner, InteractRealmConfigName));
+        });
+
+
+    }
+
+    private void parseInternalPlaceholder(List<GUIButton> manageMember) {
+        for (GUIButton guiButton : manageMember) {
+            List<String> buttonLore = guiButton.getButtonLore();
+            for (int i = 0; i < buttonLore.size(); i++) {
+                String lore = buttonLore.get(i);
+
+                if (InteractRealmConfig.getList("Members") == null || InteractRealmConfig.getList("Members").isEmpty()) {
+                    lore = lore.replace("{REALM_MEMBER}", "0");
+                } else {
+                    lore = lore.replace("{REALM_MEMBER}", "" + InteractRealmConfig.getList("Members").size());
+                }
+                lore = lore.replace("{REALM_MAX_MEMBER}", "" + CharmRealm.pluginConfigManager.realmConfig.getInt("members.default-maximum-members"));
+
+                // 更新替换后的字符串到列表中
+                buttonLore.set(i, lore);
+            }
+            guiButton.setButtonLore(buttonLore);
+        }
     }
 
     /**
@@ -57,12 +87,6 @@ public class RealmGUISetting extends CrossRealmContainer {
      */
     @Override
     public void onCustomGUIInitialize() {
-        //super.onCustomGUIInitialize();
-        setButton(readButtons("manageMember"), (event) -> {
-            event.getWhoClicked().sendMessage("You clicked manageMember");
-            // 这里不用放到Post应为lambda是基于点击事件的运行时函数,非构造器调用
-            CharmRealm.charmGuiHandler.openGUI(owner, new RealmGUIContentMember(owner, InteractRealmConfigName));
-        });
 
         setButton(readButtons("resetRealm"), (event) -> {
             event.getWhoClicked().sendMessage("You clicked resetRealm");

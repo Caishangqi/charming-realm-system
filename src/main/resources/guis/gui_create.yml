@@ -53,7 +53,7 @@ items:
     item:
       # Let’s start with a block of grass
       # To find the list of materials you must go to the spigot documentation: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       # Here we will name this item
       # Color code, mini message and placeholders are supported
@@ -65,7 +65,7 @@ items:
       lore: [ ]
     selected-style:
       item:
-        material: SUNFLOWER
+        material: GRAY_DYE
         modelID: 1000
         name: "#94c643森林(已選擇)"
         lore: [ ]
@@ -80,13 +80,13 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "#a6aab4沙漠"
       lore: [ ]
     selected-style:
       item:
-        material: SUNFLOWER
+        material: GRAY_DYE
         modelID: 1000
         name: "#94c643沙漠(已選擇)"
         lore: [ ]
@@ -100,13 +100,13 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "#a6aab4雨林"
       lore: [ ]
     selected-style:
       item:
-        material: SUNFLOWER
+        material: GRAY_DYE
         modelID: 1000
         name: "#94c643雨林(已選擇)"
         lore: [ ]
@@ -120,13 +120,13 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "#a6aab4苔原"
       lore: [ ]
     selected-style:
       item:
-        material: SUNFLOWER
+        material: GRAY_DYE
         modelID: 1000
         name: "#94c643苔原(已選擇)"
         lore: [ ]
@@ -140,13 +140,13 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "#a6aab4雪林"
       lore: [ ]
     selected-style:
       item:
-        material: SUNFLOWER
+        material: GRAY_DYE
         modelID: 1000
         name: "#94c643雪林(已選擇)"
         lore: [ ]
@@ -157,7 +157,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1005
       name: "&l#94c643確認選擇"
       lore:
@@ -173,7 +173,7 @@ items:
     pitch: 1.0
     volume: 2.0
     item:
-      material: SUNFLOWER
+      material: GRAY_DYE
       modelID: 1000
       name: "&l#3b8bc1幫助"
       lore:

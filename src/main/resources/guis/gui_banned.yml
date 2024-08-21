@@ -23,7 +23,7 @@ items:
       modelID: 1000
       name: "&7返回"
       lore: []
-  manageBanned:
+  manageMember:
     type: INVENTORY
     slot: 40
     sound: BLOCK_TRIPWIRE_CLICK_ON
@@ -31,6 +31,6 @@ items:
     volume: 2.0
     item:
       material: GRAY_DYE
-      modelID: 1011
-      name: "&4&l切换至封禁名单"
+      modelID: 1012
+      name: "&c&l切换至成员名单"
       lore: []

@@ -29,6 +29,7 @@ public class RealmGUIContentMember extends CharmGUIPaged {
         });
 
         setButton(readButtons("manageBanned"), (event) -> {
+            CharmRealm.charmGuiHandler.openGUI(owner,new RealmGUIContentBanned(owner,InteractRealmConfigName));
             event.getWhoClicked().sendMessage("You clicked manageBanned");
         });
     }
