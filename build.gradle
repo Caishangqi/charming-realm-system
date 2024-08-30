@@ -5,15 +5,41 @@ plugins {
     id "io.freefair.lombok" version "6.5.0.3"
 }
 
+
+//// 读取 plugin.yml 文件中的 name 和 version
+//def pluginYml = new File('src/main/resources/plugin.yml')
+//def pluginName = ''
+//def pluginVersion = ''
+//
+//if (pluginYml.exists()) {
+//    pluginYml.eachLine { line ->
+//        if (line.startsWith('name:')) {
+//            pluginName = line.split(':')[1].trim()
+//        }
+//        if (line.startsWith('version:')) {
+//            pluginVersion = line.split(':')[1].trim()
+//        }
+//    }
+//}
+ext {
+    pluginName = 'CharmRealm'
+    pluginVersion = '2.3.2-BETA-PRO'
+}
+
 shadowJar {
-    archiveBaseName.set('charmrealm')
+    archiveBaseName.set(pluginName)
     archiveClassifier.set('')
-    archiveVersion.set(version)
+    archiveVersion.set(pluginVersion)
+    archiveExtension.set('jar')
     relocate 'org.reflections', 'com.caizii.charmrealm.lib.reflections'
     dependencies {
         include(dependency('org.reflections:reflections'))
     }
 }
+tasks.named('jar').configure {
+    enabled = false
+}
+
 
 build.dependsOn shadowJar
 
@@ -139,7 +165,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 processResources {
-    def props = [version: version]
+    def props = [name: pluginName, version: pluginVersion]
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
