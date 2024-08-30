@@ -1,11 +1,21 @@
-
-
 plugins {
     id 'java'
     id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id "io.freefair.lombok" version "6.5.0.3"
 }
+
+shadowJar {
+    archiveBaseName.set('charmrealm')
+    archiveClassifier.set('')
+    archiveVersion.set(version)
+    relocate 'org.reflections', 'com.caizii.charmrealm.lib.reflections'
+    dependencies {
+        include(dependency('org.reflections:reflections'))
+    }
+}
+
+build.dependsOn shadowJar
 
 
 group = 'com.caizii.charmrealm'
@@ -18,10 +28,7 @@ repositories {
         name = "spigotmc-repo"
         url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
     }
-    maven {
-        name = "holographicdisplays"
-        url "https://repo.codemc.io/repository/maven-public/"
-    }
+
     maven {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
@@ -85,12 +92,10 @@ repositories {
 dependencies {
 
     compileOnly("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
-    compileOnly 'me.filoghost.holographicdisplays:holographicdisplays-api:3.0.0'
     compileOnly 'me.clip:placeholderapi:2.11.6'
     compileOnly 'org.black_ixx:playerpoints:3.2.7'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.0'
-    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.8.0";
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.1")
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "5.0.0";
     implementation "net.kyori:adventure-api:4.17.0"
@@ -109,7 +114,6 @@ dependencies {
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.32.Final'
     // https://mvnrepository.com/artifact/io.prometheus/simpleclient
     implementation group: 'io.prometheus', name: 'simpleclient', version: '0.16.0'
-
 
 
     compileOnly fileTree(dir: 'libs/compile', include: ['*.jar'])

@@ -1,5 +1,4 @@
 package com.caizii.charmrealm.listeners.createtask;
-
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.events.RealmCreateEvent;
 import com.caizii.charmrealm.events.RealmFinishCreateEvent;
