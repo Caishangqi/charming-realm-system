@@ -11,6 +11,10 @@ message:
     load:
       PerformanceWarningClient: "§7正在加載你的領域,世界加載會對服務器產生負面影響"
       PerformanceWarningServer: "§7服務器正在加載玩家領域,可能會有卡頓"
+    permission:
+      DoNotHaveSettingPermission: "§7你没有该领域的设置权限"
+    availability:
+      RealmDoNotExist: "§7该领域不存在"
     delete:
     reset:
     invite:

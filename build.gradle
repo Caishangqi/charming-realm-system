@@ -32,8 +32,10 @@ shadowJar {
     archiveVersion.set(pluginVersion)
     archiveExtension.set('jar')
     relocate 'org.reflections', 'com.caizii.charmrealm.lib.reflections'
+    relocate 'javassist', 'com.caizii.charmrealm.lib.javassist'  // 确保包名不冲突
     dependencies {
         include(dependency('org.reflections:reflections'))
+        include(dependency('org.javassist:javassist'))
     }
 }
 tasks.named('jar').configure {
@@ -124,10 +126,11 @@ dependencies {
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:6.0'
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.1")
     compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "5.0.0";
+
     implementation "net.kyori:adventure-api:4.17.0"
     implementation "net.kyori:adventure-text-minimessage:4.17.0"
+    implementation 'org.javassist:javassist:3.28.0-GA'
     implementation 'org.reflections:reflections:0.10.2'
-
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
     // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-healthchecks
     implementation group: 'io.dropwizard.metrics', name: 'metrics-healthchecks', version: '3.1.0'

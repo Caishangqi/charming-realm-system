@@ -1,6 +1,7 @@
 package com.caizii.charmrealm.task;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.library.GroupType;
 import com.caizii.charmrealm.utils.Color;
 import com.caizii.charmrealm.utils.FirstBorderShaped;
 import com.caizii.charmrealm.utils.Util;
@@ -149,6 +150,12 @@ public class RealmCreateTask implements Runnable {
             playerRealmConfig.createSection("time");
             playerRealmConfig.createSection("saves");
             playerRealmConfig.createSection("saves.display-name");
+
+            // permission and groups
+            playerRealmConfig.createSection("permissions.group");
+            for (GroupType groupType : GroupType.values()) {
+                playerRealmConfig.createSection("permissions.group" + "." +groupType);
+            }
 
             if (!playerRealmConfig.contains("NowID"))
                 playerRealmConfig.set("NowID", Integer.valueOf(0));

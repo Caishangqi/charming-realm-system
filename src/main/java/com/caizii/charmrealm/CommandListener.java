@@ -4,7 +4,9 @@ import com.caizii.charmrealm.events.PluginReloadEvent;
 import com.caizii.charmrealm.gui.*;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
+import com.caizii.charmrealm.library.GroupType;
 import com.caizii.charmrealm.library.RealmCreateLibrary;
+import com.caizii.charmrealm.library.RealmPermissionLibrary;
 import com.caizii.charmrealm.utils.*;
 import com.caizii.charmrealm.worldborder.WBControl;
 import com.comphenix.protocol.utility.StreamSerializer;
@@ -345,19 +347,33 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             return false;
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("setting")) {
-            if (sender instanceof Player) {
+            if (sender instanceof Player && RealmCreateLibrary.IsPlayerHasRealm((Player) sender)) {
                 RealmGUISetting realmGUISetting = new RealmGUISetting((Player) sender);
                 CharmRealm.charmGuiHandler.openGUI((Player) sender, realmGUISetting);
+                return false;
+            } else {
+                sender.sendMessage(getLangString("message.realm.join.CanNotFindWorld"));
                 return false;
             }
         }
 
         if (args.length == 2 && args[0].equalsIgnoreCase("setting")) {
             if (sender instanceof Player) {
-                RealmGUISetting realmGUISetting = new RealmGUISetting((Player) sender, args[1]);
-                CharmRealm.charmGuiHandler.openGUI((Player) sender, realmGUISetting);
-                return false;
+                File playerRealmYMLFile = RealmCreateLibrary.getPlayerRealmYMLFile(args[1]);
+                if (playerRealmYMLFile != null) {
+                    GroupType playerPermission = RealmPermissionLibrary.getPlayerPermission(args[1], sender.getName());
+                    if (playerPermission == GroupType.OPERATOR || playerPermission == GroupType.OWNER) {
+                        RealmGUISetting realmGUISetting = new RealmGUISetting((Player) sender, args[1]);
+                        CharmRealm.charmGuiHandler.openGUI((Player) sender, realmGUISetting);
+                    } else {
+                        sender.sendMessage(getLangString("message.realm.permission.DoNotHaveSettingPermission"));
+                    }
+                } else {
+                    sender.sendMessage(getLangString("message.realm.availability.RealmDoNotExist"));
+                }
+
             }
+            return false;
         }
 
         if (args.length == 1 && args[0].equalsIgnoreCase("setup")) {

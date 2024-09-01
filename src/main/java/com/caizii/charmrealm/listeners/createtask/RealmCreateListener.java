@@ -1,8 +1,11 @@
 package com.caizii.charmrealm.listeners.createtask;
+
 import com.caizii.charmrealm.CharmRealm;
 import com.caizii.charmrealm.events.RealmCreateEvent;
 import com.caizii.charmrealm.events.RealmFinishCreateEvent;
+import com.caizii.charmrealm.library.GroupType;
 import com.caizii.charmrealm.library.RealmConfigLibrary;
+import com.caizii.charmrealm.library.RealmPermissionLibrary;
 import com.caizii.charmrealm.task.RealmCreateTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -34,8 +37,14 @@ public class RealmCreateListener implements Listener {
             @Override
             public void run() {
                 RealmCreateTask realmCreateTask = realmFinishCreateEvent.getRealmCreateTask();
+
+
                 Player player = Bukkit.getPlayer(realmCreateTask.getPlayerUUID());
                 if (player != null) {
+
+                    // Set Permission
+                    RealmPermissionLibrary.setPlayerPermission(player.getName(), player.getName(), GroupType.OWNER);
+
                     player.sendMessage(RealmConfigLibrary.getLangString("message.realm.create.FinishRealmCreation"));
                 }
                 String string = MessageFormat.format("§8[§6CharmRealms§8] §8(§a+§8) §7任务 <§a{0}§7> §7已完成 创建者 §7<§a{1}§7>", realmCreateTask.getTaskUUID(), Bukkit.getOfflinePlayer(realmCreateTask.getPlayerUUID()).getName());

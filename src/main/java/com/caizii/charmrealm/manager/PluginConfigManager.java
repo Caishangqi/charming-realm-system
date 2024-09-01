@@ -1,6 +1,5 @@
 package com.caizii.charmrealm.manager;
 
-import com.caizii.charmrealm.gui.components.CrossRealmContainer;
 import com.caizii.charmrealm.library.Logger;
 import com.caizii.charmrealm.library.OperateType;
 import com.caizii.charmrealm.library.RealmConfigLibrary;
@@ -9,7 +8,6 @@ import lombok.Setter;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.logging.Level;
 
 import static com.caizii.charmrealm.CharmRealm.JavaPlugin;
