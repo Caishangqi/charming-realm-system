@@ -67,6 +67,7 @@ public class Variable {
 
   public  FileConfiguration GUI_SETTING_YML;
   public  FileConfiguration GUI_CREATE_YML;
+  public FileConfiguration GUI_BROWSER_YML;
 
   public  String custom_playerdata_location = "";
   

@@ -2,6 +2,7 @@ package com.caizii.charmrealm;
 
 import com.caizii.charmrealm.events.PluginReloadEvent;
 import com.caizii.charmrealm.gui.*;
+import com.caizii.charmrealm.gui.realms.RealmGUIBrowser;
 import com.caizii.charmrealm.gui.realms.RealmGUICreate;
 import com.caizii.charmrealm.gui.realms.RealmGUISetting;
 import com.caizii.charmrealm.library.GroupType;
@@ -258,60 +259,6 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                         }
                     return false;
                 }
-                /*if (args.length == 1 && (
-                        args[0].equalsIgnoreCase("Open") || args[0].equalsIgnoreCase("Menu"))) {
-                    MainGui gui = new MainGui(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }*/
-                /*if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("CharmRealm")) {
-                    MainGui gui = new MainGui(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Check")) {
-                    CheckGui gui = new CheckGui(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Create")) {
-                    CreateGui gui = new CreateGui(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage")) {
-                    ManageGui gui = new ManageGui(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage2")) {
-                    ManageGui2 gui = new ManageGui2(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage3")) {
-                    ManageGui3 gui = new ManageGui3(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage4")) {
-                    ManageGui4 gui = new ManageGui4(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }
-                if (args.length == 2 &&
-                        args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Manage5")) {
-                    ManageGui5 gui = new ManageGui5(player);
-                    player.openInventory(gui.getInventory());
-                    return false;
-                }*/
                 if (args.length == 2 &&
                         args[0].equalsIgnoreCase("Open") && args[1].equalsIgnoreCase("Visit")) {
                     VisitGui gui = new VisitGui();
@@ -355,6 +302,13 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 sender.sendMessage(getLangString("message.realm.join.CanNotFindWorld"));
                 return false;
             }
+        }
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("main")) {
+            if (sender instanceof Player) {
+                CharmRealm.charmGuiHandler.openGUI((Player) sender, new RealmGUIBrowser((Player) sender));
+            }
+            return false;
         }
 
         if (args.length == 2 && args[0].equalsIgnoreCase("setting")) {
@@ -5572,6 +5526,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 list.add("pickup");
             }
 
+            list.add("main");
             list.add("setting");
             list.add("look");
             list.add("tpSet");

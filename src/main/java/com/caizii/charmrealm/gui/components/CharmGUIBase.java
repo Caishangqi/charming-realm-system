@@ -164,22 +164,36 @@ public class CharmGUIBase implements InventoryHolder {
         return this.GUIConfigYML.getConfigurationSection("items." + ButtonKey);
     }
 
+    /**
+     * Read specific types of buttons and create buttons through its factory
+     *
+     * @param buttonType Target Button Type
+     * @return The list of Buttons that is the target type
+     */
+    public List<GUIButton> readButtons(EButtonType buttonType) {
+        List<GUIButton> buttons = new ArrayList<>();
+        if (this.GUIConfigYML.getConfigurationSection("items") != null) {
+            Set<String> items = this.GUIConfigYML.getConfigurationSection("items").getKeys(false);
+            for (String item : items) {
+                if (this.GUIConfigYML.getString("items." + item + ".type").equalsIgnoreCase(buttonType.name())) {
+                    buttons.addAll(readButtons(item));
+                }
+            }
+        }
+        return buttons;
+    }
+
 
     public List<GUIButton> readButtons(String ButtonKey) {
         ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
 
-        switch (getButtonType(ButtonKey)) {
-            case INVENTORY:
-                return new BaseButtonFactory(buttonConfig).createButton(this);
-            case DEFAULT, CONFIRM:
-                return new BaseButtonFactory(buttonConfig).createButton(this);
-            case WORLD_CREATE:
-                return new WorldCreateButtonFactory(buttonConfig).createButton(this);
-            case MANAGE_MEMBER:
-                return new BaseButtonFactory(buttonConfig).createButton(this);
-            default:
-                throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
-        }
+        return switch (getButtonType(ButtonKey)) {
+            case INVENTORY, MANAGE_MEMBER, DEFAULT, CONFIRM, NEXT, PREVIOUS ->
+                    new BaseButtonFactory(buttonConfig).createButton(this);
+            case WORLD_CREATE -> new WorldCreateButtonFactory(buttonConfig).createButton(this);
+            case GENERATED -> new BaseButtonFactory(buttonConfig).createButton(this);
+            default -> throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
+        };
     }
 
     EButtonType getButtonType(String ButtonKey) {

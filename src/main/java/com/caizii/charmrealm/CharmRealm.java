@@ -325,6 +325,8 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
             JavaPlugin.saveResource("guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_setting.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_create.yml")).exists())
             JavaPlugin.saveResource("guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_create.yml", false);
+        if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_browser.yml")).exists())
+            JavaPlugin.saveResource("guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_browser.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "GUI.yml")).exists())
             JavaPlugin.saveResource("GUI.yml", false);
         if (!(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "GUI_en.yml")).exists())
@@ -420,6 +422,8 @@ public class CharmRealm extends JavaPlugin implements PluginMessageListener {
                 (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "GUI.yml"));
         CharmRealm.pluginVariable.GUI_SETTING_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_setting.yml"));
         CharmRealm.pluginVariable.GUI_CREATE_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_create.yml"));
+        CharmRealm.pluginVariable.GUI_BROWSER_YML = (FileConfiguration) YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + CharmRealm.pluginVariable.file_loc_prefix + "guis" + CharmRealm.pluginVariable.file_loc_prefix + "gui_browser.yml"));
+
         ConfigUpdate.update();
         CharmRealm.pluginVariable.Soil = JavaPlugin.getConfig().getString("SoilType");
         initHome.init();

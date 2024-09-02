@@ -5,5 +5,8 @@ public enum EButtonType {
     MANAGE_MEMBER,
     DEFAULT,
     WORLD_CREATE,
-    CONFIRM
+    CONFIRM,
+    PREVIOUS,
+    NEXT,
+    GENERATED
 }

@@ -1,11 +1,11 @@
 package com.caizii.charmrealm.gui.realms;
 
 import com.caizii.charmrealm.CharmRealm;
-import com.caizii.charmrealm.gui.components.CharmGUIPaged;
+import com.caizii.charmrealm.gui.components.CrossRealmContainer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class RealmGUIContentMember extends CharmGUIPaged {
+public class RealmGUIContentMember extends CrossRealmContainer {
 
     public RealmGUIContentMember(Player owner, String InteractRealmConfigName) {
         super(owner, InteractRealmConfigName);

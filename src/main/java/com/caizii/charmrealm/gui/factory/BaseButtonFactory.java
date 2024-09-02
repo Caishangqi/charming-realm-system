@@ -95,33 +95,48 @@ public class BaseButtonFactory implements ButtonFactory {
     }
 
     public List<Integer> convertRange(String range) {
-        if (range.contains("-")) {
-            String[] parts = range.split("-");
-            if (parts.length != 2) {
-                throw new IllegalArgumentException("Invalid range: " + range);
-            }
+        List<Integer> result = new ArrayList<>();
 
-            try {
-                int start = Integer.parseInt(parts[0]);
-                int end = Integer.parseInt(parts[1]);
-                List<Integer> result = new ArrayList<>();
-                for (int i = start; i <= end; i++) {
-                    result.add(i);
+        // 移除方括号（如果存在）
+        range = range.replaceAll("[\\[\\]]", "");
+
+        // 以逗号分隔
+        String[] parts = range.split(",");
+
+        for (String part : parts) {
+            part = part.trim(); // 去除首尾空格
+
+            if (part.contains("-")) {
+                String[] rangeParts = part.split("-");
+                if (rangeParts.length != 2) {
+                    throw new IllegalArgumentException("Invalid range: " + part);
                 }
-                return result;
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Invalid number in range: " + range, e);
-            }
-        } else {
-            try {
-                int number = Integer.parseInt(range);
-                List<Integer> result = new ArrayList<>();
-                result.add(number);
-                return result;
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Invalid number: " + range, e);
+
+                try {
+                    int start = Integer.parseInt(rangeParts[0]);
+                    int end = Integer.parseInt(rangeParts[1]);
+
+                    // 确保范围是有效的
+                    if (start > end) {
+                        throw new IllegalArgumentException("Invalid range: " + part);
+                    }
+
+                    for (int i = start; i <= end; i++) {
+                        result.add(i);
+                    }
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid number in range: " + part, e);
+                }
+            } else {
+                try {
+                    int number = Integer.parseInt(part);
+                    result.add(number);
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid number: " + part, e);
+                }
             }
         }
+        return result;
     }
 
 }

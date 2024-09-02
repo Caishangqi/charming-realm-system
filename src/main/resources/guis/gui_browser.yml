@@ -1,0 +1,136 @@
+size: 54
+name: "%img_offset_-8%:menu_container:%img_offset_-154%:button_featured:%img_offset_12%:button_home:%img_offset_12%:button_settings:"
+# This method enhances clarity and design efficiency, as each character in the matrix corresponds to an item defined under the items section, allowing for easy customization of inventory layouts.
+# The use of a matrix simplifies the creation of complex inventory designs by visually mapping out item placements.
+matrix:
+  - "AAAAAAAAA"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "A       A"
+  - "AAAAAAAAA"
+
+# Internal Placeholders
+# {REALM_NAME} returns the current realm name for the element
+# {REALM_CURRENT_PLAYER} returns the current realm world player
+# {REALM_POPULARITY} returns the target realm popularity
+# {REALM_CREATE_DATE} returns the target realm create date
+
+
+items:
+  # The Actual player realm that the menu will dynamically generated based on how many player created realms on server
+  # You should leave material to PLAYER_HEAD for 1.16.5 above
+  realmElement:
+    # Special type that tell menu dynamically generated the element based on information
+    type: GENERATED
+    # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
+    slot:
+      - "19-25"
+      - "28-34"
+      - "37-43"
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: PLAYER_HEAD
+      # Here we will name this item
+      # Color code, mini message and placeholders are supported
+      name: "§f{REALM_NAME}"
+      # This is the lore.
+      # You must put several lines to the lore.
+      # Color code, mini message and placeholders are supported
+      lore:
+        - '#a6aab4領域熱度: §6{REALM_POPULARITY}'
+        - '#a6aab4領域内人數: §f{REALM_CURRENT_PLAYER} #a6aab4人'
+        - '#a6aab4領域創建日: §f{REALM_CREATE_DATE}'
+        - ''
+        - '#80c606 → 左鍵訪問該領域'
+  featuredButton:
+    type: DEFAULT
+    # Slots that you want to put the item. Starts from 0, also support 1-3, 30-5 etc
+    slot: 1
+
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      # Let’s start with a block of grass
+      # To find the list of materials you must go to the spigot documentation: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+      material: GRAY_DYE
+      modelID: 1000
+      # Here we will name this item
+      # Color code, mini message and placeholders are supported
+      name: "#a6aab4特色領域"
+
+      # This is the lore.
+      # You must put several lines to the lore.
+      # Color code, mini message and placeholders are supported
+      lore:
+        - "§4暫未開放"
+  settingButton:
+    type: DEFAULT
+    slot: 7
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: GRAY_DYE
+      modelID: 1000
+      name: "§6領域設置"
+      lore:
+        - '#a6aab4設置你的領域,管理人員名單'
+        - '#a6aab4邀請好友等等...'
+        - ''
+        - "#80c606 → 點擊打開菜單"
+  realmReturnButton:
+    type: DEFAULT
+    slot: 3-5
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: GRAY_DYE
+      modelID: 1000
+      name: "§6返回領域"
+      lore:
+        - '#a6aab4返回到你的領域出生點'
+        - ''
+        - '#80c606 → 點擊傳送'
+        - '#3b8bc1 → 右鍵點擊設置出生點'
+  filterButton:
+    type: DEFAULT
+    slot: 49
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: GRAY_DYE
+      modelID: 1008
+      name: "&6切換游覽"
+      lore:
+        - "#a6aab4點擊只游覽你是領域成員的,"
+        - "#a6aab4領域"
+        - ""
+        - "#80c606 → 點擊開起過濾"
+  nextButton:
+    type: INVENTORY
+    slot: 52
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: GRAY_DYE
+      modelID: 1002
+      name: "&c下一页"
+      lore: [ ]
+  previousButton:
+    type: INVENTORY
+    slot: 46
+    sound: BLOCK_TRIPWIRE_CLICK_ON
+    pitch: 1.0
+    volume: 2.0
+    item:
+      material: GRAY_DYE
+      modelID: 1004
+      name: "&c上一页"
+      lore: [ ]
