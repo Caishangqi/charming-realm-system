@@ -1,6 +1,7 @@
 package com.caizii.charmrealm.gui.components;
 
 import com.caizii.charmrealm.gui.factory.BaseButtonFactory;
+import com.caizii.charmrealm.gui.factory.MetaButtonFactory;
 import com.caizii.charmrealm.gui.factory.WorldCreateButtonFactory;
 import com.caizii.charmrealm.gui.types.EButtonType;
 import com.caizii.charmrealm.utils.Color;
@@ -164,6 +165,18 @@ public class CharmGUIBase implements InventoryHolder {
         return this.GUIConfigYML.getConfigurationSection("items." + ButtonKey);
     }
 
+    public ConfigurationSection readButtonConfiguration(EButtonType buttonType) {
+        if (this.GUIConfigYML.getConfigurationSection("items") != null) {
+            Set<String> items = this.GUIConfigYML.getConfigurationSection("items").getKeys(false);
+            for (String item : items) {
+                if (this.GUIConfigYML.getString("items." + item + ".type").equalsIgnoreCase(buttonType.name())) {
+                    return this.GUIConfigYML.getConfigurationSection("items." + item);
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * Read specific types of buttons and create buttons through its factory
      *
@@ -185,13 +198,13 @@ public class CharmGUIBase implements InventoryHolder {
 
 
     public List<GUIButton> readButtons(String ButtonKey) {
+
         ConfigurationSection buttonConfig = readButtonConfiguration(ButtonKey);
 
         return switch (getButtonType(ButtonKey)) {
             case INVENTORY, MANAGE_MEMBER, DEFAULT, CONFIRM, NEXT, PREVIOUS ->
-                    new BaseButtonFactory(buttonConfig).createButton(this);
-            case WORLD_CREATE -> new WorldCreateButtonFactory(buttonConfig).createButton(this);
-            case GENERATED -> new BaseButtonFactory(buttonConfig).createButton(this);
+                    new BaseButtonFactory(buttonConfig).createButtons(this);
+            case WORLD_CREATE -> new WorldCreateButtonFactory(buttonConfig).createButtons(this);
             default -> throw new RuntimeException("Unknown button type: " + getButtonType(ButtonKey));
         };
     }

@@ -46,45 +46,63 @@ public class BaseButtonFactory implements ButtonFactory {
         this.volume = buttonConfig.getDouble("volume");
     }
 
+    protected ItemStack getButtonContextItemStack() {
+        ItemStack item = new ItemStack(this.material);
+        // 注意先修改nbt在修改meta,不要修改一半meta在修改nbt
+        NBT.modify(item, nbt -> {
+            nbt.setInteger("CustomModelData", this.modelID);
+            return item;
+        });
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            if (displayName != null) {
+                meta.setDisplayName(displayName);
+            }
+            if (lore != null && !lore.isEmpty()) {
+                meta.setLore(lore);
+            }
+            item.setItemMeta(meta);
+        }
+        return item;
+    }
+
+    protected void setButtonContext(GUIButton button) {
+        button.setButtonType(this.buttonType);
+        button.setMaterial(this.material);
+        button.setModelID(this.modelID);
+        button.setClickSound(clickSound);
+        button.setPitch(pitch);
+        button.setVolume(volume);
+        // put buttonConfig into button for validation (can optimize)
+        button.setButtonConfig(this.buttonConfig);
+        // inject the click event to button
+        injectEvent(button);
+    }
+
+
     @Override
-    public List<GUIButton> createButton(CharmGUIBase parentGUI) {
+    public List<GUIButton> createButtons(CharmGUIBase parentGUI) {
 
         List<GUIButton> buttons = new ArrayList<>();
 
         for (Integer i : convertRange(this.slotRange)) {
-            ItemStack item = new ItemStack(this.material);
-            // 注意先修改nbt在修改meta,不要修改一半meta在修改nbt
-            NBT.modify(item, nbt -> {
-                nbt.setInteger("CustomModelData", this.modelID);
-                return item;
-            });
-            ItemMeta meta = item.getItemMeta();
-            if (meta != null) {
-                if (displayName != null) {
-                    meta.setDisplayName(displayName);
-                }
-                if (lore != null && !lore.isEmpty()) {
-                    meta.setLore(lore);
-                }
-                item.setItemMeta(meta);
-            }
-            GUIButton button = new GUIButton(parentGUI, item, i) {
+            GUIButton button = new GUIButton(parentGUI, getButtonContextItemStack(), i) {
+
 
             };
-            button.setButtonType(this.buttonType);
-            button.setMaterial(this.material);
-            button.setModelID(this.modelID);
-            button.setClickSound(clickSound);
-            button.setPitch(pitch);
-            button.setVolume(volume);
-            // put buttonConfig into button for validation (can optimize)
-            button.setButtonConfig(this.buttonConfig);
-            // inject the click event to button
-            injectEvent(button);
-
+            setButtonContext(button);
             buttons.add(button);
         }
         return buttons;
+    }
+
+    @Override
+    public GUIButton createButton(CharmGUIBase parentGUI) {
+        GUIButton button = new GUIButton(parentGUI, getButtonContextItemStack(), 0) {
+
+        };
+        setButtonContext(button);
+        return button;
     }
 
     // base button factory will not contain any event

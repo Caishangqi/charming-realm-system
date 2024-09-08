@@ -26,6 +26,7 @@ public abstract class GUIButton {
     @Setter
     public ItemStack item;
     @Getter
+    @Setter
     protected int slotIndex;
     @Getter
     @Setter
@@ -178,5 +179,4 @@ public abstract class GUIButton {
             throw new RuntimeException("can not set button lore because no item or meta is set");
         }
     }
-
 }

@@ -28,7 +28,7 @@ public class WorldCreateButtonFactory extends BaseButtonFactory {
      * @return
      */
     @Override
-    public List<GUIButton> createButton(CharmGUIBase parentGUI) {
-        return super.createButton(parentGUI);
+    public List<GUIButton> createButtons(CharmGUIBase parentGUI) {
+        return super.createButtons(parentGUI);
     }
 }

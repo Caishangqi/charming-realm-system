@@ -1,11 +1,17 @@
 package com.caizii.charmrealm.library;
 
 import com.caizii.charmrealm.CharmRealm;
+import com.caizii.charmrealm.gui.components.CharmGUIBase;
+import com.caizii.charmrealm.gui.types.EButtonType;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 import static com.caizii.charmrealm.CharmRealm.JavaPlugin;
@@ -27,6 +33,26 @@ public final class RealmConfigLibrary {
         return (CharmRealm.pluginVariable.worldFinal) + RealmConfigLibrary.fileSeparator + RealmCreateLibrary.templateFolderName + RealmConfigLibrary.fileSeparator + templateName;
     }
 
+    public static List<Integer> getButtonRange(EButtonType buttonType, CharmGUIBase guiContext) {
+        ConfigurationSection buttonConfiguration = guiContext.readButtonConfiguration(buttonType);
+        String slotRange = buttonConfiguration.getString("slot");
+        return convertRange(slotRange);
+    }
+
+    public static List<Integer> getButtonRange(String ButtonKey, CharmGUIBase guiContext) {
+        ConfigurationSection buttonConfiguration = guiContext.readButtonConfiguration(ButtonKey);
+        String slotRange = buttonConfiguration.getString("slot");
+        return convertRange(slotRange);
+    }
+
+    public static List<File> getRealmFiles() {
+        File folder = new File(CharmRealm.pluginVariable.Tempf);
+        File[] listedFiles = folder.listFiles();
+        if (listedFiles == null) {
+            return null;
+        }
+        return Arrays.stream(listedFiles).toList();
+    }
 
     public static void checkAndSaveResource(String resourcePath) {
         if (!(new File(JavaPlugin.getDataFolder() + fileSeparator + resourcePath)).exists())
@@ -38,6 +64,51 @@ public final class RealmConfigLibrary {
         Logger.log(false, true, Level.INFO, OperateType.ADD, "已加载配置文件 " + configPath);
         return YamlConfiguration.loadConfiguration(new File(JavaPlugin.getDataFolder() + fileSeparator + configPath));
 
+    }
+
+    public static List<Integer> convertRange(String range) {
+        List<Integer> result = new ArrayList<>();
+
+        // 移除方括号（如果存在）
+        range = range.replaceAll("[\\[\\]]", "");
+
+        // 以逗号分隔
+        String[] parts = range.split(",");
+
+        for (String part : parts) {
+            part = part.trim(); // 去除首尾空格
+
+            if (part.contains("-")) {
+                String[] rangeParts = part.split("-");
+                if (rangeParts.length != 2) {
+                    throw new IllegalArgumentException("Invalid range: " + part);
+                }
+
+                try {
+                    int start = Integer.parseInt(rangeParts[0]);
+                    int end = Integer.parseInt(rangeParts[1]);
+
+                    // 确保范围是有效的
+                    if (start > end) {
+                        throw new IllegalArgumentException("Invalid range: " + part);
+                    }
+
+                    for (int i = start; i <= end; i++) {
+                        result.add(i);
+                    }
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid number in range: " + part, e);
+                }
+            } else {
+                try {
+                    int number = Integer.parseInt(part);
+                    result.add(number);
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid number: " + part, e);
+                }
+            }
+        }
+        return result;
     }
 
     public static void displayPluginBanner() {
