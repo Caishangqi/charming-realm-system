@@ -75,7 +75,7 @@ public class CommandListener implements CommandExecutor, TabExecutor {
             return false;
         if (cmd.getName().equalsIgnoreCase("realm") && args.length == 0) {
             if (sender instanceof Player) {
-                Bukkit.dispatchCommand(sender, "realm open visit");
+                CharmRealm.charmGuiHandler.openGUI((Player) sender, new RealmGUIBrowser((Player) sender));
             }
             return false;
         }
@@ -302,13 +302,6 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 sender.sendMessage(getLangString("message.realm.join.CanNotFindWorld"));
                 return false;
             }
-        }
-
-        if (args.length == 1 && args[0].equalsIgnoreCase("main")) {
-            if (sender instanceof Player) {
-                CharmRealm.charmGuiHandler.openGUI((Player) sender, new RealmGUIBrowser((Player) sender));
-            }
-            return false;
         }
 
         if (args.length == 2 && args[0].equalsIgnoreCase("setting")) {
@@ -5525,8 +5518,6 @@ public class CommandListener implements CommandExecutor, TabExecutor {
                 list.add("drop");
                 list.add("pickup");
             }
-
-            list.add("main");
             list.add("setting");
             list.add("look");
             list.add("tpSet");
