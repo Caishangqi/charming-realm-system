@@ -5,6 +5,8 @@ import com.caizii.charmrealm.utils.Color;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -116,6 +118,35 @@ public final class RealmVisualLibrary {
         return skull;
     }
 
+    /**
+     * paras specific placeholder from the string in specify Context
+     *
+     * @param Context     The Context Object that possible needed by placeholder
+     * @param placeholder Placeholder String
+     * @return The parsed String
+     */
+    public static String parasInternalPlaceholder(Object Context, InternalPlaceholder placeholder, String processString, Player player) {
+
+        switch (placeholder) {
+            case REALM_CREATE_DATE:
+                FileConfiguration context = (FileConfiguration) Context;
+                String createdDate = context.getString("CreatedDate");
+                return processString.replace("{" + placeholder.name() + "}", createdDate);
+            case REALM_CURRENT_PLAYER:
+                World world = Bukkit.getWorld("playerrealms/" + Context);
+                if (world != null) {
+                    return processString.replace("{" + placeholder.name() + "}", "" + world.getPlayers().size());
+                } else {
+                    return processString.replace("{" + placeholder.name() + "}", "0");
+                }
+            case REALM_PERMISSION:
+                GroupType playerPermission = RealmPermissionLibrary.getPlayerPermission(player.getName(), (String) Context);
+                return processString.replace("{" + placeholder.name() + "}", playerPermission.name());
+            default:
+                return processString;
+        }
+    }
+
     private static OfflinePlayer getPlayerOrOfflinePlayer(String playerName) {
         Player player = Bukkit.getPlayer(playerName);
         return (player != null) ? player : Bukkit.getOfflinePlayer(playerName);
@@ -125,7 +156,6 @@ public final class RealmVisualLibrary {
         Player player = Bukkit.getPlayer(playerUUID);
         return (player != null) ? player : Bukkit.getOfflinePlayer(playerUUID);
     }
-
 
 
 }
