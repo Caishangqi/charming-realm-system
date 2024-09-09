@@ -57,4 +57,6 @@ public class Color {
     protected List<String> color(List<String> messages) {
         return messages.stream().map(this::color).collect(Collectors.toList());
     }
+
+
 }

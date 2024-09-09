@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class CharmGUIBase implements InventoryHolder {
+
     private final Inventory inventory;
     protected Map<Integer, GUIButton> buttons = new HashMap<>();
     @Getter

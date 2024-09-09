@@ -40,10 +40,10 @@ items:
       # You must put several lines to the lore.
       # Color code, mini message and placeholders are supported
       lore:
-        - '#a6aab4領域熱度: §6{REALM_POPULARITY}'
         - '#a6aab4領域内人數: §f{REALM_CURRENT_PLAYER} #a6aab4人'
         - '#a6aab4領域創建日: §f{REALM_CREATE_DATE}'
         - ''
+        - '&6&l{REALM_PERMISSION}'
         - '#80c606 → 左鍵訪問該領域'
   featuredButton:
     type: DEFAULT

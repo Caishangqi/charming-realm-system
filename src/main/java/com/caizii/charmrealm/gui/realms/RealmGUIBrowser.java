@@ -6,12 +6,12 @@ import com.caizii.charmrealm.gui.components.GUIButton;
 import com.caizii.charmrealm.gui.components.PagedContainer;
 import com.caizii.charmrealm.gui.factory.MetaButtonFactory;
 import com.caizii.charmrealm.gui.types.EButtonType;
-import com.caizii.charmrealm.library.RealmConfigLibrary;
+import com.caizii.charmrealm.library.*;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,7 +36,6 @@ public class RealmGUIBrowser extends PagedContainer {
      * @param page The target page
      */
     private void setDataPage(int page) {
-        List<GUIButton> buttonsToSet = new ArrayList<>();
         List<File> realmFiles = RealmConfigLibrary.getRealmFiles();
         int numberOfFiles = realmFiles.size();
 
@@ -47,10 +46,9 @@ public class RealmGUIBrowser extends PagedContainer {
         totalPages = (int) Math.ceil((double) numberOfFiles / maxSize);
 
         // Calculate cut element range
-        // 假设总共 129 个， 当前在第二页， 一页总共 21 个
         int startRange = (page - 1) * maxSize;
         int endRange = page * maxSize;
-
+        // currentFileIndex relative to current page
         int currentFilesIndex = 0;
         for (; startRange < endRange && startRange < numberOfFiles; startRange++) {
             MetaGUIButton playerRealmButton = (MetaGUIButton) new MetaButtonFactory(readButtonConfiguration(EButtonType.GENERATED)).createButton(this);
@@ -60,13 +58,46 @@ public class RealmGUIBrowser extends PagedContainer {
             // set the meta values
             playerRealmButton.getMetaValues().put("owner", realmFileName);
 
-            buttonsToSet.add(playerRealmButton);
+            ConfigurationSection buttonConfiguration = readButtonConfiguration(EButtonType.GENERATED);
+            List<String> lores = buttonConfiguration.getStringList("item.lore");
+            // Get the permission and current realm file yaml
+            GroupType playerPermission = RealmPermissionLibrary.getPlayerPermission(this.owner.getName(), realmFileName);
+            YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(realmFiles.get(startRange));
+            // paras internal placeholder
+            for (int i = 0; i < lores.size(); i++) {
+                lores.set(i, RealmVisualLibrary.parasInternalPlaceholder(yamlConfiguration, InternalPlaceholder.REALM_CREATE_DATE, lores.get(i), null));
+                lores.set(i, RealmVisualLibrary.parasInternalPlaceholder(yamlConfiguration, InternalPlaceholder.REALM_CURRENT_PLAYER, lores.get(i), null));
+                lores.set(i, RealmVisualLibrary.parasInternalPlaceholder(realmFileName, InternalPlaceholder.REALM_PERMISSION, lores.get(i), owner));
+            }
+            // Add last lore element additional text if player have permission
+            if (playerPermission == GroupType.OWNER || playerPermission == GroupType.OPERATOR) {
+                lores.add(RealmConfigLibrary.getLangString("button.realm.visit.OpenSettingTargetRealm"));
+            }
+
+            playerRealmButton.setButtonName(RealmVisualLibrary.getPlayerRealmDisplayName(realmFileName));
+            playerRealmButton.setButtonLore(lores);
+
+            setButton(playerRealmButton, (event) -> {
+                if (event.isRightClick()) {
+                    if (playerPermission == GroupType.OPERATOR || playerPermission == GroupType.OWNER) {
+                        Bukkit.dispatchCommand(this.owner, "realm setting " + playerRealmButton.getMetaValues().get("owner"));
+                        event.setCancelled(true);
+                    }
+                    return;
+                }
+
+                if (event.isLeftClick()) {
+                    if (playerPermission != GroupType.BANNED) {
+                        Bukkit.dispatchCommand(this.owner, "realm tp " + playerRealmButton.getMetaValues().get("owner"));
+                        event.setCancelled(true);
+                    }
+                    return;
+                }
+                event.setCancelled(true);
+            });
+
             currentFilesIndex++;
         }
-
-        setButton(buttonsToSet, (event) -> {
-            event.getWhoClicked().sendMessage("You clicked EButtonType.GENERATED");
-        });
     }
 
     @Override
@@ -84,11 +115,19 @@ public class RealmGUIBrowser extends PagedContainer {
         });
 
         setButton(readButtons("settingButton"), (event) -> {
-            event.getWhoClicked().sendMessage("You clicked settingButton");
+            Bukkit.dispatchCommand(this.owner, "realm setting");
+            event.setCancelled(true);
         });
 
         setButton(readButtons("realmReturnButton"), (event) -> {
-            event.getWhoClicked().sendMessage("You clicked realmReturnButton");
+            if (event.isLeftClick()) {
+                Bukkit.dispatchCommand(this.owner, "realm home");
+                return;
+            }
+            if (event.isRightClick()) {
+                Bukkit.dispatchCommand(this.owner, "realm setspawn");
+            }
+            event.setCancelled(true);
         });
 
         setButton(readButtons("filterButton"), (event) -> {
