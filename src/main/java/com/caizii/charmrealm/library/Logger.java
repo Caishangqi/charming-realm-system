@@ -1,6 +1,7 @@
 package com.caizii.charmrealm.library;
 
 
+import com.caizii.charmrealm.utils.Color;
 import org.bukkit.Bukkit;
 
 import java.util.logging.Level;
@@ -54,7 +55,8 @@ public final class Logger {
                 break;
         }
 
-        Bukkit.getConsoleSender().sendMessage(prefix + " " + operateTabString + operate + message);
+
+        Bukkit.getConsoleSender().sendMessage(Color.parseColor(prefix + " " + operateTabString + operate + message));
         //Bukkit.getLogger().log(logLevel, prefix + " " + operateTabString + operate + message);
     }
 

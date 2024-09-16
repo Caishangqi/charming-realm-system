@@ -1,7 +1,6 @@
 package com.caizii.charmrealm.gui.components;
 
 import com.caizii.charmrealm.gui.factory.BaseButtonFactory;
-import com.caizii.charmrealm.gui.factory.MetaButtonFactory;
 import com.caizii.charmrealm.gui.factory.WorldCreateButtonFactory;
 import com.caizii.charmrealm.gui.types.EButtonType;
 import com.caizii.charmrealm.utils.Color;
@@ -69,6 +68,10 @@ public class CharmGUIBase implements InventoryHolder {
 
     // Start rend the buttons and papi, color to the native bukkit inventory
     public boolean rendCustomGUI(Player player) {
+
+        // First clear all slots
+        inventory.clear();
+
         for (GUIButton button : buttons.values()) {
             button.rendButton(player);
         }
@@ -95,6 +98,19 @@ public class CharmGUIBase implements InventoryHolder {
     public void setButton(GUIButton button, ButtonClickHandler handler) {
         buttons.put(button.slotIndex, button);
         button.setHandler(handler);
+    }
+
+    public void removeButton(GUIButton button) {
+        if (button != null) {
+            buttons.remove(button.slotIndex);
+        }
+
+    }
+
+    public void removeButton(int slotIndex) {
+        if (buttons.get(slotIndex) != null) {
+            buttons.remove(slotIndex);
+        }
     }
 
     /*
